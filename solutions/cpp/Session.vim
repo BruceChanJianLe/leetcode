@@ -15,14 +15,17 @@ else
 endif
 badd +5 include/238product_of_array_except_self.hpp
 badd +27 tests/36valid_sudoku_test.cpp
-badd +42 include/36valid_sudoku.hpp
-badd +12 tests/CMakeLists.txt
-badd +1 ~/reference/leetcode.git/master/solutions/cpp
-badd +0 fugitive:///home/developer/reference/leetcode.git/worktrees/master//
+badd +49 include/36valid_sudoku.hpp
+badd +74 tests/CMakeLists.txt
+badd +1 fugitive:///home/developer/reference/leetcode.git/worktrees/master//
+badd +22 ~/reference/leetcode.git/master/questions/128.longest-consecutive-sequence.txt
+badd +26 include/128longest_consecutive_sequence.hpp
+badd +28 tests/128longest_consecutive_sequence_test.cpp
+badd +1 tests/167two_sum_ii_test.cpp
 argglobal
 %argdel
-$argadd ~/reference/leetcode.git/master/solutions/cpp
-edit tests/36valid_sudoku_test.cpp
+$argadd ~/reference/leetcode.git/master/solutions/cpp/
+edit tests/CMakeLists.txt
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -50,7 +53,7 @@ exe 'vert 2resize ' . ((&columns * 83 + 83) / 167)
 exe '3resize ' . ((&lines * 20 + 22) / 44)
 tcd ~/reference/leetcode.git/master
 argglobal
-balt ~/reference/leetcode.git/master/solutions/cpp/include/238product_of_array_except_self.hpp
+balt ~/reference/leetcode.git/master/solutions/cpp/tests/128longest_consecutive_sequence_test.cpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -61,20 +64,20 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 27 - ((8 * winheight(0) + 10) / 20)
+let s:l = 74 - ((14 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 27
-normal! 051|
+keepjumps 74
+normal! 0
 lcd ~/reference/leetcode.git/master/solutions/cpp
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/include/36valid_sudoku.hpp", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/include/36valid_sudoku.hpp | else | edit ~/reference/leetcode.git/master/solutions/cpp/include/36valid_sudoku.hpp | endif
+if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/include/128longest_consecutive_sequence.hpp", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/include/128longest_consecutive_sequence.hpp | else | edit ~/reference/leetcode.git/master/solutions/cpp/include/128longest_consecutive_sequence.hpp | endif
 if &buftype ==# 'terminal'
-  silent file ~/reference/leetcode.git/master/solutions/cpp/include/36valid_sudoku.hpp
+  silent file ~/reference/leetcode.git/master/solutions/cpp/include/128longest_consecutive_sequence.hpp
 endif
-balt ~/reference/leetcode.git/master/solutions/cpp/tests/36valid_sudoku_test.cpp
+balt ~/reference/leetcode.git/master/solutions/cpp/tests/128longest_consecutive_sequence_test.cpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -85,12 +88,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 48 - ((13 * winheight(0) + 10) / 20)
+let s:l = 28 - ((13 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 48
-normal! 035|
+keepjumps 28
+normal! 0
 lcd ~/reference/leetcode.git/master/solutions/cpp
 wincmd w
 argglobal
@@ -98,7 +101,7 @@ if bufexists(fnamemodify("fugitive:///home/developer/reference/leetcode.git/work
 if &buftype ==# 'terminal'
   silent file fugitive:///home/developer/reference/leetcode.git/worktrees/master//
 endif
-balt ~/reference/leetcode.git/master/solutions/cpp/include/238product_of_array_except_self.hpp
+balt ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr=<<<<<<<<,>>>>>>>>
@@ -135,7 +138,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost

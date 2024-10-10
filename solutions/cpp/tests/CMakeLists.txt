@@ -18,10 +18,19 @@ add_executable(49group_anagrams_test ./49group_anagrams_test.cpp)
 target_link_libraries(49group_anagrams_test gtest_main)
 target_include_directories(49group_anagrams_test PRIVATE ../include)
 
+# ==================================================================
+
+# 128 longest consecutive sequence test
+add_executable(128longest_consecutive_sequence_test ./128longest_consecutive_sequence_test.cpp)
+target_link_libraries(128longest_consecutive_sequence_test gtest_main)
+target_include_directories(128longest_consecutive_sequence_test PRIVATE ../include)
+
 # 167 add two numbers ii test
 add_executable(167two_sum_ii_test ./167two_sum_ii_test.cpp)
 target_link_libraries(167two_sum_ii_test gtest_main)
 target_include_directories(167two_sum_ii_test PRIVATE ../include)
+
+# ==================================================================
 
 # 217 contains duplicate test
 add_executable(217contains_duplicate_test ./217contains_duplicate_test.cpp)
@@ -43,6 +52,8 @@ add_executable(242valid_anagram_test ./242valid_anagram_test.cpp)
 target_link_libraries(242valid_anagram_test gtest_main)
 target_include_directories(242valid_anagram_test PRIVATE ../include)
 
+# ==================================================================
+
 # 347 top k frequent elements test
 add_executable(347top_k_frequent_elements_test ./347top_k_frequent_elements_test.cpp)
 target_link_libraries(347top_k_frequent_elements_test gtest_main)
@@ -56,8 +67,11 @@ add_test(NAME 36valid_sudoku_test COMMAND 36valid_sudoku_test)
 add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
 add_test(NAME 167two_sum_ii_test COMMAND 167two_sum_ii_test)
+add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
+
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
 add_test(NAME 238product_of_array_except_self_test COMMAND 238product_of_array_except_self_test)
 add_test(NAME 242valid_anagram_test COMMAND 242valid_anagram_test)
 add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_strings_test)
+
 add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements_test)
