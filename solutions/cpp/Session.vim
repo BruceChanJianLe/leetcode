@@ -13,14 +13,44 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +14 tests/238product_of_array_except_self_test.cpp
-badd +68 include/238product_of_array_except_self.hpp
+badd +5 include/238product_of_array_except_self.hpp
+badd +27 tests/36valid_sudoku_test.cpp
+badd +42 include/36valid_sudoku.hpp
+badd +12 tests/CMakeLists.txt
+badd +1 ~/reference/leetcode.git/master/solutions/cpp
+badd +0 fugitive:///home/developer/reference/leetcode.git/worktrees/master//
 argglobal
 %argdel
-$argadd ~/reference/leetcode.git/master/solutions/cpp/
-edit tests/238product_of_array_except_self_test.cpp
+$argadd ~/reference/leetcode.git/master/solutions/cpp
+edit tests/36valid_sudoku_test.cpp
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 20 + 22) / 44)
+exe 'vert 1resize ' . ((&columns * 83 + 83) / 167)
+exe '2resize ' . ((&lines * 20 + 22) / 44)
+exe 'vert 2resize ' . ((&columns * 83 + 83) / 167)
+exe '3resize ' . ((&lines * 20 + 22) / 44)
 tcd ~/reference/leetcode.git/master
 argglobal
+balt ~/reference/leetcode.git/master/solutions/cpp/include/238product_of_array_except_self.hpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -31,13 +61,66 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 24) / 49)
+let s:l = 27 - ((8 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 27
+normal! 051|
+lcd ~/reference/leetcode.git/master/solutions/cpp
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/include/36valid_sudoku.hpp", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/include/36valid_sudoku.hpp | else | edit ~/reference/leetcode.git/master/solutions/cpp/include/36valid_sudoku.hpp | endif
+if &buftype ==# 'terminal'
+  silent file ~/reference/leetcode.git/master/solutions/cpp/include/36valid_sudoku.hpp
+endif
+balt ~/reference/leetcode.git/master/solutions/cpp/tests/36valid_sudoku_test.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 48 - ((13 * winheight(0) + 10) / 20)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 48
+normal! 035|
+lcd ~/reference/leetcode.git/master/solutions/cpp
+wincmd w
+argglobal
+if bufexists(fnamemodify("fugitive:///home/developer/reference/leetcode.git/worktrees/master//", ":p")) | buffer fugitive:///home/developer/reference/leetcode.git/worktrees/master// | else | edit fugitive:///home/developer/reference/leetcode.git/worktrees/master// | endif
+if &buftype ==# 'terminal'
+  silent file fugitive:///home/developer/reference/leetcode.git/worktrees/master//
+endif
+balt ~/reference/leetcode.git/master/solutions/cpp/include/238product_of_array_except_self.hpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr=<<<<<<<<,>>>>>>>>
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 6 - ((5 * winheight(0) + 10) / 20)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 6
 normal! 0
 lcd ~/reference/leetcode.git/master/solutions/cpp
+wincmd w
+3wincmd w
+exe '1resize ' . ((&lines * 20 + 22) / 44)
+exe 'vert 1resize ' . ((&columns * 83 + 83) / 167)
+exe '2resize ' . ((&lines * 20 + 22) / 44)
+exe 'vert 2resize ' . ((&columns * 83 + 83) / 167)
+exe '3resize ' . ((&lines * 20 + 22) / 44)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -45,6 +128,8 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
