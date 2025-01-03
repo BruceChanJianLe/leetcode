@@ -7,8 +7,23 @@
 
 class Solution {
 public:
+  // Attempt 4, seems like changing the control order matters
   std::vector<int> twoSum(std::vector<int> &nums, int target) {
-    // Attempt 3
+    std::unordered_map<int, int> index_map;
+    index_map.reserve(nums.size());
+    for (const int index : std::ranges::iota_view(0u, nums.size())) {
+      if (auto itr = index_map.find(target - nums[index]);
+          itr != index_map.end()) {
+        return {index, itr->second};
+      } else {
+        index_map[nums[index]] = index;
+      }
+    }
+    return {};
+  }
+
+  // Attempt 3
+  std::vector<int> twoSumAttempt3(std::vector<int> &nums, int target) {
     std::unordered_map<int, int> index_map;
     index_map.reserve(nums.size());
     for (const int index : std::ranges::iota_view(0u, nums.size())) {
