@@ -13,6 +13,8 @@ struct TopKfrequentElementsTest : public testing::Test, testing::WithParamInterf
 {
   Solution s;
   FirstSolution fs;
+  SecondSolution ss;
+  OtherSolution os;
 };
 
 TEST_P(TopKfrequentElementsTest, TopKfrequentElementsCases)
@@ -26,6 +28,21 @@ TEST_P(TopKfrequentElementsTest, TopKfrequentElementsFirstSolutionCases)
 {
   auto as = GetParam();
   auto result = fs.topKFrequent(as.nums, as.k);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(TopKfrequentElementsTest, TopKfrequentElementsSecondSolutionCases)
+{
+  auto as = GetParam();
+  auto result = ss.topKFrequent(as.nums, as.k);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(TopKfrequentElementsTest, TopKfrequentElementsOtherSolutionCases)
+{
+  auto as = GetParam();
+  auto result = os.topKFrequent(as.nums, as.k);
+  std::sort(result.begin(), result.end());
   EXPECT_EQ(result, as.result);
 }
 

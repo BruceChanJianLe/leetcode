@@ -5,6 +5,8 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
+// Second Solution
+#include <queue>
 
 class Solution {
 public:
@@ -37,7 +39,6 @@ public:
   }
 };
 
-
 class FirstSolution {
 public:
   std::vector<int> topKFrequent(std::vector<int> &nums, int k) {
@@ -62,3 +63,67 @@ public:
     return result;
   }
 };
+
+class SecondSolution {
+public:
+  std::vector<int> topKFrequent(std::vector<int> &nums, int k) {
+        std::vector<int> result;
+      std::unordered_map<int, int> records;
+      for (const auto &num : nums)
+      {
+        ++records[num];
+      }
+
+      std::priority_queue<std::pair<int, int>> sorted_records;
+      for (const auto &[key, value] : records)
+      {
+        sorted_records.emplace(value, key);
+      }
+
+      while (k > 0)
+      {
+        result.push_back(sorted_records.top().second);
+        sorted_records.pop();
+        --k;
+      }
+      return result;
+  }
+};
+
+class OtherSolution {
+public:
+    struct pair_comp {
+        bool operator()(std::pair<int,int> a, std::pair<int,int> b) {
+            return a.second > b.second;
+        }
+    };
+
+    std::vector<int> topKFrequent(std::vector<int>& nums, int k) {
+            std::vector<std::vector<int>> bucket;
+      std::unordered_map<int, int> records;
+      for (const auto &num : nums) {
+        ++records[num];
+      }
+
+      for (const auto &[num, freq] : records)
+      {
+        bucket[freq].push_back(num);
+      }
+
+      std::vector<int> result;
+      for(auto it1 = bucket.rbegin(); it1 != bucket.rend() && k > 0; ++it1)
+      {
+        if (it1->size() > 0)
+        {
+          for (auto it2 = it1->begin(); it2 != it1->end() && k > 0; ++it2)
+          {
+            result.push_back(*it2);
+            --k;
+          }
+        }
+      }
+
+      return result;
+    }
+};
+
