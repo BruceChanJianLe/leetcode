@@ -25,6 +25,21 @@ OutputIt transform_exclusive_scan(InputIt first, InputIt last, OutputIt d_first,
   return d_first;
 }
 
+// Implement my own exclusive_scan (seems like need not the transform action)
+template <typename InputIt, typename OutputIt, typename T, typename BinaryOp>
+OutputIt exclusive_scan(InputIt first, InputIt last, OutputIt d_first,
+                                  T init, BinaryOp binary_op) {
+  if (first == last)
+    return d_first;
+
+  T temp = init;
+  for (; first != last; ++first) {
+    *d_first++ = *d_first * temp;
+    temp = binary_op(temp, *first);
+  }
+  return d_first;
+}
+
 class FirstSolution {
 public:
   std::vector<int> productExceptSelf(std::vector<int> &nums) {
@@ -71,6 +86,38 @@ public:
     ::transform_exclusive_scan(num.rbegin(), num.rend(), result.rbegin(), 1,
                                std::multiplies<int>(),
                                [](const int &x) { return x; });
+    return result;
+  }
+};
+
+class ThirdSolution {
+public:
+  std::vector<int> productExceptSelf(const std::vector<int>& num) {
+    std::vector<int> prefix(num.size());
+    std::vector<int> suffix(num.size());
+    std::vector<int> result(num.size());
+
+    // Calculate prefix
+    std::exclusive_scan(num.begin(), num.end(), prefix.begin(), 1, std::multiplies<>{});
+    // Calculate suffix
+    std::exclusive_scan(num.rbegin(), num.rend(), suffix.rbegin(), 1, std::multiplies<>{});
+    // Calculate result
+    std::transform(prefix.begin(), prefix.end(), suffix.begin(), result.begin(), std::multiplies<>{});
+
+    return result;
+  }
+};
+
+class FourthSolution {
+public:
+  std::vector<int> productExceptSelf(const std::vector<int>& num) {
+    std::vector<int> result(num.size(), 1);
+
+    // Calculate prefix
+    ::exclusive_scan(num.begin(), num.end(), result.begin(), 1, std::multiplies<>{});
+    // Calculate suffix
+    ::exclusive_scan(num.rbegin(), num.rend(), result.rbegin(), 1, std::multiplies<>{});
+
     return result;
   }
 };

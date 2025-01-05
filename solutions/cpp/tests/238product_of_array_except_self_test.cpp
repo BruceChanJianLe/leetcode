@@ -10,14 +10,37 @@ struct States
 
 struct ProductOfArrayExceptSelfTest : public testing::Test, testing::WithParamInterface<States>
 {
-  // FirstSolution fs;
-  SecondSolution fs;
+  FirstSolution fs;
+  SecondSolution ss;
+  ThirdSolution ts;
+  FourthSolution s;
 };
 
-TEST_P(ProductOfArrayExceptSelfTest, ProductOfArrayExceptSelfCases)
+TEST_P(ProductOfArrayExceptSelfTest, FirstProductOfArrayExceptSelfCases)
 {
   auto as = GetParam();
   auto result = fs.productExceptSelf(as.nums);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(ProductOfArrayExceptSelfTest, SecondProductOfArrayExceptSelfCases)
+{
+  auto as = GetParam();
+  auto result = ss.productExceptSelf(as.nums);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(ProductOfArrayExceptSelfTest, ThirdProductOfArrayExceptSelfCases)
+{
+  auto as = GetParam();
+  auto result = ts.productExceptSelf(as.nums);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(ProductOfArrayExceptSelfTest, FourthProductOfArrayExceptSelfCases)
+{
+  auto as = GetParam();
+  auto result = s.productExceptSelf(as.nums);
   EXPECT_EQ(result, as.result);
 }
 
