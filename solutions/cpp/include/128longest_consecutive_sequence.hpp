@@ -8,7 +8,37 @@ class Solution
 {
 public:
   int longestConsecutive(std::vector<int>& nums) {
-    std::unordered_set<int> records(nums.begin(), nums.end());
+    std::unordered_set<int> records(nums.size());
+    records.insert(nums.begin(), nums.end());
+
+    int max = 0;
+    auto record_size = records.size();
+    for (const auto &record : records)
+    {
+      if (records.find(record - 1) == records.end())
+      {
+        auto suffix = record + 1;
+        int curr_max = 1;
+        while (records.find(suffix) != records.end())
+        {
+          ++curr_max;
+          ++suffix;
+        }
+        max = std::max(max, curr_max);
+      }
+    }
+
+    return max;
+  }
+};
+
+
+class SecondSolution
+{
+public:
+  int longestConsecutive(std::vector<int>& nums) {
+    std::unordered_set<int> records(nums.size());
+    records.insert(nums.begin(), nums.end());
     int length{0};
 
     for (const auto record : records)
