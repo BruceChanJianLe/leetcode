@@ -11,19 +11,17 @@ public:
     std::vector<std::unordered_set<char>> record_rows(board.size()),
         record_cols(board.size()), record_boxes(board.size());
 
-    for (auto [row, col] : std::ranges::views::cartesian_product(
+    for (const auto &[row, col] : std::views::cartesian_product(
              std::views::iota(0u, board.size()),
              std::views::iota(0u, board.front().size()))) {
       // Obtain element
-      auto e = board[row][col];
-      if ('.' == e)
-        continue;
-
-      // Verify the element has not appear before
-      if (!record_rows[row].insert(e).second ||
-          !record_cols[col].insert(e).second ||
-          !record_boxes[(row / 3) * 3 + col / 3].insert(e).second)
-        return false;
+      if (const auto &e = board[row][col]; '.' != e) {
+        // Verify the element has not appear before
+        if (!record_rows[row].insert(e).second ||
+            !record_cols[col].insert(e).second ||
+            !record_boxes[(row / 3) * 3 + col / 3].insert(e).second)
+          return false;
+      }
     }
     return true;
   }
