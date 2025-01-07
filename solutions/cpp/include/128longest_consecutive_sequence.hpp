@@ -38,9 +38,9 @@ public:
       if (!records[num]) {
         //             left_val + curr_val + right_val
         records[num] = records[num - 1] + 1 + records[num + 1];
-        // Update left most
+        // Update leftmost
         records[num - records[num - 1]] = records[num];
-        // Update right most
+        // Update rightmost
         records[num + records[num + 1]] = records[num];
         max_size = std::max(max_size, records[num]);
       }
