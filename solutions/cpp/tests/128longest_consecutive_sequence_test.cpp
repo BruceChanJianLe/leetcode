@@ -13,6 +13,7 @@ struct States
 struct LongestConsecutiveSequenceTest : public ::testing::Test, ::testing::WithParamInterface<States>
 {
   Solution s;
+  HashMapSolution hs;
   FirstSolution fs;
   SecondSolution ss;
 };
@@ -21,6 +22,13 @@ TEST_P(LongestConsecutiveSequenceTest, LongestConsecutiveSequenceCases)
 {
   auto as = GetParam();
   auto result = s.longestConsecutive(as.nums);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(LongestConsecutiveSequenceTest, HashMapLongestConsecutiveSequenceCases)
+{
+  auto as = GetParam();
+  auto result = hs.longestConsecutive(as.nums);
   EXPECT_EQ(result, as.result);
 }
 
