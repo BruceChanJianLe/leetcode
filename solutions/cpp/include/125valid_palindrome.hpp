@@ -21,9 +21,10 @@ public:
         ++second;
       }
 
-      if (std::tolower(*first) != std::tolower(*second)
-          && std::next(first) != s.end() && std::next(second) != s.rend()
-          ) return false;
+      // If iterator crossed, it is a PALINDROME
+      if (std::distance(first, second.base() - 1) < 0) return true;
+
+      if (std::tolower(*first) != std::tolower(*second)) return false;
     }
     return true;
   }
