@@ -40,3 +40,27 @@ public:
     return {};
   }
 };
+
+// Using iterator
+class SecondSolution {
+public:
+  std::vector<int> twoSum(std::vector<int> &numbers, int target) {
+    auto sp = numbers.begin();
+    auto lp = numbers.end() - 1;
+    auto sum = *sp + *lp;
+    while (sum != target)
+    {
+      if (sum > target) {
+        --lp;
+      }
+      else if (sum < target) {
+        ++sp;
+      }
+      sum = *sp + *lp;
+    }
+    return {
+      (int) std::distance(numbers.begin(), sp) + 1,
+      (int) std::distance(numbers.begin(), lp) + 1
+    };
+  }
+};

@@ -14,12 +14,28 @@ struct States
 struct TwoSumIITest : public ::testing::Test, ::testing::WithParamInterface<States>
 {
   Solution s;
+  FirstSolution fs;
+  SecondSolution ss;
 };
 
 TEST_P(TwoSumIITest, TwoSumIICase)
 {
   auto as = GetParam();
   auto result = s.twoSum(as.nums, as.target);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(TwoSumIITest, FirstTwoSumIICase)
+{
+  auto as = GetParam();
+  auto result = fs.twoSum(as.nums, as.target);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(TwoSumIITest, SecondTwoSumIICase)
+{
+  auto as = GetParam();
+  auto result = ss.twoSum(as.nums, as.target);
   EXPECT_EQ(result, as.result);
 }
 
