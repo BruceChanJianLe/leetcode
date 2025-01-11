@@ -8,6 +8,11 @@ add_executable(2add_two_numbers_test ./2add_two_numbers_test.cpp)
 target_link_libraries(2add_two_numbers_test gtest_main)
 target_include_directories(2add_two_numbers_test PRIVATE ../include)
 
+# 15 three sum test
+add_executable(15three_sum_test ./15three_sum_test.cpp)
+target_link_libraries(15three_sum_test gtest_main)
+target_include_directories(15three_sum_test PRIVATE ../include)
+
 # 36 valid sudoku test
 add_executable(36valid_sudoku_test ./36valid_sudoku_test.cpp)
 target_link_libraries(36valid_sudoku_test gtest_main)
@@ -68,6 +73,7 @@ target_include_directories(347top_k_frequent_elements_test PRIVATE ../include)
 include(GoogleTest)
 add_test(NAME 1two_sum_test COMMAND 1two_sum_test)
 add_test(NAME 2add_two_numbers_test COMMAND 2add_two_numbers_test)
+add_test(NAME 15three_sum_test COMMAND 15three_sum_test)
 add_test(NAME 36valid_sudoku_test COMMAND 36valid_sudoku_test)
 add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
