@@ -23,6 +23,11 @@ add_executable(36valid_sudoku_test ./36valid_sudoku_test.cpp)
 target_link_libraries(36valid_sudoku_test gtest_main)
 target_include_directories(36valid_sudoku_test PRIVATE ../include)
 
+# 42 trapping rain
+add_executable(42trapping_rain_water_test ./42trapping_rain_water_test.cpp)
+target_link_libraries(42trapping_rain_water_test gtest_main)
+target_include_directories(42trapping_rain_water_test PRIVATE ../include)
+
 # 49 group anagrams test
 add_executable(49group_anagrams_test ./49group_anagrams_test.cpp)
 target_link_libraries(49group_anagrams_test gtest_main)
@@ -81,6 +86,7 @@ add_test(NAME 2add_two_numbers_test COMMAND 2add_two_numbers_test)
 add_test(NAME 11container_with_most_water_test COMMAND 11container_with_most_water_test)
 add_test(NAME 15three_sum_test COMMAND 15three_sum_test)
 add_test(NAME 36valid_sudoku_test COMMAND 36valid_sudoku_test)
+add_test(NAME 42trapping_rain_water_test COMMAND 42trapping_rain_water_test)
 add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
