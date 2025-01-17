@@ -13,31 +13,17 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +35 include/238product_of_array_except_self.hpp
-badd +27 tests/36valid_sudoku_test.cpp
-badd +19 include/36valid_sudoku.hpp
-badd +3 tests/CMakeLists.txt
-badd +22 ~/reference/leetcode.git/master/questions/128.longest-consecutive-sequence.txt
-badd +43 include/128longest_consecutive_sequence.hpp
-badd +54 tests/128longest_consecutive_sequence_test.cpp
-badd +8 tests/167two_sum_ii_test.cpp
-badd +16 ~/reference/leetcode.git/master/questions/125.valid-palindrome.txt
-badd +16 tests/125valid_palindrome_test.cpp
-badd +24 include/125valid_palindrome.hpp
-badd +1 ~/reference/leetcode.git/master/solutions/cpp
-badd +14 include/217contains_duplicate.hpp
-badd +17 include/242valid_anagram.hpp
-badd +10 include/1two_sum.hpp
-badd +19 include/49group_anagrams.hpp
-badd +4 include/347top_k_frequent_elements.hpp
-badd +1 CMakeLists.txt
-badd +47 tests/347top_k_frequent_elements_test.cpp
-badd +39 include/271encode_and_decode_strings.hpp
-badd +41 tests/238product_of_array_except_self_test.cpp
+badd +50 ~/reference/leetcode.git/master/questions/20.valid-parentheses.txt
+badd +8 include/20valid_parentheses.hpp
+badd +25 tests/20valid_parentheses_test.cpp
+badd +20 tests/1two_sum_test.cpp
+badd +93 tests/CMakeLists.txt
+badd +1 include/42trapping_rain_water.hpp
+badd +1 include/1two_sum.hpp
 argglobal
 %argdel
-$argadd ~/reference/leetcode.git/master/solutions/cpp
-edit include/125valid_palindrome.hpp
+$argadd ~/reference/leetcode.git/master/solutions/cpp/
+edit include/20valid_parentheses.hpp
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -54,11 +40,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 102 + 102) / 205)
-exe 'vert 2resize ' . ((&columns * 102 + 102) / 205)
+exe 'vert 1resize ' . ((&columns * 112 + 113) / 226)
+exe 'vert 2resize ' . ((&columns * 113 + 113) / 226)
 tcd ~/reference/leetcode.git/master
 argglobal
-balt ~/reference/leetcode.git/master/solutions/cpp/include/128longest_consecutive_sequence.hpp
+balt ~/reference/leetcode.git/master/solutions/cpp/include/1two_sum.hpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -69,20 +55,20 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 24 - ((22 * winheight(0) + 26) / 52)
+let s:l = 7 - ((6 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 24
-normal! 048|
-lcd ~/reference/leetcode.git/master/solutions/cpp
+keepjumps 7
+normal! 015|
+lcd ~/reference/leetcode.git/master
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/tests/125valid_palindrome_test.cpp", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/tests/125valid_palindrome_test.cpp | else | edit ~/reference/leetcode.git/master/solutions/cpp/tests/125valid_palindrome_test.cpp | endif
+if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt | else | edit ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt | endif
 if &buftype ==# 'terminal'
-  silent file ~/reference/leetcode.git/master/solutions/cpp/tests/125valid_palindrome_test.cpp
+  silent file ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt
 endif
-balt ~/reference/leetcode.git/master/solutions/cpp/tests/128longest_consecutive_sequence_test.cpp
+balt ~/reference/leetcode.git/master/solutions/cpp/tests/1two_sum_test.cpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -93,16 +79,17 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 19 - ((18 * winheight(0) + 26) / 52)
+let s:l = 110 - ((29 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 19
+keepjumps 110
 normal! 0
-lcd ~/reference/leetcode.git/master/solutions/cpp
+lcd ~/reference/leetcode.git/master
 wincmd w
-exe 'vert 1resize ' . ((&columns * 102 + 102) / 205)
-exe 'vert 2resize ' . ((&columns * 102 + 102) / 205)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 112 + 113) / 226)
+exe 'vert 2resize ' . ((&columns * 113 + 113) / 226)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -117,7 +104,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost
