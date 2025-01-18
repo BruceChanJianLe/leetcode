@@ -12,12 +12,20 @@ struct EvaluateReversePolishNotationTest
   : public testing::Test, testing::WithParamInterface<States>
 {
   Solution s;
+  FirstSolution fs;
 };
 
 TEST_P(EvaluateReversePolishNotationTest, EvaluateReversePolishNotationCase)
 {
   auto as = GetParam();
   auto result = s.evalRPN(as.tokens);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(EvaluateReversePolishNotationTest, FirstEvaluateReversePolishNotationCase)
+{
+  auto as = GetParam();
+  auto result = fs.evalRPN(as.tokens);
   EXPECT_EQ(result, as.result);
 }
 
