@@ -52,6 +52,11 @@ add_executable(128longest_consecutive_sequence_test ./128longest_consecutive_seq
 target_link_libraries(128longest_consecutive_sequence_test gtest_main)
 target_include_directories(128longest_consecutive_sequence_test PRIVATE ../include)
 
+# 155 min stack test
+add_executable(155min_stack_test ./155min_stack_test.cpp)
+target_link_libraries(155min_stack_test gtest_main)
+target_include_directories(155min_stack_test PRIVATE ../include)
+
 # 167 add two numbers ii test
 add_executable(167two_sum_ii_test ./167two_sum_ii_test.cpp)
 target_link_libraries(167two_sum_ii_test gtest_main)
@@ -100,6 +105,7 @@ add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
 add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
+add_test(NAME 155min_stack_test COMMAND 155min_stack_test)
 add_test(NAME 167two_sum_ii_test COMMAND 167two_sum_ii_test)
 
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
