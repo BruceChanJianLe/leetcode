@@ -52,6 +52,11 @@ add_executable(128longest_consecutive_sequence_test ./128longest_consecutive_seq
 target_link_libraries(128longest_consecutive_sequence_test gtest_main)
 target_include_directories(128longest_consecutive_sequence_test PRIVATE ../include)
 
+# 150 evaluate reverse polish notation test
+add_executable(150evaluate_reverse_polish_notation_test ./150evaluate_reverse_polish_notation_test.cpp)
+target_link_libraries(150evaluate_reverse_polish_notation_test gtest_main)
+target_include_directories(150evaluate_reverse_polish_notation_test PRIVATE ../include)
+
 # 155 min stack test
 add_executable(155min_stack_test ./155min_stack_test.cpp)
 target_link_libraries(155min_stack_test gtest_main)
@@ -105,6 +110,7 @@ add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
 add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
+add_test(NAME 150evaluate_reverse_polish_notation_test COMMAND 150evaluate_reverse_polish_notation_test)
 add_test(NAME 155min_stack_test COMMAND 155min_stack_test)
 add_test(NAME 167two_sum_ii_test COMMAND 167two_sum_ii_test)
 
