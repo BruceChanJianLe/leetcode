@@ -101,6 +101,11 @@ add_executable(347top_k_frequent_elements_test ./347top_k_frequent_elements_test
 target_link_libraries(347top_k_frequent_elements_test gtest_main)
 target_include_directories(347top_k_frequent_elements_test PRIVATE ../include)
 
+# 739 daily temperature test
+add_executable(739daily_temperatures_test ./739daily_temperatures_test.cpp)
+target_link_libraries(739daily_temperatures_test gtest_main)
+target_include_directories(739daily_temperatures_test PRIVATE ../include)
+
 # Add tests
 include(GoogleTest)
 add_test(NAME 1two_sum_test COMMAND 1two_sum_test)
@@ -126,3 +131,4 @@ add_test(NAME 242valid_anagram_test COMMAND 242valid_anagram_test)
 add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_strings_test)
 
 add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements_test)
+add_test(NAME 739daily_temperatures_test COMMAND 739daily_temperatures_test)
