@@ -7,7 +7,6 @@
 class Solution {
 public:
   int carFleet(int target, std::vector<int>& position, std::vector<int>& speed) {
-    std::vector<float> fleet;
     std::vector<std::pair<int, float>> cars(position.size());
 
     std::transform(position.begin(), position.end(), speed.begin(), cars.begin(), 
@@ -15,13 +14,16 @@ public:
 
     std::sort(cars.begin(), cars.end());
 
+    int fleet{1};
+    float prev_time{cars.back().second};
     for (auto const& car : std::views::reverse(cars))
     {
-      if (!fleet.empty() && fleet.back() >= car.second)
+      if (prev_time >= car.second)
         continue;
-      fleet.push_back(car.second);
+      ++fleet;
+      prev_time = car.second;
     }
-    return fleet.size();
+    return fleet;
   }
 };
 
