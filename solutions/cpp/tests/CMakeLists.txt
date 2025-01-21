@@ -106,6 +106,11 @@ add_executable(739daily_temperatures_test ./739daily_temperatures_test.cpp)
 target_link_libraries(739daily_temperatures_test gtest_main)
 target_include_directories(739daily_temperatures_test PRIVATE ../include)
 
+# 835 car fleet test
+add_executable(853car_fleet_test ./853car_fleet_test.cpp)
+target_link_libraries(853car_fleet_test gtest_main)
+target_include_directories(853car_fleet_test PRIVATE ../include)
+
 # Add tests
 include(GoogleTest)
 add_test(NAME 1two_sum_test COMMAND 1two_sum_test)
@@ -132,3 +137,4 @@ add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_str
 
 add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements_test)
 add_test(NAME 739daily_temperatures_test COMMAND 739daily_temperatures_test)
+add_test(NAME 853car_fleet_test COMMAND 853car_fleet_test)
