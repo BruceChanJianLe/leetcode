@@ -13,17 +13,28 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +50 ~/reference/leetcode.git/master/questions/20.valid-parentheses.txt
-badd +8 include/20valid_parentheses.hpp
-badd +25 tests/20valid_parentheses_test.cpp
+badd +2 include/20valid_parentheses.hpp
+badd +40 tests/20valid_parentheses_test.cpp
 badd +20 tests/1two_sum_test.cpp
-badd +93 tests/CMakeLists.txt
 badd +1 include/42trapping_rain_water.hpp
 badd +1 include/1two_sum.hpp
+badd +7 include/155min_stack.hpp
+badd +39 tests/155min_stack_test.cpp
+badd +35 tests/150evaluate_reverse_polish_notation_test.cpp
+badd +2 include/150evaluate_reverse_polish_notation.hpp
+badd +1 ~/reference/leetcode.git/master/questions/22.generate-parentheses.txt
+badd +27 tests/22generate_parentheses_test.cpp
+badd +2 include/22generate_parentheses.hpp
+badd +27 include/739daily_temperatures.hpp
+badd +28 tests/739daily_temperatures_test.cpp
+badd +11 include/853car_fleet.hpp
+badd +22 tests/853car_fleet_test.cpp
+badd +135 tests/CMakeLists.txt
+badd +1 ~/reference/leetcode.git/master/solutions/cpp
 argglobal
 %argdel
-$argadd ~/reference/leetcode.git/master/solutions/cpp/
-edit include/20valid_parentheses.hpp
+$argadd ~/reference/leetcode.git/master/solutions/cpp
+edit include/853car_fleet.hpp
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -40,11 +51,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 112 + 113) / 226)
-exe 'vert 2resize ' . ((&columns * 113 + 113) / 226)
+exe 'vert 1resize ' . ((&columns * 102 + 106) / 212)
+exe 'vert 2resize ' . ((&columns * 109 + 106) / 212)
 tcd ~/reference/leetcode.git/master
 argglobal
-balt ~/reference/leetcode.git/master/solutions/cpp/include/1two_sum.hpp
+balt ~/reference/leetcode.git/master/solutions/cpp/tests/739daily_temperatures_test.cpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -55,20 +66,20 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 7 - ((6 * winheight(0) + 30) / 60)
+let s:l = 11 - ((10 * winheight(0) + 27) / 54)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 7
-normal! 015|
-lcd ~/reference/leetcode.git/master
+keepjumps 11
+normal! 0
+lcd ~/reference/leetcode.git/master/solutions/cpp
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt | else | edit ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt | endif
+if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/tests/853car_fleet_test.cpp", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/tests/853car_fleet_test.cpp | else | edit ~/reference/leetcode.git/master/solutions/cpp/tests/853car_fleet_test.cpp | endif
 if &buftype ==# 'terminal'
-  silent file ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt
+  silent file ~/reference/leetcode.git/master/solutions/cpp/tests/853car_fleet_test.cpp
 endif
-balt ~/reference/leetcode.git/master/solutions/cpp/tests/1two_sum_test.cpp
+balt ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -79,17 +90,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 110 - ((29 * winheight(0) + 30) / 60)
+let s:l = 23 - ((22 * winheight(0) + 27) / 54)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 110
-normal! 0
-lcd ~/reference/leetcode.git/master
+keepjumps 23
+normal! 017|
+lcd ~/reference/leetcode.git/master/solutions/cpp
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 112 + 113) / 226)
-exe 'vert 2resize ' . ((&columns * 113 + 113) / 226)
+exe 'vert 1resize ' . ((&columns * 102 + 106) / 212)
+exe 'vert 2resize ' . ((&columns * 109 + 106) / 212)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -104,6 +114,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost
