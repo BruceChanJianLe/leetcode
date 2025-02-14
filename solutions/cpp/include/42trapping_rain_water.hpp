@@ -1,6 +1,8 @@
 #pragma once
 
+#include <stack>
 #include <vector>
+#include <iostream>
 
 // Iterator solution
 class Solution {
@@ -21,5 +23,34 @@ public:
       }
     }
     return result;
+  }
+};
+
+// Monotonic decreasing stack solution
+class SecondSolution {
+public:
+  int trap(std::vector<int> &height) {
+    std::stack<int> stack;
+    int water{0};
+
+    for (int i = 0; i < height.size(); ++i)
+    {
+      auto curr_height = height[i];
+      while (!stack.empty() && curr_height >= height[stack.top()])
+      {
+        auto mid_height = height[stack.top()];
+        stack.pop();
+
+        if (!stack.empty())
+        {
+          auto left_height = height[stack.top()];
+          auto width = i - stack.top() - 1;
+          water += width * (std::min(left_height, curr_height) - mid_height);
+        }
+      }
+      stack.push(i);
+    }
+
+    return water;
   }
 };

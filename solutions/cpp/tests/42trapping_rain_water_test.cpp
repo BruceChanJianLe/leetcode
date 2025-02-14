@@ -11,12 +11,21 @@ struct States
 struct TrappingRainWaterTest : public testing::Test, testing::WithParamInterface<States>
 {
   Solution s;
+  SecondSolution ss;
 };
 
 TEST_P(TrappingRainWaterTest, TrappingRainWaterCase)
 {
   auto as = GetParam();
   auto result = s.trap(as.height);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(TrappingRainWaterTest, TrappingRainWaterCaseSecond)
+{
+  auto as = GetParam();
+  auto result = ss.trap(as.height);
+  EXPECT_EQ(result, as.result);
 }
 
 INSTANTIATE_TEST_SUITE_P(Default, TrappingRainWaterTest,
