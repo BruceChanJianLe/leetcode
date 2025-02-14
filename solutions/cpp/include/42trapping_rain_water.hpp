@@ -27,6 +27,7 @@ public:
 };
 
 // Monotonic decreasing stack solution
+// More about monotonic stack: https://medium.com/@hanxuyang0826/mastering-monotonic-stacks-optimizing-algorithmic-efficiency-in-array-and-sequence-problems-28d2a16eeccc
 class SecondSolution {
 public:
   int trap(std::vector<int> &height) {
