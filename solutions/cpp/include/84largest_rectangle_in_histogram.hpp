@@ -10,7 +10,7 @@ public:
     int max_area{0};
 
     // Note that this loop until size of heights
-    // No the convention loop less than
+    // Not the convention loop
     for (int i = 0; i <= heights.size(); ++i)
     {
       auto curr_height = (i == heights.size()) ? 0 : heights[i];
