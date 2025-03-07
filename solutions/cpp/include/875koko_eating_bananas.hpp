@@ -14,7 +14,7 @@ public:
       auto mid = (lo + hi) / 2;
       int needed_hour{0};
       for (const auto& p : piles) {
-        if (needed_hour > h) break; // this may help to speed things up
+        if (needed_hour > h) break; // this may help to speed things up (Early Exit)
         needed_hour += (p + mid - 1) / mid;
       }
 
