@@ -99,14 +99,15 @@ public:
     };
 
     std::vector<int> topKFrequent(std::vector<int>& nums, int k) {
-            std::vector<std::vector<int>> bucket;
+      std::vector<std::vector<int>> bucket(nums.size() + 1); // has to be more that the size by one
+                                                             // Note that freq 0 will never be used
       std::unordered_map<int, int> records;
+
       for (const auto &num : nums) {
         ++records[num];
       }
 
-      for (const auto &[num, freq] : records)
-      {
+      for (const auto &[num, freq] : records) {
         bucket[freq].push_back(num);
       }
 
