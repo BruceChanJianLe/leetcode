@@ -30,6 +30,11 @@ add_executable(22generate_parentheses_test ./22generate_parentheses_test.cpp)
 target_link_libraries(22generate_parentheses_test gtest_main)
 target_include_directories(22generate_parentheses_test PRIVATE ../include)
 
+# 33 search 
+add_executable(33search_in_rotated_sorted_array_test ./33search_in_rotated_sorted_array_test.cpp)
+target_link_libraries(33search_in_rotated_sorted_array_test gtest_main)
+target_include_directories(33search_in_rotated_sorted_array_test PRIVATE ../include)
+
 # 36 valid sudoku test
 add_executable(36valid_sudoku_test ./36valid_sudoku_test.cpp)
 target_link_libraries(36valid_sudoku_test gtest_main)
@@ -45,12 +50,12 @@ add_executable(49group_anagrams_test ./49group_anagrams_test.cpp)
 target_link_libraries(49group_anagrams_test gtest_main)
 target_include_directories(49group_anagrams_test PRIVATE ../include)
 
+# ==================================================================
+
 # 74 search a 2d matrix test
 add_executable(74search_a_2d_matrix_test ./74search_a_2d_matrix_test.cpp)
 target_link_libraries(74search_a_2d_matrix_test gtest_main)
 target_include_directories(74search_a_2d_matrix_test PRIVATE ../include)
-
-# ==================================================================
 
 # 84 largest rectangle in histogram test
 add_executable(84largest_rectangle_in_histogram_test ./84largest_rectangle_in_histogram_test.cpp)
@@ -156,11 +161,12 @@ add_test(NAME 15three_sum_test COMMAND 15three_sum_test)
 add_test(NAME 20valid_parentheses_test COMMAND 20valid_parentheses_test)
 
 add_test(NAME 22generate_parentheses_test COMMAND 22generate_parentheses_test)
+add_test(NAME 33search_in_rotated_sorted_array_test COMMAND 33search_in_rotated_sorted_array_test)
 add_test(NAME 36valid_sudoku_test COMMAND 36valid_sudoku_test)
 add_test(NAME 42trapping_rain_water_test COMMAND 42trapping_rain_water_test)
 add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
-add_test(NAME 74search_a_2d_matrix_test COMMAND 74search_a_2d_matrix_test)
 
+add_test(NAME 74search_a_2d_matrix_test COMMAND 74search_a_2d_matrix_test)
 add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_in_histogram_test)
 
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
