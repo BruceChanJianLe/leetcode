@@ -133,6 +133,13 @@ add_executable(853car_fleet_test ./853car_fleet_test.cpp)
 target_link_libraries(853car_fleet_test gtest_main)
 target_include_directories(853car_fleet_test PRIVATE ../include)
 
+# ==================================================================
+
+# 875 koko eating bananas test
+add_executable(875koko_eating_bananas_test ./875koko_eating_bananas_test.cpp)
+target_link_libraries(875koko_eating_bananas_test gtest_main)
+target_include_directories(875koko_eating_bananas_test PRIVATE ../include)
+
 # Add tests
 include(GoogleTest)
 add_test(NAME 1two_sum_test COMMAND 1two_sum_test)
@@ -165,3 +172,5 @@ add_test(NAME 496next_greater_element_i_test COMMAND 496next_greater_element_i_t
 add_test(NAME 739daily_temperatures_test COMMAND 739daily_temperatures_test)
 add_test(NAME 704binary_search_test COMMAND 704binary_search_test)
 add_test(NAME 853car_fleet_test COMMAND 853car_fleet_test)
+
+add_test(NAME 875koko_eating_bananas_test COMMAND 875koko_eating_bananas_test)
