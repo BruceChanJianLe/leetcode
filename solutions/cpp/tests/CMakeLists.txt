@@ -152,6 +152,13 @@ add_executable(875koko_eating_bananas_test ./875koko_eating_bananas_test.cpp)
 target_link_libraries(875koko_eating_bananas_test gtest_main)
 target_include_directories(875koko_eating_bananas_test PRIVATE ../include)
 
+# 981 time based key value store test
+add_executable(981time_based_key_value_store_test ./981time_based_key_value_store_test.cpp)
+target_link_libraries(981time_based_key_value_store_test gtest_main)
+target_include_directories(981time_based_key_value_store_test PRIVATE ../include)
+
+# ==================================================================
+
 # Add tests
 include(GoogleTest)
 add_test(NAME 1two_sum_test COMMAND 1two_sum_test)
@@ -189,3 +196,4 @@ add_test(NAME 704binary_search_test COMMAND 704binary_search_test)
 add_test(NAME 853car_fleet_test COMMAND 853car_fleet_test)
 
 add_test(NAME 875koko_eating_bananas_test COMMAND 875koko_eating_bananas_test)
+add_test(NAME 981time_based_key_value_store_test COMMAND 981time_based_key_value_store_test)
