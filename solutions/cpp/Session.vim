@@ -13,15 +13,16 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 include/42trapping_rain_water.hpp
-badd +36 tests/42trapping_rain_water_test.cpp
-badd +1 tests/84largest_rectangle_in_histogram_test.cpp
-badd +11 include/84largest_rectangle_in_histogram.hpp
-badd +129 tests/CMakeLists.txt
+badd +52 tests/347top_k_frequent_elements_test.cpp
+badd +7 include/347top_k_frequent_elements.hpp
+badd +29 include/496next_greater_element_i.hpp
+badd +30 tests/496next_greater_element_i_test.cpp
+badd +35 include/981time_based_key_value_store.hpp
+badd +41 tests/981time_based_key_value_store_test.cpp
 argglobal
 %argdel
 $argadd ~/reference/leetcode.git/master/solutions/cpp/
-edit tests/84largest_rectangle_in_histogram_test.cpp
+edit tests/981time_based_key_value_store_test.cpp
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -38,11 +39,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 83 + 84) / 168)
-exe 'vert 2resize ' . ((&columns * 84 + 84) / 168)
+exe 'vert 1resize ' . ((&columns * 142 + 142) / 284)
+exe 'vert 2resize ' . ((&columns * 141 + 142) / 284)
 tcd ~/reference/leetcode.git/master
 argglobal
-balt ~/reference/leetcode.git/master/solutions/cpp/tests/42trapping_rain_water_test.cpp
+balt ~/reference/leetcode.git/master/solutions/cpp/include/981time_based_key_value_store.hpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -53,19 +54,20 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 4 - ((2 * winheight(0) + 20) / 41)
+let s:l = 41 - ((40 * winheight(0) + 38) / 77)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 4
+keepjumps 41
 normal! 0
 lcd ~/reference/leetcode.git/master/solutions/cpp
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt | else | edit ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt | endif
+if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/include/981time_based_key_value_store.hpp", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/include/981time_based_key_value_store.hpp | else | edit ~/reference/leetcode.git/master/solutions/cpp/include/981time_based_key_value_store.hpp | endif
 if &buftype ==# 'terminal'
-  silent file ~/reference/leetcode.git/master/solutions/cpp/tests/CMakeLists.txt
+  silent file ~/reference/leetcode.git/master/solutions/cpp/include/981time_based_key_value_store.hpp
 endif
+balt ~/reference/leetcode.git/master/solutions/cpp/tests/981time_based_key_value_store_test.cpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -76,17 +78,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 129 - ((17 * winheight(0) + 20) / 41)
+let s:l = 35 - ((34 * winheight(0) + 38) / 77)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 129
-normal! 0
+keepjumps 35
+normal! 02|
 lcd ~/reference/leetcode.git/master/solutions/cpp
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 83 + 84) / 168)
-exe 'vert 2resize ' . ((&columns * 84 + 84) / 168)
+exe 'vert 1resize ' . ((&columns * 142 + 142) / 284)
+exe 'vert 2resize ' . ((&columns * 141 + 142) / 284)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -101,7 +102,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost
