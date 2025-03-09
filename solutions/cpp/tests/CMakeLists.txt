@@ -71,6 +71,13 @@ target_include_directories(84largest_rectangle_in_histogram_test PRIVATE ../incl
 
 # ==================================================================
 
+# 121 best time to buy and sell stock test
+add_executable(121best_time_to_buy_and_sell_stock_test ./121best_time_to_buy_and_sell_stock_test.cpp)
+target_link_libraries(121best_time_to_buy_and_sell_stock_test gtest_main)
+target_include_directories(121best_time_to_buy_and_sell_stock_test PRIVATE ../include)
+
+# ==================================================================
+
 # 125 valid palindrome test
 add_executable(125valid_palindrome_test ./125valid_palindrome_test.cpp)
 target_link_libraries(125valid_palindrome_test gtest_main)
@@ -184,6 +191,8 @@ add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
 add_test(NAME 74search_a_2d_matrix_test COMMAND 74search_a_2d_matrix_test)
 add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_in_histogram_test)
+
+add_test(NAME 121best_time_to_buy_and_sell_stock_test COMMAND 121best_time_to_buy_and_sell_stock_test)
 
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
 add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
