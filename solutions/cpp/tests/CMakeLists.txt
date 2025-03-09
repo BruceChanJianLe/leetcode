@@ -8,6 +8,11 @@ add_executable(2add_two_numbers_test ./2add_two_numbers_test.cpp)
 target_link_libraries(2add_two_numbers_test gtest_main)
 target_include_directories(2add_two_numbers_test PRIVATE ../include)
 
+# 4 median of two sorted arrays test
+add_executable(4median_of_two_sorted_arrays_test ./4median_of_two_sorted_arrays_test.cpp)
+target_link_libraries(4median_of_two_sorted_arrays_test gtest_main)
+target_include_directories(4median_of_two_sorted_arrays_test PRIVATE ../include)
+
 # 11 container with most water test
 add_executable(11container_with_most_water_test ./11container_with_most_water_test.cpp)
 target_link_libraries(11container_with_most_water_test gtest_main)
@@ -17,6 +22,8 @@ target_include_directories(11container_with_most_water_test PRIVATE ../include)
 add_executable(15three_sum_test ./15three_sum_test.cpp)
 target_link_libraries(15three_sum_test gtest_main)
 target_include_directories(15three_sum_test PRIVATE ../include)
+
+# ==================================================================
 
 # 20 valid parentheses test
 add_executable(20valid_parentheses_test ./20valid_parentheses_test.cpp)
@@ -163,8 +170,10 @@ target_include_directories(981time_based_key_value_store_test PRIVATE ../include
 include(GoogleTest)
 add_test(NAME 1two_sum_test COMMAND 1two_sum_test)
 add_test(NAME 2add_two_numbers_test COMMAND 2add_two_numbers_test)
+add_test(NAME 4median_of_two_sorted_arrays_test COMMAND 4median_of_two_sorted_arrays_test)
 add_test(NAME 11container_with_most_water_test COMMAND 11container_with_most_water_test)
 add_test(NAME 15three_sum_test COMMAND 15three_sum_test)
+
 add_test(NAME 20valid_parentheses_test COMMAND 20valid_parentheses_test)
 
 add_test(NAME 22generate_parentheses_test COMMAND 22generate_parentheses_test)
