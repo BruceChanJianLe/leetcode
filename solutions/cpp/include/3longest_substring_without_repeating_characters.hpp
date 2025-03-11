@@ -32,7 +32,8 @@ public:
     auto max_seen{0l};
 
     while (right != s.end()) {
-      if (!records.insert(*right).second) {
+      // if (!records.insert(*right).second) {
+      if (!records.emplace(*right).second) {
         bool is_found = false;
         while (!is_found) {
           if (*left == *right) {
