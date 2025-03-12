@@ -13,16 +13,15 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +52 tests/347top_k_frequent_elements_test.cpp
-badd +7 include/347top_k_frequent_elements.hpp
-badd +29 include/496next_greater_element_i.hpp
-badd +30 tests/496next_greater_element_i_test.cpp
-badd +35 include/981time_based_key_value_store.hpp
-badd +41 tests/981time_based_key_value_store_test.cpp
+badd +160 tests/CMakeLists.txt
+badd +37 ~/reference/leetcode.git/master/questions/3.longest-substring-without-repeating-characters.txt
+badd +19 tests/3longest_substring_without_repeating_characters_test.cpp
+badd +35 include/3longest_substring_without_repeating_characters.hpp
+badd +1 ~/reference/leetcode.git/master/solutions/cpp
 argglobal
 %argdel
-$argadd ~/reference/leetcode.git/master/solutions/cpp/
-edit tests/981time_based_key_value_store_test.cpp
+$argadd ~/reference/leetcode.git/master/solutions/cpp
+edit tests/3longest_substring_without_repeating_characters_test.cpp
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -39,11 +38,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 142 + 142) / 284)
-exe 'vert 2resize ' . ((&columns * 141 + 142) / 284)
+exe 'vert 1resize ' . ((&columns * 93 + 102) / 205)
+exe 'vert 2resize ' . ((&columns * 111 + 102) / 205)
 tcd ~/reference/leetcode.git/master
 argglobal
-balt ~/reference/leetcode.git/master/solutions/cpp/include/981time_based_key_value_store.hpp
+balt ~/reference/leetcode.git/master/solutions/cpp/include/3longest_substring_without_repeating_characters.hpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -54,20 +53,20 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 41 - ((40 * winheight(0) + 38) / 77)
+let s:l = 19 - ((8 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 41
+keepjumps 19
 normal! 0
 lcd ~/reference/leetcode.git/master/solutions/cpp
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/include/981time_based_key_value_store.hpp", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/include/981time_based_key_value_store.hpp | else | edit ~/reference/leetcode.git/master/solutions/cpp/include/981time_based_key_value_store.hpp | endif
+if bufexists(fnamemodify("~/reference/leetcode.git/master/solutions/cpp/include/3longest_substring_without_repeating_characters.hpp", ":p")) | buffer ~/reference/leetcode.git/master/solutions/cpp/include/3longest_substring_without_repeating_characters.hpp | else | edit ~/reference/leetcode.git/master/solutions/cpp/include/3longest_substring_without_repeating_characters.hpp | endif
 if &buftype ==# 'terminal'
-  silent file ~/reference/leetcode.git/master/solutions/cpp/include/981time_based_key_value_store.hpp
+  silent file ~/reference/leetcode.git/master/solutions/cpp/include/3longest_substring_without_repeating_characters.hpp
 endif
-balt ~/reference/leetcode.git/master/solutions/cpp/tests/981time_based_key_value_store_test.cpp
+balt ~/reference/leetcode.git/master/solutions/cpp/tests/3longest_substring_without_repeating_characters_test.cpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -78,16 +77,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 35 - ((34 * winheight(0) + 38) / 77)
+let s:l = 35 - ((14 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 35
-normal! 02|
+normal! 028|
 lcd ~/reference/leetcode.git/master/solutions/cpp
 wincmd w
-exe 'vert 1resize ' . ((&columns * 142 + 142) / 284)
-exe 'vert 2resize ' . ((&columns * 141 + 142) / 284)
+exe 'vert 1resize ' . ((&columns * 93 + 102) / 205)
+exe 'vert 2resize ' . ((&columns * 111 + 102) / 205)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -102,6 +101,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost
