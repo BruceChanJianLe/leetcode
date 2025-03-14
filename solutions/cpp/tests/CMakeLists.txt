@@ -144,6 +144,11 @@ add_executable(347top_k_frequent_elements_test ./347top_k_frequent_elements_test
 target_link_libraries(347top_k_frequent_elements_test gtest_main)
 target_include_directories(347top_k_frequent_elements_test PRIVATE ../include)
 
+#  424 longest repeating character replacement test
+add_executable(424longest_repeating_character_replacement_test ./424longest_repeating_character_replacement_test.cpp)
+target_link_libraries(424longest_repeating_character_replacement_test gtest_main)
+target_include_directories(424longest_repeating_character_replacement_test PRIVATE ../include)
+
 # 496 next greater element i test
 add_executable(496next_greater_element_i_test ./496next_greater_element_i_test.cpp)
 target_link_libraries(496next_greater_element_i_test gtest_main)
@@ -159,12 +164,12 @@ add_executable(739daily_temperatures_test ./739daily_temperatures_test.cpp)
 target_link_libraries(739daily_temperatures_test gtest_main)
 target_include_directories(739daily_temperatures_test PRIVATE ../include)
 
+# ==================================================================
+
 # 835 car fleet test
 add_executable(853car_fleet_test ./853car_fleet_test.cpp)
 target_link_libraries(853car_fleet_test gtest_main)
 target_include_directories(853car_fleet_test PRIVATE ../include)
-
-# ==================================================================
 
 # 875 koko eating bananas test
 add_executable(875koko_eating_bananas_test ./875koko_eating_bananas_test.cpp)
@@ -214,10 +219,11 @@ add_test(NAME 242valid_anagram_test COMMAND 242valid_anagram_test)
 add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_strings_test)
 
 add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements_test)
+add_test(NAME 424longest_repeating_character_replacement_test COMMAND 424longest_repeating_character_replacement_test)
 add_test(NAME 496next_greater_element_i_test COMMAND 496next_greater_element_i_test)
 add_test(NAME 739daily_temperatures_test COMMAND 739daily_temperatures_test)
 add_test(NAME 704binary_search_test COMMAND 704binary_search_test)
-add_test(NAME 853car_fleet_test COMMAND 853car_fleet_test)
 
+add_test(NAME 853car_fleet_test COMMAND 853car_fleet_test)
 add_test(NAME 875koko_eating_bananas_test COMMAND 875koko_eating_bananas_test)
 add_test(NAME 981time_based_key_value_store_test COMMAND 981time_based_key_value_store_test)
