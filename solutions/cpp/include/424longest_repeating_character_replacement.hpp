@@ -17,9 +17,9 @@ public:
       // the size of the window is 1 right?
       int window_size = right - left + 1; // therefore the + 1
       if (window_size - max_count > k) {
-        longest_str = std::max(longest_str, window_size);
-      } else {
         --records[s[left++] - 'A'];
+      } else {
+        longest_str = std::max(longest_str, window_size);
       }
     }
     return longest_str;
