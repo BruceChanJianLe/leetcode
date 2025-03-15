@@ -154,6 +154,13 @@ add_executable(496next_greater_element_i_test ./496next_greater_element_i_test.c
 target_link_libraries(496next_greater_element_i_test gtest_main)
 target_include_directories(496next_greater_element_i_test PRIVATE ../include)
 
+# 567 permutation in string test 
+add_executable(567permutation_in_string_test ./567permutation_in_string_test.cpp)
+target_link_libraries(567permutation_in_string_test gtest_main)
+target_include_directories(567permutation_in_string_test PRIVATE ../include)
+
+# ==================================================================
+
 # 704 binary search test
 add_executable(704binary_search_test ./704binary_search_test.cpp)
 target_link_libraries(704binary_search_test gtest_main)
@@ -221,6 +228,8 @@ add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_str
 add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements_test)
 add_test(NAME 424longest_repeating_character_replacement_test COMMAND 424longest_repeating_character_replacement_test)
 add_test(NAME 496next_greater_element_i_test COMMAND 496next_greater_element_i_test)
+add_test(NAME 567permutation_in_string_test COMMAND 567permutation_in_string_test)
+
 add_test(NAME 739daily_temperatures_test COMMAND 739daily_temperatures_test)
 add_test(NAME 704binary_search_test COMMAND 704binary_search_test)
 
