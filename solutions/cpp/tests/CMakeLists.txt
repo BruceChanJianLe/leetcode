@@ -69,6 +69,11 @@ add_executable(74search_a_2d_matrix_test ./74search_a_2d_matrix_test.cpp)
 target_link_libraries(74search_a_2d_matrix_test gtest_main)
 target_include_directories(74search_a_2d_matrix_test PRIVATE ../include)
 
+# 76 minimum window substring test
+add_executable(76minimum_window_substring_test ./76minimum_window_substring_test.cpp)
+target_link_libraries(76minimum_window_substring_test gtest_main)
+target_include_directories(76minimum_window_substring_test PRIVATE ../include)
+
 # 84 largest rectangle in histogram test
 add_executable(84largest_rectangle_in_histogram_test ./84largest_rectangle_in_histogram_test.cpp)
 target_link_libraries(84largest_rectangle_in_histogram_test gtest_main)
@@ -208,6 +213,7 @@ add_test(NAME 42trapping_rain_water_test COMMAND 42trapping_rain_water_test)
 add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
 add_test(NAME 74search_a_2d_matrix_test COMMAND 74search_a_2d_matrix_test)
+add_test(NAME 76minimum_window_substring_test COMMAND 76minimum_window_substring_test)
 add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_in_histogram_test)
 
 add_test(NAME 121best_time_to_buy_and_sell_stock_test COMMAND 121best_time_to_buy_and_sell_stock_test)
