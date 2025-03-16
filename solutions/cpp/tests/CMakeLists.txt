@@ -120,6 +120,11 @@ add_executable(167two_sum_ii_test ./167two_sum_ii_test.cpp)
 target_link_libraries(167two_sum_ii_test gtest_main)
 target_include_directories(167two_sum_ii_test PRIVATE ../include)
 
+# 206 reverse linked list test
+add_executable(206reverse_linked_list_test ./206reverse_linked_list_test.cpp)
+target_link_libraries(206reverse_linked_list_test gtest_main)
+target_include_directories(206reverse_linked_list_test PRIVATE ../include)
+
 # ==================================================================
 
 # 217 contains duplicate test
@@ -230,6 +235,7 @@ add_test(NAME 155min_stack_test COMMAND 155min_stack_test)
 add_test(NAME 153find_minimum_in_rotated_sorted_array_test COMMAND 153find_minimum_in_rotated_sorted_array_test)
 
 add_test(NAME 167two_sum_ii_test COMMAND 167two_sum_ii_test)
+add_test(NAME 206reverse_linked_list_test COMMAND 206reverse_linked_list_test)
 
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
 add_test(NAME 238product_of_array_except_self_test COMMAND 238product_of_array_except_self_test)
