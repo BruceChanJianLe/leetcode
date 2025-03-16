@@ -132,6 +132,11 @@ add_executable(238product_of_array_except_self_test ./238product_of_array_except
 target_link_libraries(238product_of_array_except_self_test gtest_main)
 target_include_directories(238product_of_array_except_self_test PRIVATE ../include)
 
+# 239 sliding window maximum test
+add_executable(239sliding_window_maximum_test ./239sliding_window_maximum_test.cpp)
+target_link_libraries(239sliding_window_maximum_test gtest_main)
+target_include_directories(239sliding_window_maximum_test PRIVATE ../include)
+
 # 271 encode and decode strings
 add_executable(271encode_and_decode_strings_test ./271encode_and_decode_strings_test.cpp)
 target_link_libraries(271encode_and_decode_strings_test gtest_main)
@@ -228,6 +233,7 @@ add_test(NAME 167two_sum_ii_test COMMAND 167two_sum_ii_test)
 
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
 add_test(NAME 238product_of_array_except_self_test COMMAND 238product_of_array_except_self_test)
+add_test(NAME 239sliding_window_maximum_test COMMAND 239sliding_window_maximum_test)
 add_test(NAME 242valid_anagram_test COMMAND 242valid_anagram_test)
 add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_strings_test)
 
