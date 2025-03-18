@@ -35,6 +35,11 @@ add_executable(20valid_parentheses_test ./20valid_parentheses_test.cpp)
 target_link_libraries(20valid_parentheses_test gtest_main)
 target_include_directories(20valid_parentheses_test PRIVATE ../include)
 
+# 21 merge two sorted lists test
+add_executable(21merge_two_sorted_lists_test ./21merge_two_sorted_lists_test.cpp)
+target_link_libraries(21merge_two_sorted_lists_test gtest_main)
+target_include_directories(21merge_two_sorted_lists_test PRIVATE ../include)
+
 # ==================================================================
 
 # 22 generate parentheses test
@@ -215,6 +220,7 @@ add_test(NAME 11container_with_most_water_test COMMAND 11container_with_most_wat
 
 add_test(NAME 15three_sum_test COMMAND 15three_sum_test)
 add_test(NAME 20valid_parentheses_test COMMAND 20valid_parentheses_test)
+add_test(NAME 21merge_two_sorted_lists_test COMMAND 21merge_two_sorted_lists_test)
 
 add_test(NAME 22generate_parentheses_test COMMAND 22generate_parentheses_test)
 add_test(NAME 33search_in_rotated_sorted_array_test COMMAND 33search_in_rotated_sorted_array_test)
