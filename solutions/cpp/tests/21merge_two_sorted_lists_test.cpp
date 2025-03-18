@@ -25,15 +25,29 @@ struct States
 struct MergeTwoSortedListsTest : public testing::TestWithParam<States>
 {
   IterativeSolution is;
+  RecursiveSolution rs;
 };
 
-TEST_P(MergeTwoSortedListsTest, MergeTwoSortedListsCase)
+TEST_P(MergeTwoSortedListsTest, IterativeMergeTwoSortedListsCase)
 {
   auto as = GetParam();
   ListNode* list1 = createLinkedList(as.list1);
   ListNode* list2 = createLinkedList(as.list2);
 
   auto result = is.mergeTwoLists(list1, list2);
+  for (const auto& val : as.result) {
+    EXPECT_EQ(result->val, val);
+    result = result->next;
+  }
+}
+
+TEST_P(MergeTwoSortedListsTest, RecursiveMergeTwoSortedListsCase)
+{
+  auto as = GetParam();
+  ListNode* list1 = createLinkedList(as.list1);
+  ListNode* list2 = createLinkedList(as.list2);
+
+  auto result = rs.mergeTwoLists(list1, list2);
   for (const auto& val : as.result) {
     EXPECT_EQ(result->val, val);
     result = result->next;
