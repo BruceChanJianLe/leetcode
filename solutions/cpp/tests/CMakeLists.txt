@@ -91,8 +91,6 @@ add_executable(121best_time_to_buy_and_sell_stock_test ./121best_time_to_buy_and
 target_link_libraries(121best_time_to_buy_and_sell_stock_test gtest_main)
 target_include_directories(121best_time_to_buy_and_sell_stock_test PRIVATE ../include)
 
-# ==================================================================
-
 # 125 valid palindrome test
 add_executable(125valid_palindrome_test ./125valid_palindrome_test.cpp)
 target_link_libraries(125valid_palindrome_test gtest_main)
@@ -102,6 +100,13 @@ target_include_directories(125valid_palindrome_test PRIVATE ../include)
 add_executable(128longest_consecutive_sequence_test ./128longest_consecutive_sequence_test.cpp)
 target_link_libraries(128longest_consecutive_sequence_test gtest_main)
 target_include_directories(128longest_consecutive_sequence_test PRIVATE ../include)
+
+# 141 linked list cycle test
+add_executable(141linked_list_cycle_test ./141linked_list_cycle_test.cpp)
+target_link_libraries(141linked_list_cycle_test gtest_main)
+target_include_directories(141linked_list_cycle_test PRIVATE ../include)
+
+# ==================================================================
 
 # 150 evaluate reverse polish notation test
 add_executable(150evaluate_reverse_polish_notation_test ./150evaluate_reverse_polish_notation_test.cpp)
@@ -233,9 +238,10 @@ add_test(NAME 76minimum_window_substring_test COMMAND 76minimum_window_substring
 add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_in_histogram_test)
 
 add_test(NAME 121best_time_to_buy_and_sell_stock_test COMMAND 121best_time_to_buy_and_sell_stock_test)
-
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
 add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
+add_test(NAME 141linked_list_cycle_test COMMAND 141linked_list_cycle_test)
+
 add_test(NAME 150evaluate_reverse_polish_notation_test COMMAND 150evaluate_reverse_polish_notation_test)
 add_test(NAME 155min_stack_test COMMAND 155min_stack_test)
 add_test(NAME 153find_minimum_in_rotated_sorted_array_test COMMAND 153find_minimum_in_rotated_sorted_array_test)
