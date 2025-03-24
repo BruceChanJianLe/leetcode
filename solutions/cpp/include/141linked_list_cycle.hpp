@@ -7,21 +7,22 @@ struct ListNode {
 };
 
 // Floyd's tortise and hare (cycle detection)
-// 8ms
+// 6ms
 class Solution {
 public:
   bool hasCycle(ListNode *head) {
     // Sanity check
     if (!head || !head->next) return false;
 
-    ListNode* slow = head->next;
-    ListNode* fast = head->next->next;
+    ListNode* slow{head->next}, *fast{head->next->next};
+
     while (fast && fast->next) {
       if (slow == fast)  return true;
 
       slow = slow->next;
       fast = fast->next->next;
     }
+
     return false;
   }
 };
