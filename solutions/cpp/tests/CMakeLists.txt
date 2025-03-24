@@ -106,6 +106,11 @@ add_executable(141linked_list_cycle_test ./141linked_list_cycle_test.cpp)
 target_link_libraries(141linked_list_cycle_test gtest_main)
 target_include_directories(141linked_list_cycle_test PRIVATE ../include)
 
+# 143 reorder list test
+add_executable(143reorder_list_test ./143reorder_list_test.cpp)
+target_link_libraries(143reorder_list_test gtest_main)
+target_include_directories(143reorder_list_test PRIVATE ../include)
+
 # ==================================================================
 
 # 150 evaluate reverse polish notation test
@@ -246,6 +251,7 @@ add_test(NAME 121best_time_to_buy_and_sell_stock_test COMMAND 121best_time_to_bu
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
 add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
 add_test(NAME 141linked_list_cycle_test COMMAND 141linked_list_cycle_test)
+add_test(NAME 143reorder_list_test COMMAND 143reorder_list_test)
 
 add_test(NAME 150evaluate_reverse_polish_notation_test COMMAND 150evaluate_reverse_polish_notation_test)
 add_test(NAME 155min_stack_test COMMAND 155min_stack_test)
