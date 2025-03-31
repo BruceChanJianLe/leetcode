@@ -30,6 +30,11 @@ add_executable(15three_sum_test ./15three_sum_test.cpp)
 target_link_libraries(15three_sum_test gtest_main)
 target_include_directories(15three_sum_test PRIVATE ../include)
 
+# 19 remove nth node from end of list test
+add_executable(19remove_nth_node_from_end_of_list_test ./19remove_nth_node_from_end_of_list_test.cpp)
+target_link_libraries(19remove_nth_node_from_end_of_list_test gtest_main)
+target_include_directories(19remove_nth_node_from_end_of_list_test PRIVATE ../include)
+
 # 20 valid parentheses test
 add_executable(20valid_parentheses_test ./20valid_parentheses_test.cpp)
 target_link_libraries(20valid_parentheses_test gtest_main)
@@ -234,6 +239,7 @@ add_test(NAME 4median_of_two_sorted_arrays_test COMMAND 4median_of_two_sorted_ar
 add_test(NAME 11container_with_most_water_test COMMAND 11container_with_most_water_test)
 
 add_test(NAME 15three_sum_test COMMAND 15three_sum_test)
+add_test(NAME 19remove_nth_node_from_end_of_list_test COMMAND 19remove_nth_node_from_end_of_list_test)
 add_test(NAME 20valid_parentheses_test COMMAND 20valid_parentheses_test)
 add_test(NAME 21merge_two_sorted_lists_test COMMAND 21merge_two_sorted_lists_test)
 
