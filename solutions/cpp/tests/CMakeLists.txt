@@ -106,6 +106,13 @@ add_executable(128longest_consecutive_sequence_test ./128longest_consecutive_seq
 target_link_libraries(128longest_consecutive_sequence_test gtest_main)
 target_include_directories(128longest_consecutive_sequence_test PRIVATE ../include)
 
+# ==================================================================
+
+# 138 copy list with random pointer test
+add_executable(138copy_list_with_random_pointer_test ./138copy_list_with_random_pointer_test.cpp)
+target_link_libraries(138copy_list_with_random_pointer_test gtest_main)
+target_include_directories(138copy_list_with_random_pointer_test PRIVATE ../include)
+
 # 141 linked list cycle test
 add_executable(141linked_list_cycle_test ./141linked_list_cycle_test.cpp)
 target_link_libraries(141linked_list_cycle_test gtest_main)
@@ -256,6 +263,8 @@ add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_
 add_test(NAME 121best_time_to_buy_and_sell_stock_test COMMAND 121best_time_to_buy_and_sell_stock_test)
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
 add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
+
+add_test(NAME 138copy_list_with_random_pointer_test COMMAND 138copy_list_with_random_pointer_test)
 add_test(NAME 141linked_list_cycle_test COMMAND 141linked_list_cycle_test)
 add_test(NAME 143reorder_list_test COMMAND 143reorder_list_test)
 
