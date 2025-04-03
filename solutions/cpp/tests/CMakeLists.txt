@@ -169,15 +169,22 @@ add_executable(239sliding_window_maximum_test ./239sliding_window_maximum_test.c
 target_link_libraries(239sliding_window_maximum_test gtest_main)
 target_include_directories(239sliding_window_maximum_test PRIVATE ../include)
 
-# 271 encode and decode strings
-add_executable(271encode_and_decode_strings_test ./271encode_and_decode_strings_test.cpp)
-target_link_libraries(271encode_and_decode_strings_test gtest_main)
-target_include_directories(271encode_and_decode_strings_test PRIVATE ../include)
+# ==================================================================
 
 # 242 valid anagram test
 add_executable(242valid_anagram_test ./242valid_anagram_test.cpp)
 target_link_libraries(242valid_anagram_test gtest_main)
 target_include_directories(242valid_anagram_test PRIVATE ../include)
+
+# 271 encode and decode strings
+add_executable(271encode_and_decode_strings_test ./271encode_and_decode_strings_test.cpp)
+target_link_libraries(271encode_and_decode_strings_test gtest_main)
+target_include_directories(271encode_and_decode_strings_test PRIVATE ../include)
+
+# 287 find the duplicate number test
+add_executable(287find_the_duplicate_number_test ./287find_the_duplicate_number_test.cpp)
+target_link_libraries(287find_the_duplicate_number_test gtest_main)
+target_include_directories(287find_the_duplicate_number_test PRIVATE ../include)
 
 # ==================================================================
 
@@ -278,8 +285,10 @@ add_test(NAME 206reverse_linked_list_test COMMAND 206reverse_linked_list_test)
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
 add_test(NAME 238product_of_array_except_self_test COMMAND 238product_of_array_except_self_test)
 add_test(NAME 239sliding_window_maximum_test COMMAND 239sliding_window_maximum_test)
+
 add_test(NAME 242valid_anagram_test COMMAND 242valid_anagram_test)
 add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_strings_test)
+add_test(NAME 287find_the_duplicate_number_test COMMAND 287find_the_duplicate_number_test)
 
 add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements_test)
 add_test(NAME 424longest_repeating_character_replacement_test COMMAND 424longest_repeating_character_replacement_test)
