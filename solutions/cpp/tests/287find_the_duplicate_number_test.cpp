@@ -10,9 +10,17 @@ struct States
 
 struct FindTheDuplicateNumberTest : public ::testing::TestWithParam<States>
 {
+  Solution s;
   StandardSolution ss;
   PMRSolution ps;
 };
+
+TEST_P(FindTheDuplicateNumberTest, FindTheDuplicateNumberCase)
+{
+  auto as = GetParam();
+  auto result = s.findDuplicate(as.nums);
+  EXPECT_EQ(result, as.result);
+}
 
 TEST_P(FindTheDuplicateNumberTest, StandardFindTheDuplicateNumberCase)
 {
