@@ -12,3 +12,10 @@ Status | Category | Question
 --- | --- | ---
 ✅ | Arrays & Hashing | 217 Contains Duplicate
 ✅ | Arrays & Hashing | 242 Valid Anagram
+✅ | Arrays & Hashing | 1 Two Sum
+✅ | Arrays & Hashing | 49 Group Anagrams
+✅ | Arrays & Hashing | 347 top k frequent elements
+✅ | Arrays & Hashing | 271 encode and decode strings
+✅ | Arrays & Hashing | 238 product of array except self
+✅ | Arrays & Hashing | 36 valid sudoku
+✅ | Arrays & Hashing | 128 longest consecutive sequence
