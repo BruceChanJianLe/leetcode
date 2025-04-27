@@ -123,6 +123,11 @@ add_executable(143reorder_list_test ./143reorder_list_test.cpp)
 target_link_libraries(143reorder_list_test gtest_main)
 target_include_directories(143reorder_list_test PRIVATE ../include)
 
+# 146 lru cache test
+add_executable(146lru_cache_test ./146lru_cache_test.cpp)
+target_link_libraries(146lru_cache_test gtest_main)
+target_include_directories(146lru_cache_test PRIVATE ../include)
+
 # ==================================================================
 
 # 150 evaluate reverse polish notation test
@@ -274,6 +279,7 @@ add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutiv
 add_test(NAME 138copy_list_with_random_pointer_test COMMAND 138copy_list_with_random_pointer_test)
 add_test(NAME 141linked_list_cycle_test COMMAND 141linked_list_cycle_test)
 add_test(NAME 143reorder_list_test COMMAND 143reorder_list_test)
+add_test(NAME 146lru_cache_test COMMAND 146lru_cache_test)
 
 add_test(NAME 150evaluate_reverse_polish_notation_test COMMAND 150evaluate_reverse_polish_notation_test)
 add_test(NAME 155min_stack_test COMMAND 155min_stack_test)
