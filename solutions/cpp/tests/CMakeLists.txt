@@ -96,6 +96,11 @@ add_executable(84largest_rectangle_in_histogram_test ./84largest_rectangle_in_hi
 target_link_libraries(84largest_rectangle_in_histogram_test gtest_main)
 target_include_directories(84largest_rectangle_in_histogram_test PRIVATE ../include)
 
+# 92 reverse linked list ii test
+add_executable(92reverse_linked_list_ii_test ./92reverse_linked_list_ii_test.cpp)
+target_link_libraries(92reverse_linked_list_ii_test gtest_main)
+target_include_directories(92reverse_linked_list_ii_test PRIVATE ../include)
+
 # ==================================================================
 
 # 121 best time to buy and sell stock test
@@ -280,6 +285,7 @@ add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 add_test(NAME 74search_a_2d_matrix_test COMMAND 74search_a_2d_matrix_test)
 add_test(NAME 76minimum_window_substring_test COMMAND 76minimum_window_substring_test)
 add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_in_histogram_test)
+add_test(NAME 92reverse_linked_list_ii_test COMMAND 92reverse_linked_list_ii_test)
 
 add_test(NAME 121best_time_to_buy_and_sell_stock_test COMMAND 121best_time_to_buy_and_sell_stock_test)
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
