@@ -57,6 +57,11 @@ add_executable(23merge_k_sorted_lists_test ./23merge_k_sorted_lists_test.cpp)
 target_link_libraries(23merge_k_sorted_lists_test gtest_main)
 target_include_directories(23merge_k_sorted_lists_test PRIVATE ../include)
 
+# 25 reverse nodes in k group test
+add_executable(25reverse_nodes_in_k_group_test ./25reverse_nodes_in_k_group_test.cpp)
+target_link_libraries(25reverse_nodes_in_k_group_test gtest_main)
+target_include_directories(25reverse_nodes_in_k_group_test PRIVATE ../include)
+
 # ==================================================================
 
 # 33 search 
@@ -276,6 +281,7 @@ add_test(NAME 21merge_two_sorted_lists_test COMMAND 21merge_two_sorted_lists_tes
 
 add_test(NAME 22generate_parentheses_test COMMAND 22generate_parentheses_test)
 add_test(NAME 23merge_k_sorted_lists_test COMMAND 23merge_k_sorted_lists_test)
+add_test(NAME 25reverse_nodes_in_k_group_test COMMAND 25reverse_nodes_in_k_group_test)
 
 add_test(NAME 33search_in_rotated_sorted_array_test COMMAND 33search_in_rotated_sorted_array_test)
 add_test(NAME 36valid_sudoku_test COMMAND 36valid_sudoku_test)
