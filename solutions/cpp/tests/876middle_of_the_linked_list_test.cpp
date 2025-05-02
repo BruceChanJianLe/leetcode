@@ -5,14 +5,14 @@
 
 // Helper function to convert a vector to a linked list
 ListNode* createLinkedList(const std::vector<int>& values) {
-    if (values.empty()) return nullptr;
-    ListNode* head = new ListNode(values[0]);
-    ListNode* current = head;
-    for (size_t i = 1; i < values.size(); ++i) {
-        current->next = new ListNode(values[i]);
-        current = current->next;
-    }
-    return head;
+  if (values.empty()) return nullptr;
+  ListNode head{0};
+  ListNode* tail = &head;
+  for (int value : values) {
+    tail->next = new ListNode(value);
+    tail = tail->next;
+  }
+  return head.next;
 }
 
 struct States
