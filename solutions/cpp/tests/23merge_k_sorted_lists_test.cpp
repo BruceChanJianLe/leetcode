@@ -24,8 +24,10 @@ struct States
 struct MergeKSortedListsTest : public testing::TestWithParam<States>
 {
   FirstSolution fs;
+  MinHeapSolution ms;
 };
 
+// O(n * k)
 TEST_P(MergeKSortedListsTest, FirstSolutionMergeKSortedListsTest)
 {
   auto as = GetParam();
@@ -36,6 +38,28 @@ TEST_P(MergeKSortedListsTest, FirstSolutionMergeKSortedListsTest)
   }
 
   auto result = fs.mergeKLists(lists);
+
+  if (!result) {
+    EXPECT_EQ(result, nullptr);
+  } else {
+    for (const auto& val : as.result) {
+      EXPECT_EQ(result->val, val);
+      result = result->next;
+    }
+  }
+}
+
+// O(n log k)
+TEST_P(MergeKSortedListsTest, MinHeapSolutionMergeKSortedListsTest)
+{
+  auto as = GetParam();
+  std::vector<ListNode*> lists;
+
+  for (const auto& value : as.values) {
+    lists.emplace_back(createLinkedList(value));
+  }
+
+  auto result = ms.mergeKLists(lists);
 
   if (!result) {
     EXPECT_EQ(result, nullptr);
