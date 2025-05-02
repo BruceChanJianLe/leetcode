@@ -113,6 +113,13 @@ add_executable(104maximum_depth_of_binary_tree_test ./104maximum_depth_of_binary
 target_link_libraries(104maximum_depth_of_binary_tree_test gtest_main)
 target_include_directories(104maximum_depth_of_binary_tree_test PRIVATE ../include)
 
+# 110 balanced binary tree test
+add_executable(110balanced_binary_tree_test ./110balanced_binary_tree_test.cpp)
+target_link_libraries(110balanced_binary_tree_test gtest_main)
+target_include_directories(110balanced_binary_tree_test PRIVATE ../include)
+
+# ==================================================================
+
 # 121 best time to buy and sell stock test
 add_executable(121best_time_to_buy_and_sell_stock_test ./121best_time_to_buy_and_sell_stock_test.cpp)
 target_link_libraries(121best_time_to_buy_and_sell_stock_test gtest_main)
@@ -313,6 +320,8 @@ add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_
 add_test(NAME 92reverse_linked_list_ii_test COMMAND 92reverse_linked_list_ii_test)
 
 add_test(NAME 104maximum_depth_of_binary_tree_test COMMAND 104maximum_depth_of_binary_tree_test)
+add_test(NAME 110balanced_binary_tree_test COMMAND 110balanced_binary_tree_test)
+
 add_test(NAME 121best_time_to_buy_and_sell_stock_test COMMAND 121best_time_to_buy_and_sell_stock_test)
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
 add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
