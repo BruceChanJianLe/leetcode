@@ -181,6 +181,13 @@ add_executable(217contains_duplicate_test ./217contains_duplicate_test.cpp)
 target_link_libraries(217contains_duplicate_test gtest_main)
 target_include_directories(217contains_duplicate_test PRIVATE ../include)
 
+# 226 invert binary tree
+add_executable(226invert_binary_tree_test ./226invert_binary_tree_test.cpp)
+target_link_libraries(226invert_binary_tree_test gtest_main)
+target_include_directories(226invert_binary_tree_test PRIVATE ../include)
+
+# ==================================================================
+
 # 238 product of array except self test
 add_executable(238product_of_array_except_self_test ./238product_of_array_except_self_test.cpp)
 target_link_libraries(238product_of_array_except_self_test gtest_main)
@@ -310,6 +317,8 @@ add_test(NAME 167two_sum_ii_test COMMAND 167two_sum_ii_test)
 add_test(NAME 206reverse_linked_list_test COMMAND 206reverse_linked_list_test)
 
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
+add_test(NAME 226invert_binary_tree_test COMMAND 226invert_binary_tree_test)
+
 add_test(NAME 238product_of_array_except_self_test COMMAND 238product_of_array_except_self_test)
 add_test(NAME 239sliding_window_maximum_test COMMAND 239sliding_window_maximum_test)
 
