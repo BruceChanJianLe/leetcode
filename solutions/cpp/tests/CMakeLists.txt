@@ -261,6 +261,11 @@ add_executable(567permutation_in_string_test ./567permutation_in_string_test.cpp
 target_link_libraries(567permutation_in_string_test gtest_main)
 target_include_directories(567permutation_in_string_test PRIVATE ../include)
 
+# 572 subtree of another tree test
+add_executable(572subtree_of_another_tree_test ./572subtree_of_another_tree_test.cpp)
+target_link_libraries(572subtree_of_another_tree_test gtest_main)
+target_include_directories(572subtree_of_another_tree_test PRIVATE ../include)
+
 # ==================================================================
 
 # 704 binary search test
@@ -360,6 +365,7 @@ add_test(NAME 496next_greater_element_i_test COMMAND 496next_greater_element_i_t
 
 add_test(NAME 543diameter_of_binary_tree_test COMMAND 543diameter_of_binary_tree_test)
 add_test(NAME 567permutation_in_string_test COMMAND 567permutation_in_string_test)
+add_test(NAME 572subtree_of_another_tree_test COMMAND 572subtree_of_another_tree_test)
 
 add_test(NAME 739daily_temperatures_test COMMAND 739daily_temperatures_test)
 add_test(NAME 704binary_search_test COMMAND 704binary_search_test)
