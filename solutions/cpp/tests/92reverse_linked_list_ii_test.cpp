@@ -23,11 +23,12 @@ struct States
   std::vector<int> result;
 };
 
-struct ReverseLinkedListIITest : public ::testing::TestWithParam<States> {
+struct ReverseLinkedListIITest : public ::testing::TestWithParam<States>
+{
   Solution s;
 };
 
-TEST_P(ReverseLinkedListIITest, HandlesReversalCorrectly)
+TEST_P(ReverseLinkedListIITest, ReverseLinkedListIICase)
 {
   auto as = GetParam();
   ListNode* head = createLinkedList(as.input);

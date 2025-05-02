@@ -27,7 +27,8 @@ struct ReverseKGroupTest : public ::testing::TestWithParam<States>
   Solution s;
 };
 
-TEST_P(ReverseKGroupTest, HandlesKGroupReversalCorrectly) {
+TEST_P(ReverseKGroupTest, ReverseKGroupCase)
+{
   auto as = GetParam();
   ListNode* head = createLinkedList(as.input);
   ListNode* result = s.reverseKGroup(head, as.k);
