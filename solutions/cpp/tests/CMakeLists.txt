@@ -237,6 +237,13 @@ add_executable(496next_greater_element_i_test ./496next_greater_element_i_test.c
 target_link_libraries(496next_greater_element_i_test gtest_main)
 target_include_directories(496next_greater_element_i_test PRIVATE ../include)
 
+# ==================================================================
+
+# 543 diameter of binary tree test
+add_executable(543diameter_of_binary_tree_test ./543diameter_of_binary_tree_test.cpp)
+target_link_libraries(543diameter_of_binary_tree_test gtest_main)
+target_include_directories(543diameter_of_binary_tree_test PRIVATE ../include)
+
 # 567 permutation in string test 
 add_executable(567permutation_in_string_test ./567permutation_in_string_test.cpp)
 target_link_libraries(567permutation_in_string_test gtest_main)
@@ -335,6 +342,8 @@ add_test(NAME 287find_the_duplicate_number_test COMMAND 287find_the_duplicate_nu
 add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements_test)
 add_test(NAME 424longest_repeating_character_replacement_test COMMAND 424longest_repeating_character_replacement_test)
 add_test(NAME 496next_greater_element_i_test COMMAND 496next_greater_element_i_test)
+
+add_test(NAME 543diameter_of_binary_tree_test COMMAND 543diameter_of_binary_tree_test)
 add_test(NAME 567permutation_in_string_test COMMAND 567permutation_in_string_test)
 
 add_test(NAME 739daily_temperatures_test COMMAND 739daily_temperatures_test)
