@@ -60,13 +60,12 @@ TEST_P(InvertTreeTest, InvertTreeTestCase) {
   EXPECT_TRUE(TreeEqual(result, buildTree(as.result)));
 }
 
-// Test cases
 INSTANTIATE_TEST_SUITE_P(Default, InvertTreeTest,
-    testing::Values(
-      States{{4, 2, 7, 1, 3, 6, 9}, {4, 7, 2, 9, 6, 3, 1}},
-      States{{2, 1, 3}, {2, 3, 1}},
-      States{{}, {}},
-      States{{1}, {1}},
-      States{{1, 2, std::nullopt, 3}, {1, std::nullopt, 2, std::nullopt, 3}}  // skewed tree
-      )
-    );
+  testing::Values(
+    States{{4, 2, 7, 1, 3, 6, 9}, {4, 7, 2, 9, 6, 3, 1}},
+    States{{2, 1, 3}, {2, 3, 1}},
+    States{{}, {}},
+    States{{1}, {1}},
+    States{{1, 2, std::nullopt, 3}, {1, std::nullopt, 2, std::nullopt, 3}}  // skewed tree
+  )
+);
