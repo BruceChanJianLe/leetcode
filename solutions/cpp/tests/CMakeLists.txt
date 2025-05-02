@@ -108,6 +108,11 @@ target_include_directories(92reverse_linked_list_ii_test PRIVATE ../include)
 
 # ==================================================================
 
+# 104 maximum depth of binary tree test
+add_executable(104maximum_depth_of_binary_tree_test ./104maximum_depth_of_binary_tree_test.cpp)
+target_link_libraries(104maximum_depth_of_binary_tree_test gtest_main)
+target_include_directories(104maximum_depth_of_binary_tree_test PRIVATE ../include)
+
 # 121 best time to buy and sell stock test
 add_executable(121best_time_to_buy_and_sell_stock_test ./121best_time_to_buy_and_sell_stock_test.cpp)
 target_link_libraries(121best_time_to_buy_and_sell_stock_test gtest_main)
@@ -300,6 +305,7 @@ add_test(NAME 76minimum_window_substring_test COMMAND 76minimum_window_substring
 add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_in_histogram_test)
 add_test(NAME 92reverse_linked_list_ii_test COMMAND 92reverse_linked_list_ii_test)
 
+add_test(NAME 104maximum_depth_of_binary_tree_test COMMAND 104maximum_depth_of_binary_tree_test)
 add_test(NAME 121best_time_to_buy_and_sell_stock_test COMMAND 121best_time_to_buy_and_sell_stock_test)
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
 add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
@@ -320,7 +326,7 @@ add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
 add_test(NAME 226invert_binary_tree_test COMMAND 226invert_binary_tree_test)
 
 add_test(NAME 238product_of_array_except_self_test COMMAND 238product_of_array_except_self_test)
-add_test(NAME 239sliding_window_maximum_test COMMAND 239sliding_window_maximum_test)
+add_test(NAME 239sliding_window_maximum_test COMMAND 239sliding_window_maxi.mum_test)
 
 add_test(NAME 242valid_anagram_test COMMAND 242valid_anagram_test)
 add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_strings_test)
