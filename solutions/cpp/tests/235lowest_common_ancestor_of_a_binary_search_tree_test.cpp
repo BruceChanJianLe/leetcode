@@ -41,6 +41,7 @@ void freeTree(TreeNode* root) {
   freeTree(root->right);
   delete root;
 }
+
 struct States
 {
   std::vector<std::optional<int>> tree;
