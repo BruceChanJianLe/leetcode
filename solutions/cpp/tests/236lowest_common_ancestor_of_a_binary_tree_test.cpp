@@ -10,8 +10,8 @@ TreeNode* buildTreeWithMap(
     const std::vector<std::optional<int>>& vals,
     std::unordered_map<int, TreeNode*>& nodeMap)
 {
-  if (vals.empty() || !vals[0]) return nullptr;
-  TreeNode* root = new TreeNode(*vals[0]);
+  if (vals.empty() || !vals.front()) return nullptr;
+  TreeNode* root = new TreeNode(*vals.front());
   nodeMap[root->val] = root;
   std::queue<TreeNode*> q;
   q.push(root);
@@ -33,6 +33,7 @@ TreeNode* buildTreeWithMap(
   }
   return root;
 }
+
 // Cleanup utility
 void freeTree(TreeNode* root) {
   if (!root) return;
