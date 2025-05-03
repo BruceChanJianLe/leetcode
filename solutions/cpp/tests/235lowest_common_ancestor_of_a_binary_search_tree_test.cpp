@@ -55,18 +55,18 @@ struct LCABinarySearchTreeTest : public ::testing::TestWithParam<States>
 };
 
 TEST_P(LCABinarySearchTreeTest, FindsCorrectLCA) {
-    const auto& [treeData, p_val, q_val, expected] = GetParam();
-    std::unordered_map<int, TreeNode*> nodeMap;
-    TreeNode* root = buildTreeWithMap(treeData, nodeMap);
+  const auto& [treeData, p_val, q_val, expected] = GetParam();
+  std::unordered_map<int, TreeNode*> nodeMap;
+  TreeNode* root = buildTreeWithMap(treeData, nodeMap);
 
-    ASSERT_TRUE(nodeMap.count(p_val));
-    ASSERT_TRUE(nodeMap.count(q_val));
+  ASSERT_TRUE(nodeMap.count(p_val));
+  ASSERT_TRUE(nodeMap.count(q_val));
 
-    TreeNode* lca = fs.lowestCommonAncestor(root, nodeMap[p_val], nodeMap[q_val]);
-    ASSERT_NE(lca, nullptr);
-    EXPECT_EQ(lca->val, expected);
+  TreeNode* lca = fs.lowestCommonAncestor(root, nodeMap[p_val], nodeMap[q_val]);
+  ASSERT_NE(lca, nullptr);
+  EXPECT_EQ(lca->val, expected);
 
-    freeTree(root);
+  freeTree(root);
 }
 
 INSTANTIATE_TEST_SUITE_P(Default, LCABinarySearchTreeTest,
