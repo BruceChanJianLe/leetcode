@@ -31,6 +31,14 @@ TreeNode* buildTree(const std::vector<std::optional<int>>& data) {
   return root;
 }
 
+// Cleanup utility
+void freeTree(TreeNode* root) {
+  if (!root) return;
+  freeTree(root->left);
+  freeTree(root->right);
+  delete root;
+}
+
 struct States
 {
   std::vector<std::optional<int>> p_tree;
@@ -49,6 +57,8 @@ TEST_P(SameTreeTest, ComparesStructureAndValuesCorrectly) {
   TreeNode* q = buildTree(as.q_tree);
   auto result = s.isSameTree(p, q);
   EXPECT_EQ(result, result);
+  freeTree(p);
+  freeTree(q);
 }
 
 INSTANTIATE_TEST_SUITE_P(Default, SameTreeTest,
