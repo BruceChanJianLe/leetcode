@@ -113,6 +113,11 @@ add_executable(100same_tree_test ./100same_tree_test.cpp)
 target_link_libraries(100same_tree_test gtest_main)
 target_include_directories(100same_tree_test PRIVATE ../include)
 
+# 102 binary tree level order traversal test
+add_executable(102binary_tree_level_order_traversal_test ./102binary_tree_level_order_traversal_test.cpp)
+target_link_libraries(102binary_tree_level_order_traversal_test gtest_main)
+target_include_directories(102binary_tree_level_order_traversal_test PRIVATE ../include)
+
 # 104 maximum depth of binary tree test
 add_executable(104maximum_depth_of_binary_tree_test ./104maximum_depth_of_binary_tree_test.cpp)
 target_link_libraries(104maximum_depth_of_binary_tree_test gtest_main)
@@ -340,6 +345,7 @@ add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_
 add_test(NAME 92reverse_linked_list_ii_test COMMAND 92reverse_linked_list_ii_test)
 
 add_test(NAME 100same_tree_test COMMAND 100same_tree_test)
+add_test(NAME 102binary_tree_level_order_traversal_test COMMAND 102binary_tree_level_order_traversal_test)
 add_test(NAME 104maximum_depth_of_binary_tree_test COMMAND 104maximum_depth_of_binary_tree_test)
 add_test(NAME 110balanced_binary_tree_test COMMAND 110balanced_binary_tree_test)
 
