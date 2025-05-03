@@ -324,6 +324,13 @@ target_include_directories(981time_based_key_value_store_test PRIVATE ../include
 
 # ==================================================================
 
+# 1448 count good nodes in binary tree test
+add_executable(1448count_good_nodes_in_binary_tree_test ./1448count_good_nodes_in_binary_tree_test.cpp)
+target_link_libraries(1448count_good_nodes_in_binary_tree_test gtest_main)
+target_include_directories(1448count_good_nodes_in_binary_tree_test PRIVATE ../include)
+
+# ==================================================================
+
 # Add tests
 include(GoogleTest)
 add_test(NAME 1two_sum_test COMMAND 1two_sum_test)
@@ -401,3 +408,5 @@ add_test(NAME 853car_fleet_test COMMAND 853car_fleet_test)
 add_test(NAME 875koko_eating_bananas_test COMMAND 875koko_eating_bananas_test)
 add_test(NAME 876middle_of_the_linked_list_test COMMAND 876middle_of_the_linked_list_test)
 add_test(NAME 981time_based_key_value_store_test COMMAND 981time_based_key_value_store_test)
+
+add_test(NAME 1448count_good_nodes_in_binary_tree_test COMMAND 1448count_good_nodes_in_binary_tree_test)
