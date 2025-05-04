@@ -13,6 +13,8 @@ struct TreeNode {
 };
 
 // Recursive DFS (optimal)
+// Time complexity: O(H + k) where H is the height of the tree.
+// Space complexity: O(H) for the recursion stack.
 class OptimalRDSFSolution {
 public:
   int kthSmallest(TreeNode* root, int k) {
@@ -36,6 +38,8 @@ private:
 };
 
 // Recursive DFS
+// Time complexity: O(n) n - number of nodes
+// Space complexity: O(n) n - number of nodes
 class RDSFSolution {
 public:
   int kthSmallest(TreeNode* root, int k) {
@@ -55,6 +59,8 @@ private:
 };
 
 // Iterative DFS
+// Time complexity: O(H + k) where H is the height of the tree.
+// Space complexity: O(H) for the recursion stack.
 class IDSFSolution {
 public:
   int kthSmallest(TreeNode* root, int k) {
