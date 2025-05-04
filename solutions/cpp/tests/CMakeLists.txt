@@ -224,6 +224,13 @@ target_include_directories(226invert_binary_tree_test PRIVATE ../include)
 
 # ==================================================================
 
+# 230 kth smallest element in a binary search tree test
+add_executable(230kth_smallest_element_in_a_bst_test ./230kth_smallest_element_in_a_bst_test.cpp)
+target_link_libraries(230kth_smallest_element_in_a_bst_test gtest_main)
+target_include_directories(230kth_smallest_element_in_a_bst_test PRIVATE ../include)
+
+# ==================================================================
+
 # 235 lowest common ancestor of a binary search tree test
 add_executable(235lowest_common_ancestor_of_a_binary_search_tree_test ./235lowest_common_ancestor_of_a_binary_search_tree_test.cpp)
 target_link_libraries(235lowest_common_ancestor_of_a_binary_search_tree_test gtest_main)
@@ -392,6 +399,8 @@ add_test(NAME 206reverse_linked_list_test COMMAND 206reverse_linked_list_test)
 
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
 add_test(NAME 226invert_binary_tree_test COMMAND 226invert_binary_tree_test)
+
+add_test(NAME 230kth_smallest_element_in_a_bst_test COMMAND 230kth_smallest_element_in_a_bst_test)
 
 add_test(NAME 235lowest_common_ancestor_of_a_binary_search_tree_test COMMAND 235lowest_common_ancestor_of_a_binary_search_tree_test)
 add_test(NAME 236lowest_common_ancestor_of_a_binary_tree_test COMMAND 236lowest_common_ancestor_of_a_binary_tree_test)
