@@ -149,6 +149,11 @@ add_executable(121best_time_to_buy_and_sell_stock_test ./121best_time_to_buy_and
 target_link_libraries(121best_time_to_buy_and_sell_stock_test gtest_main)
 target_include_directories(121best_time_to_buy_and_sell_stock_test PRIVATE ../include)
 
+# 124
+add_executable(124binary_tree_maximum_path_sum_test ./124binary_tree_maximum_path_sum_test.cpp)
+target_link_libraries(124binary_tree_maximum_path_sum_test gtest_main)
+target_include_directories(124binary_tree_maximum_path_sum_test PRIVATE ../include)
+
 # 125 valid palindrome test
 add_executable(125valid_palindrome_test ./125valid_palindrome_test.cpp)
 target_link_libraries(125valid_palindrome_test gtest_main)
@@ -389,6 +394,7 @@ add_test(NAME 105construct_binary_tree_from_preorder_and_inorder_traversal_test 
 add_test(NAME 110balanced_binary_tree_test COMMAND 110balanced_binary_tree_test)
 
 add_test(NAME 121best_time_to_buy_and_sell_stock_test COMMAND 121best_time_to_buy_and_sell_stock_test)
+add_test(NAME 124binary_tree_maximum_path_sum_test COMMAND 124binary_tree_maximum_path_sum_test)
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
 add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
 
