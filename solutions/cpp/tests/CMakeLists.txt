@@ -280,6 +280,11 @@ add_executable(287find_the_duplicate_number_test ./287find_the_duplicate_number_
 target_link_libraries(287find_the_duplicate_number_test gtest_main)
 target_include_directories(287find_the_duplicate_number_test PRIVATE ../include)
 
+# 297 serialize and deserialize binary tree test
+add_executable(297serialize_and_deserialize_binary_tree_test ./297serialize_and_deserialize_binary_tree_test.cpp)
+target_link_libraries(297serialize_and_deserialize_binary_tree_test gtest_main)
+target_include_directories(297serialize_and_deserialize_binary_tree_test PRIVATE ../include)
+
 # ==================================================================
 
 # 347 top k frequent elements test
@@ -357,6 +362,13 @@ target_include_directories(1448count_good_nodes_in_binary_tree_test PRIVATE ../i
 
 # ==================================================================
 
+# 2574 left and right sum difference test
+add_executable(2574left_and_right_sum_differences_test ./2574left_and_right_sum_differences_test.cpp)
+target_link_libraries(2574left_and_right_sum_differences_test gtest_main)
+target_include_directories(2574left_and_right_sum_differences_test PRIVATE ../include)
+
+# ==================================================================
+
 # Add tests
 include(GoogleTest)
 add_test(NAME 1two_sum_test COMMAND 1two_sum_test)
@@ -425,6 +437,7 @@ add_test(NAME 239sliding_window_maximum_test COMMAND 239sliding_window_maximum_t
 add_test(NAME 242valid_anagram_test COMMAND 242valid_anagram_test)
 add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_strings_test)
 add_test(NAME 287find_the_duplicate_number_test COMMAND 287find_the_duplicate_number_test)
+add_test(NAME 297serialize_and_deserialize_binary_tree_test COMMAND 297serialize_and_deserialize_binary_tree_test)
 
 add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements_test)
 add_test(NAME 424longest_repeating_character_replacement_test COMMAND 424longest_repeating_character_replacement_test)
@@ -443,3 +456,5 @@ add_test(NAME 876middle_of_the_linked_list_test COMMAND 876middle_of_the_linked_
 add_test(NAME 981time_based_key_value_store_test COMMAND 981time_based_key_value_store_test)
 
 add_test(NAME 1448count_good_nodes_in_binary_tree_test COMMAND 1448count_good_nodes_in_binary_tree_test)
+
+add_test(NAME 2574left_and_right_sum_differences_test COMMAND 2574left_and_right_sum_differences_test)
