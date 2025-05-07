@@ -12,7 +12,8 @@ struct LeftAndRightSumDifferencesTest : public ::testing::TestWithParam<States>
   Solution s;
 };
 
-TEST_P(LeftAndRightSumDifferencesTest, ComputesDifference) {
+TEST_P(LeftAndRightSumDifferencesTest, ComputesDifference)
+{
   auto as = GetParam();
   auto result = s.leftRightDifference(as.nums);
   EXPECT_EQ(result, as.result);
