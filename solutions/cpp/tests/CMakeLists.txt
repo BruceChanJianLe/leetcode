@@ -222,6 +222,11 @@ add_executable(206reverse_linked_list_test ./206reverse_linked_list_test.cpp)
 target_link_libraries(206reverse_linked_list_test gtest_main)
 target_include_directories(206reverse_linked_list_test PRIVATE ../include)
 
+# 208 implement trie prefix tree test
+add_executable(208implement_trie_prefix_tree_test ./208implement_trie_prefix_tree_test.cpp)
+target_link_libraries(208implement_trie_prefix_tree_test gtest_main)
+target_include_directories(208implement_trie_prefix_tree_test PRIVATE ../include)
+
 # ==================================================================
 
 # 217 contains duplicate test
@@ -423,6 +428,7 @@ add_test(NAME 167two_sum_ii_test COMMAND 167two_sum_ii_test)
 
 add_test(NAME 199binary_tree_right_side_view_test COMMAND 199binary_tree_right_side_view_test)
 add_test(NAME 206reverse_linked_list_test COMMAND 206reverse_linked_list_test)
+add_test(NAME 208implement_trie_prefix_tree_test COMMAND 208implement_trie_prefix_tree_test)
 
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
 add_test(NAME 226invert_binary_tree_test COMMAND 226invert_binary_tree_test)
