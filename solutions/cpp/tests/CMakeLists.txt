@@ -367,6 +367,13 @@ target_include_directories(1448count_good_nodes_in_binary_tree_test PRIVATE ../i
 
 # ==================================================================
 
+# 1804 implement trie ii prefix tree test
+add_executable(1804implement_trie_ii_prefix_tree_test ./1804implement_trie_ii_prefix_tree_test.cpp)
+target_link_libraries(1804implement_trie_ii_prefix_tree_test gtest_main)
+target_include_directories(1804implement_trie_ii_prefix_tree_test PRIVATE ../include)
+
+# ==================================================================
+
 # 2574 left and right sum difference test
 add_executable(2574left_and_right_sum_differences_test ./2574left_and_right_sum_differences_test.cpp)
 target_link_libraries(2574left_and_right_sum_differences_test gtest_main)
@@ -462,5 +469,7 @@ add_test(NAME 876middle_of_the_linked_list_test COMMAND 876middle_of_the_linked_
 add_test(NAME 981time_based_key_value_store_test COMMAND 981time_based_key_value_store_test)
 
 add_test(NAME 1448count_good_nodes_in_binary_tree_test COMMAND 1448count_good_nodes_in_binary_tree_test)
+
+add_test(NAME 1804implement_trie_ii_prefix_tree_test COMMAND 1804implement_trie_ii_prefix_tree_test)
 
 add_test(NAME 2574left_and_right_sum_differences_test COMMAND 2574left_and_right_sum_differences_test)

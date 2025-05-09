@@ -1,0 +1,30 @@
+     https://leetcode.com/problems/implement-trie-ii-prefix-tree/
+
+                 1804. Implement Trie II (Prefix Tree)
+               Medium │ N.A. │ N.A.
+
+A Trie is a tree-like data structure used to efficiently store and retrieve prefixes of a collection of strings.
+
+In this problem, you are required to create a Trie class and implement the following functionalities:
+
+Implement the Trie class:
+
+	* Trie(): Initializes a Trie object
+
+	* void insert(String word): Inserts the string word into the Trie
+
+	* int countWordsEqualTo(String word): Returns the number of instances of the string word in the Trie
+
+	* int countWordsStartingWith(String prefix): Returns the number of strings in the Trie that start with the prefix prefix
+
+	* void erase(String word): Removes the string word from the Trie
+
+ Constraints:
+
+	* 1 <= word.length, prefix.length <= 2000
+	
+	* word and prefix consist only of lowercase English letters.
+
+	* The functions insert(), countWordsEqualTo(), countWordsStartingWith(), and erase() are called a maximum of 3 * 10^4 times in total.
+	
+	* It is guaranteed that the string word always exists in the trie when the erase() function is called.
