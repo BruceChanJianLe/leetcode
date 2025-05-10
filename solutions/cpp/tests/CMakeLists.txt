@@ -234,6 +234,11 @@ add_executable(211design_add_and_search_words_data_structure_test ./211design_ad
 target_link_libraries(211design_add_and_search_words_data_structure_test gtest_main)
 target_include_directories(211design_add_and_search_words_data_structure_test PRIVATE ../include)
 
+# 212 word search ii test
+add_executable(212word_search_ii_test ./212word_search_ii_test.cpp)
+target_link_libraries(212word_search_ii_test gtest_main)
+target_include_directories(212word_search_ii_test PRIVATE ../include)
+
 # 217 contains duplicate test
 add_executable(217contains_duplicate_test ./217contains_duplicate_test.cpp)
 target_link_libraries(217contains_duplicate_test gtest_main)
@@ -443,6 +448,7 @@ add_test(NAME 206reverse_linked_list_test COMMAND 206reverse_linked_list_test)
 add_test(NAME 208implement_trie_prefix_tree_test COMMAND 208implement_trie_prefix_tree_test)
 
 add_test(NAME 211design_add_and_search_words_data_structure_test COMMAND 211design_add_and_search_words_data_structure_test)
+add_test(NAME 212word_search_ii_test COMMAND 212word_search_ii_test)
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
 add_test(NAME 226invert_binary_tree_test COMMAND 226invert_binary_tree_test)
 
