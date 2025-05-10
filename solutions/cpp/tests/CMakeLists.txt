@@ -96,6 +96,13 @@ add_executable(76minimum_window_substring_test ./76minimum_window_substring_test
 target_link_libraries(76minimum_window_substring_test gtest_main)
 target_include_directories(76minimum_window_substring_test PRIVATE ../include)
 
+# 78 subsets test
+add_executable(78subsets_test ./78subsets_test.cpp)
+target_link_libraries(78subsets_test gtest_main)
+target_include_directories(78subsets_test PRIVATE ../include)
+
+# ==================================================================
+
 # 84 largest rectangle in histogram test
 add_executable(84largest_rectangle_in_histogram_test ./84largest_rectangle_in_histogram_test.cpp)
 target_link_libraries(84largest_rectangle_in_histogram_test gtest_main)
@@ -415,6 +422,8 @@ add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
 add_test(NAME 74search_a_2d_matrix_test COMMAND 74search_a_2d_matrix_test)
 add_test(NAME 76minimum_window_substring_test COMMAND 76minimum_window_substring_test)
+add_test(NAME 78subsets_test COMMAND 78subsets_test)
+
 add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_in_histogram_test)
 
 add_test(NAME 92reverse_linked_list_ii_test COMMAND 92reverse_linked_list_ii_test)
