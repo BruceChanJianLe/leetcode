@@ -91,6 +91,13 @@ add_executable(42trapping_rain_water_test ./42trapping_rain_water_test.cpp)
 target_link_libraries(42trapping_rain_water_test gtest_main)
 target_include_directories(42trapping_rain_water_test PRIVATE ../include)
 
+# ==================================================================
+
+# 46 permutations test
+add_executable(46permutations_test ./46permutations_test.cpp)
+target_link_libraries(46permutations_test gtest_main)
+target_include_directories(46permutations_test PRIVATE ../include)
+
 # 49 group anagrams test
 add_executable(49group_anagrams_test ./49group_anagrams_test.cpp)
 target_link_libraries(49group_anagrams_test gtest_main)
@@ -433,6 +440,8 @@ add_test(NAME 39combination_sum_test COMMAND 39combination_sum_test)
 
 add_test(NAME 40combination_sum_ii_test COMMAND 40combination_sum_ii_test)
 add_test(NAME 42trapping_rain_water_test COMMAND 42trapping_rain_water_test)
+
+add_test(NAME 46permutations_test COMMAND 46permutations_test)
 add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
 add_test(NAME 74search_a_2d_matrix_test COMMAND 74search_a_2d_matrix_test)
