@@ -81,6 +81,11 @@ target_include_directories(39combination_sum_test PRIVATE ../include)
 
 # ==================================================================
 
+# 40 combination sum ii test
+add_executable(40combination_sum_ii_test ./40combination_sum_ii_test.cpp)
+target_link_libraries(40combination_sum_ii_test gtest_main)
+target_include_directories(40combination_sum_ii_test PRIVATE ../include)
+
 # 42 trapping rain
 add_executable(42trapping_rain_water_test ./42trapping_rain_water_test.cpp)
 target_link_libraries(42trapping_rain_water_test gtest_main)
@@ -426,6 +431,7 @@ add_test(NAME 33search_in_rotated_sorted_array_test COMMAND 33search_in_rotated_
 add_test(NAME 36valid_sudoku_test COMMAND 36valid_sudoku_test)
 add_test(NAME 39combination_sum_test COMMAND 39combination_sum_test)
 
+add_test(NAME 40combination_sum_ii_test COMMAND 40combination_sum_ii_test)
 add_test(NAME 42trapping_rain_water_test COMMAND 42trapping_rain_water_test)
 add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
