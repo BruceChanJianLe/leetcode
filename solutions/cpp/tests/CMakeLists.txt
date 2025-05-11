@@ -129,10 +129,17 @@ target_include_directories(84largest_rectangle_in_histogram_test PRIVATE ../incl
 
 # ==================================================================
 
+# 90 subsets ii test
+add_executable(90subsets_ii_test ./90subsets_ii_test.cpp)
+target_link_libraries(90subsets_ii_test gtest_main)
+target_include_directories(90subsets_ii_test PRIVATE ../include)
+
 # 92 reverse linked list ii test
 add_executable(92reverse_linked_list_ii_test ./92reverse_linked_list_ii_test.cpp)
 target_link_libraries(92reverse_linked_list_ii_test gtest_main)
 target_include_directories(92reverse_linked_list_ii_test PRIVATE ../include)
+
+# ==================================================================
 
 # 98 validtate binary search tree test
 add_executable(98validate_binary_search_tree_test ./98validate_binary_search_tree_test.cpp)
@@ -450,7 +457,9 @@ add_test(NAME 78subsets_test COMMAND 78subsets_test)
 
 add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_in_histogram_test)
 
+add_test(NAME 90subsets_ii_test COMMAND 90subsets_ii_test)
 add_test(NAME 92reverse_linked_list_ii_test COMMAND 92reverse_linked_list_ii_test)
+
 add_test(NAME 98validate_binary_search_tree_test COMMAND 98validate_binary_search_tree_test)
 
 add_test(NAME 100same_tree_test COMMAND 100same_tree_test)
