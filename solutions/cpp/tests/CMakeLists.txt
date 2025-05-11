@@ -120,6 +120,11 @@ add_executable(78subsets_test ./78subsets_test.cpp)
 target_link_libraries(78subsets_test gtest_main)
 target_include_directories(78subsets_test PRIVATE ../include)
 
+# 79 word search test
+add_executable(79word_search_test ./79word_search_test.cpp)
+target_link_libraries(79word_search_test gtest_main)
+target_include_directories(79word_search_test PRIVATE ../include)
+
 # ==================================================================
 
 # 84 largest rectangle in histogram test
@@ -454,6 +459,7 @@ add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 add_test(NAME 74search_a_2d_matrix_test COMMAND 74search_a_2d_matrix_test)
 add_test(NAME 76minimum_window_substring_test COMMAND 76minimum_window_substring_test)
 add_test(NAME 78subsets_test COMMAND 78subsets_test)
+add_test(NAME 79word_search_test COMMAND 79word_search_test)
 
 add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_in_histogram_test)
 
