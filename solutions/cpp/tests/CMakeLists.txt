@@ -119,6 +119,13 @@ target_include_directories(51n_queens_test PRIVATE ../include)
 
 # ==================================================================
 
+# 70 climbing stairs test
+add_executable(70climbing_stairs_test ./70climbing_stairs_test.cpp)
+target_link_libraries(70climbing_stairs_test gtest_main)
+target_include_directories(70climbing_stairs_test PRIVATE ../include)
+
+# ==================================================================
+
 # 74 search a 2d matrix test
 add_executable(74search_a_2d_matrix_test ./74search_a_2d_matrix_test.cpp)
 target_link_libraries(74search_a_2d_matrix_test gtest_main)
@@ -482,6 +489,8 @@ add_test(NAME 46permutations_test COMMAND 46permutations_test)
 add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
 add_test(NAME 51n_queens_test COMMAND 51n_queens_test)
+
+add_test(NAME 70climbing_stairs_test COMMAND 70climbing_stairs_test)
 
 add_test(NAME 74search_a_2d_matrix_test COMMAND 74search_a_2d_matrix_test)
 add_test(NAME 76minimum_window_substring_test COMMAND 76minimum_window_substring_test)
