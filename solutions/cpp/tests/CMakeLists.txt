@@ -204,10 +204,19 @@ target_include_directories(128longest_consecutive_sequence_test PRIVATE ../inclu
 
 # ==================================================================
 
+# 131 palindrome partitioning test
+add_executable(131palindrome_partitioning_test ./131palindrome_partitioning_test.cpp)
+target_link_libraries(131palindrome_partitioning_test gtest_main)
+target_include_directories(131palindrome_partitioning_test PRIVATE ../include)
+
+# ==================================================================
+
 # 138 copy list with random pointer test
 add_executable(138copy_list_with_random_pointer_test ./138copy_list_with_random_pointer_test.cpp)
 target_link_libraries(138copy_list_with_random_pointer_test gtest_main)
 target_include_directories(138copy_list_with_random_pointer_test PRIVATE ../include)
+
+# ==================================================================
 
 # 141 linked list cycle test
 add_executable(141linked_list_cycle_test ./141linked_list_cycle_test.cpp)
@@ -480,7 +489,10 @@ add_test(NAME 124binary_tree_maximum_path_sum_test COMMAND 124binary_tree_maximu
 add_test(NAME 125valid_palindrome_test COMMAND 125valid_palindrome_test)
 add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutive_sequence_test)
 
+add_test(NAME 131palindrome_partitioning_test COMMAND 131palindrome_partitioning_test)
+
 add_test(NAME 138copy_list_with_random_pointer_test COMMAND 138copy_list_with_random_pointer_test)
+
 add_test(NAME 141linked_list_cycle_test COMMAND 141linked_list_cycle_test)
 add_test(NAME 143reorder_list_test COMMAND 143reorder_list_test)
 add_test(NAME 146lru_cache_test COMMAND 146lru_cache_test)
