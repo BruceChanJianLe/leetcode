@@ -18,17 +18,24 @@ add_executable(4median_of_two_sorted_arrays_test ./4median_of_two_sorted_arrays_
 target_link_libraries(4median_of_two_sorted_arrays_test gtest_main)
 target_include_directories(4median_of_two_sorted_arrays_test PRIVATE ../include)
 
+# ==================================================================
+
 # 11 container with most water test
 add_executable(11container_with_most_water_test ./11container_with_most_water_test.cpp)
 target_link_libraries(11container_with_most_water_test gtest_main)
 target_include_directories(11container_with_most_water_test PRIVATE ../include)
 
-# ==================================================================
-
 # 15 three sum test
 add_executable(15three_sum_test ./15three_sum_test.cpp)
 target_link_libraries(15three_sum_test gtest_main)
 target_include_directories(15three_sum_test PRIVATE ../include)
+
+# ==================================================================
+
+# 17 letter combinations of a phone number test
+add_executable(17letter_combinations_of_a_phone_number_test ./17letter_combinations_of_a_phone_number_test.cpp)
+target_link_libraries(17letter_combinations_of_a_phone_number_test gtest_main)
+target_include_directories(17letter_combinations_of_a_phone_number_test PRIVATE ../include)
 
 # 19 remove nth node from end of list test
 add_executable(19remove_nth_node_from_end_of_list_test ./19remove_nth_node_from_end_of_list_test.cpp)
@@ -40,12 +47,12 @@ add_executable(20valid_parentheses_test ./20valid_parentheses_test.cpp)
 target_link_libraries(20valid_parentheses_test gtest_main)
 target_include_directories(20valid_parentheses_test PRIVATE ../include)
 
+# ==================================================================
+
 # 21 merge two sorted lists test
 add_executable(21merge_two_sorted_lists_test ./21merge_two_sorted_lists_test.cpp)
 target_link_libraries(21merge_two_sorted_lists_test gtest_main)
 target_include_directories(21merge_two_sorted_lists_test PRIVATE ../include)
-
-# ==================================================================
 
 # 22 generate parentheses test
 add_executable(22generate_parentheses_test ./22generate_parentheses_test.cpp)
@@ -444,13 +451,15 @@ add_test(NAME 1two_sum_test COMMAND 1two_sum_test)
 add_test(NAME 2add_two_numbers_test COMMAND 2add_two_numbers_test)
 add_test(NAME 3longest_substring_without_repeating_characters_test COMMAND 3longest_substring_without_repeating_characters_test)
 add_test(NAME 4median_of_two_sorted_arrays_test COMMAND 4median_of_two_sorted_arrays_test)
-add_test(NAME 11container_with_most_water_test COMMAND 11container_with_most_water_test)
 
+add_test(NAME 11container_with_most_water_test COMMAND 11container_with_most_water_test)
 add_test(NAME 15three_sum_test COMMAND 15three_sum_test)
+
+add_test(NAME 17letter_combinations_of_a_phone_number_test COMMAND 17letter_combinations_of_a_phone_number_test)
 add_test(NAME 19remove_nth_node_from_end_of_list_test COMMAND 19remove_nth_node_from_end_of_list_test)
 add_test(NAME 20valid_parentheses_test COMMAND 20valid_parentheses_test)
-add_test(NAME 21merge_two_sorted_lists_test COMMAND 21merge_two_sorted_lists_test)
 
+add_test(NAME 21merge_two_sorted_lists_test COMMAND 21merge_two_sorted_lists_test)
 add_test(NAME 22generate_parentheses_test COMMAND 22generate_parentheses_test)
 add_test(NAME 23merge_k_sorted_lists_test COMMAND 23merge_k_sorted_lists_test)
 add_test(NAME 25reverse_nodes_in_k_group_test COMMAND 25reverse_nodes_in_k_group_test)
