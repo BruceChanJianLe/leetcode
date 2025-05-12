@@ -5,7 +5,7 @@
 struct States
 {
   std::string digits;
-  std::vector<std::string> expected;
+  std::vector<std::string> result;
 };
 
 class LetterCombinationsOfAPhoneNumberTest : public ::testing::TestWithParam<States>
@@ -26,14 +26,14 @@ TEST_P(LetterCombinationsOfAPhoneNumberTest, DT2LetterCombinationsOfAPhoneNumber
 {
   auto as = GetParam();
   auto result = dt2s.letterCombinations(as.digits);
-  EXPECT_TRUE(compareUnordered(result, as.expected));
+  EXPECT_TRUE(compareUnordered(result, as.result));
 }
 
 TEST_P(LetterCombinationsOfAPhoneNumberTest, DTLetterCombinationsOfAPhoneNumberTest)
 {
   auto as = GetParam();
   auto result = dts.letterCombinations(as.digits);
-  EXPECT_TRUE(compareUnordered(result, as.expected));
+  EXPECT_TRUE(compareUnordered(result, as.result));
 }
 
 INSTANTIATE_TEST_SUITE_P(Default, LetterCombinationsOfAPhoneNumberTest,
