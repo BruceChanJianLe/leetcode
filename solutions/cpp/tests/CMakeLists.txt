@@ -414,6 +414,11 @@ add_executable(739daily_temperatures_test ./739daily_temperatures_test.cpp)
 target_link_libraries(739daily_temperatures_test gtest_main)
 target_include_directories(739daily_temperatures_test PRIVATE ../include)
 
+# 746 min cost climbing stairs test
+add_executable(746min_cost_climbing_stairs_test ./746min_cost_climbing_stairs_test.cpp)
+target_link_libraries(746min_cost_climbing_stairs_test gtest_main)
+target_include_directories(746min_cost_climbing_stairs_test PRIVATE ../include)
+
 # ==================================================================
 
 # 835 car fleet test
@@ -559,8 +564,9 @@ add_test(NAME 543diameter_of_binary_tree_test COMMAND 543diameter_of_binary_tree
 add_test(NAME 567permutation_in_string_test COMMAND 567permutation_in_string_test)
 add_test(NAME 572subtree_of_another_tree_test COMMAND 572subtree_of_another_tree_test)
 
-add_test(NAME 739daily_temperatures_test COMMAND 739daily_temperatures_test)
 add_test(NAME 704binary_search_test COMMAND 704binary_search_test)
+add_test(NAME 739daily_temperatures_test COMMAND 739daily_temperatures_test)
+add_test(NAME 746min_cost_climbing_stairs_test COMMAND 746min_cost_climbing_stairs_test)
 
 add_test(NAME 853car_fleet_test COMMAND 853car_fleet_test)
 add_test(NAME 875koko_eating_bananas_test COMMAND 875koko_eating_bananas_test)
