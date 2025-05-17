@@ -12,6 +12,7 @@ class ClimbStairsTest : public ::testing::TestWithParam<States>
 {
 protected:
   DPSolution dps;
+  OSolution os;
 };
 
 TEST_P(ClimbStairsTest, OptimalClimbStairsCase) {
@@ -21,7 +22,7 @@ TEST_P(ClimbStairsTest, OptimalClimbStairsCase) {
 
 TEST_P(ClimbStairsTest, DPClimbStairsCase) {
   auto state = GetParam();
-  EXPECT_EQ(dps.climbStairs(state.n), state.result);
+  EXPECT_EQ(os.climbStairs(state.n), state.result);
 }
 
 INSTANTIATE_TEST_SUITE_P(
