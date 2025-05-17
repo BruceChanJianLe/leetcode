@@ -280,6 +280,11 @@ target_include_directories(167two_sum_ii_test PRIVATE ../include)
 
 # ==================================================================
 
+# 198 house robber test
+add_executable(198house_robber_test ./198house_robber_test.cpp)
+target_link_libraries(198house_robber_test gtest_main)
+target_include_directories(198house_robber_test PRIVATE ../include)
+
 # 199 binary tree right side view test
 add_executable(199binary_tree_right_side_view_test ./199binary_tree_right_side_view_test.cpp)
 target_link_libraries(199binary_tree_right_side_view_test gtest_main)
@@ -535,6 +540,7 @@ add_test(NAME 153find_minimum_in_rotated_sorted_array_test COMMAND 153find_minim
 
 add_test(NAME 167two_sum_ii_test COMMAND 167two_sum_ii_test)
 
+add_test(NAME 198house_robber_test COMMAND 198house_robber_test)
 add_test(NAME 199binary_tree_right_side_view_test COMMAND 199binary_tree_right_side_view_test)
 add_test(NAME 206reverse_linked_list_test COMMAND 206reverse_linked_list_test)
 add_test(NAME 208implement_trie_prefix_tree_test COMMAND 208implement_trie_prefix_tree_test)
