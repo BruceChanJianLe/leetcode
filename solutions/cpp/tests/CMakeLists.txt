@@ -18,6 +18,11 @@ add_executable(4median_of_two_sorted_arrays_test ./4median_of_two_sorted_arrays_
 target_link_libraries(4median_of_two_sorted_arrays_test gtest_main)
 target_include_directories(4median_of_two_sorted_arrays_test PRIVATE ../include)
 
+# 5 longest palindromic substring test
+add_executable(5longest_palindromic_substring_test ./5longest_palindromic_substring_test.cpp)
+target_link_libraries(5longest_palindromic_substring_test gtest_main)
+target_include_directories(5longest_palindromic_substring_test PRIVATE ../include)
+
 # ==================================================================
 
 # 11 container with most water test
@@ -482,6 +487,7 @@ add_test(NAME 1two_sum_test COMMAND 1two_sum_test)
 add_test(NAME 2add_two_numbers_test COMMAND 2add_two_numbers_test)
 add_test(NAME 3longest_substring_without_repeating_characters_test COMMAND 3longest_substring_without_repeating_characters_test)
 add_test(NAME 4median_of_two_sorted_arrays_test COMMAND 4median_of_two_sorted_arrays_test)
+add_test(NAME 5longest_palindromic_substring_test COMMAND 5longest_palindromic_substring_test)
 
 add_test(NAME 11container_with_most_water_test COMMAND 11container_with_most_water_test)
 add_test(NAME 15three_sum_test COMMAND 15three_sum_test)
