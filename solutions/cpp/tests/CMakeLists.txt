@@ -421,6 +421,13 @@ target_include_directories(572subtree_of_another_tree_test PRIVATE ../include)
 
 # ==================================================================
 
+# 647 palindromic substrings test
+add_executable(647palindromic_substrings_test ./647palindromic_substrings_test.cpp)
+target_link_libraries(647palindromic_substrings_test gtest_main)
+target_include_directories(647palindromic_substrings_test PRIVATE ../include)
+
+# ==================================================================
+
 # 704 binary search test
 add_executable(704binary_search_test ./704binary_search_test.cpp)
 target_link_libraries(704binary_search_test gtest_main)
@@ -584,6 +591,8 @@ add_test(NAME 496next_greater_element_i_test COMMAND 496next_greater_element_i_t
 add_test(NAME 543diameter_of_binary_tree_test COMMAND 543diameter_of_binary_tree_test)
 add_test(NAME 567permutation_in_string_test COMMAND 567permutation_in_string_test)
 add_test(NAME 572subtree_of_another_tree_test COMMAND 572subtree_of_another_tree_test)
+
+add_test(NAME 647palindromic_substrings_test COMMAND 647palindromic_substrings_test)
 
 add_test(NAME 704binary_search_test COMMAND 704binary_search_test)
 add_test(NAME 739daily_temperatures_test COMMAND 739daily_temperatures_test)
