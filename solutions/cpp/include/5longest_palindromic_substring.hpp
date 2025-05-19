@@ -2,6 +2,58 @@
 
 #include <cstddef>
 #include <string>
+#include <vector>
+#include <iostream>
+
+// DP
+class DPSolution {
+public:
+  std::string longestPalindrome(std::string s) {
+    auto n = s.size();
+
+    // Sanity check
+    if (n == 1) return s;
+
+    // A lookup table to store panlindrome matching result
+    std::vector<std::vector<bool>> lookup(n, std::vector(n, false));
+
+    // Fill the single alphabet, the diagonals, size == 1
+    for (auto index = 0uz; index < n; ++index) {
+      lookup[index][index] = true;
+    }
+
+    // Book keeping (start index and length)
+    auto start{0}, max_seen{1};
+
+    // Fill double alphabets, size == 2
+    for (auto index = 1uz; index < n; ++index) {
+      if (s[index - 1] == s[index]) {
+        lookup[index - 1][index] = true;
+        start = index - 1;
+        max_seen = 2;
+      }
+    }
+
+    // Fill three alphabets and above size >= 3
+    // inclusive of the entire string
+    for (auto len = 3uz; len < n + 1; ++len) {
+      for (auto index = len - 1uz; index < n; ++ index) {
+        // Check if both ends are same and the inner ends are palindrome
+        if (s[index - len + 1] == s[index] && lookup[index - len + 2][index - 1]) {
+          lookup[index - len + 1][index] = true;
+
+          if (len > max_seen) {
+            start = index - len + 1;
+            max_seen = len;
+          }
+        }
+      }
+    }
+    std::cout << "start: " << start << ", len: " << max_seen << std::endl;
+
+    return s.substr(start, max_seen);
+  }
+};
 
 // Two pointer solution
 // Time complexity: O(n)

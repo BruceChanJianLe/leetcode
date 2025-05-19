@@ -13,6 +13,7 @@ class LongestPalindromicSubstringTest : public ::testing::TestWithParam<States> 
 protected:
   FirstSolution fs;
   SecondSolution ss;
+  DPSolution dps;
 };
 
 TEST_P(LongestPalindromicSubstringTest, FirstLongestPalindromicSubstringCase) {
@@ -27,6 +28,12 @@ TEST_P(LongestPalindromicSubstringTest, SecondLongestPalindromicSubstringCase) {
   EXPECT_TRUE(as.result.count(result));
 }
 
+TEST_P(LongestPalindromicSubstringTest, DPLongestPalindromicSubstringCase) {
+  const auto& as = GetParam();
+  std::string result = dps.longestPalindrome(as.input);
+  EXPECT_TRUE(as.result.count(result));
+}
+
 INSTANTIATE_TEST_SUITE_P(Default, LongestPalindromicSubstringTest,
   ::testing::Values(
     States{"babad", {"bab", "aba"}},
@@ -36,6 +43,7 @@ INSTANTIATE_TEST_SUITE_P(Default, LongestPalindromicSubstringTest,
     States{"ac", {"a", "c"}},
     States{"racecar", {"racecar"}},
     States{"abcda", {"a", "b", "c", "d"}},
+    States{"aaaaa", {"aaaaa"}},
     States{"aacabdkacaa", {"aca"}}
   )
 );
