@@ -165,6 +165,11 @@ add_executable(90subsets_ii_test ./90subsets_ii_test.cpp)
 target_link_libraries(90subsets_ii_test gtest_main)
 target_include_directories(90subsets_ii_test PRIVATE ../include)
 
+# 91 decode ways test
+add_executable(91decode_ways_test ./91decode_ways_test.cpp)
+target_link_libraries(91decode_ways_test gtest_main)
+target_include_directories(91decode_ways_test PRIVATE ../include)
+
 # 92 reverse linked list ii test
 add_executable(92reverse_linked_list_ii_test ./92reverse_linked_list_ii_test.cpp)
 target_link_libraries(92reverse_linked_list_ii_test gtest_main)
@@ -530,6 +535,7 @@ add_test(NAME 79word_search_test COMMAND 79word_search_test)
 add_test(NAME 84largest_rectangle_in_histogram_test COMMAND 84largest_rectangle_in_histogram_test)
 
 add_test(NAME 90subsets_ii_test COMMAND 90subsets_ii_test)
+add_test(NAME 91decode_ways_test COMMAND 91decode_ways_test)
 add_test(NAME 92reverse_linked_list_ii_test COMMAND 92reverse_linked_list_ii_test)
 
 add_test(NAME 98validate_binary_search_tree_test COMMAND 98validate_binary_search_tree_test)
