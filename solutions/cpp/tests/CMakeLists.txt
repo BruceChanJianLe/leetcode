@@ -122,6 +122,11 @@ add_executable(51n_queens_test ./51n_queens_test.cpp)
 target_link_libraries(51n_queens_test gtest_main)
 target_include_directories(51n_queens_test PRIVATE ../include)
 
+# 52 maximum subarray test
+add_executable(53maximum_subarray_test ./53maximum_subarray_test.cpp)
+target_link_libraries(53maximum_subarray_test gtest_main)
+target_include_directories(53maximum_subarray_test PRIVATE ../include)
+
 # ==================================================================
 
 # 70 climbing stairs test
@@ -536,6 +541,7 @@ add_test(NAME 46permutations_test COMMAND 46permutations_test)
 add_test(NAME 49group_anagrams_test COMMAND 49group_anagrams_test)
 
 add_test(NAME 51n_queens_test COMMAND 51n_queens_test)
+add_test(NAME 53maximum_subarray_test COMMAND 53maximum_subarray_test)
 
 add_test(NAME 70climbing_stairs_test COMMAND 70climbing_stairs_test)
 
