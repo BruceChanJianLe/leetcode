@@ -392,10 +392,17 @@ target_include_directories(297serialize_and_deserialize_binary_tree_test PRIVATE
 
 # ==================================================================
 
+# 322 coin change test
+add_executable(322coin_change_test ./322coin_change_test.cpp)
+target_link_libraries(322coin_change_test gtest_main)
+target_include_directories(322coin_change_test PRIVATE ../include)
+
 # 347 top k frequent elements test
 add_executable(347top_k_frequent_elements_test ./347top_k_frequent_elements_test.cpp)
 target_link_libraries(347top_k_frequent_elements_test gtest_main)
 target_include_directories(347top_k_frequent_elements_test PRIVATE ../include)
+
+# ==================================================================
 
 #  424 longest repeating character replacement test
 add_executable(424longest_repeating_character_replacement_test ./424longest_repeating_character_replacement_test.cpp)
@@ -590,7 +597,9 @@ add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_str
 add_test(NAME 287find_the_duplicate_number_test COMMAND 287find_the_duplicate_number_test)
 add_test(NAME 297serialize_and_deserialize_binary_tree_test COMMAND 297serialize_and_deserialize_binary_tree_test)
 
+add_test(NAME 322coin_change_test COMMAND 322coin_change_test)
 add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements_test)
+
 add_test(NAME 424longest_repeating_character_replacement_test COMMAND 424longest_repeating_character_replacement_test)
 add_test(NAME 496next_greater_element_i_test COMMAND 496next_greater_element_i_test)
 
