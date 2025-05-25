@@ -271,6 +271,11 @@ add_executable(150evaluate_reverse_polish_notation_test ./150evaluate_reverse_po
 target_link_libraries(150evaluate_reverse_polish_notation_test gtest_main)
 target_include_directories(150evaluate_reverse_polish_notation_test PRIVATE ../include)
 
+# 152 maximum product subarray test
+add_executable(152maximum_product_subarray_test ./152maximum_product_subarray_test.cpp)
+target_link_libraries(152maximum_product_subarray_test gtest_main)
+target_include_directories(152maximum_product_subarray_test PRIVATE ../include)
+
 # 153 find minimum in rotated sorted array
 add_executable(153find_minimum_in_rotated_sorted_array_test ./153find_minimum_in_rotated_sorted_array_test.cpp)
 target_link_libraries(153find_minimum_in_rotated_sorted_array_test gtest_main)
@@ -568,8 +573,9 @@ add_test(NAME 143reorder_list_test COMMAND 143reorder_list_test)
 add_test(NAME 146lru_cache_test COMMAND 146lru_cache_test)
 
 add_test(NAME 150evaluate_reverse_polish_notation_test COMMAND 150evaluate_reverse_polish_notation_test)
-add_test(NAME 155min_stack_test COMMAND 155min_stack_test)
+add_test(NAME 152maximum_product_subarray_test COMMAND 152maximum_product_subarray_test)
 add_test(NAME 153find_minimum_in_rotated_sorted_array_test COMMAND 153find_minimum_in_rotated_sorted_array_test)
+add_test(NAME 155min_stack_test COMMAND 155min_stack_test)
 
 add_test(NAME 167two_sum_ii_test COMMAND 167two_sum_ii_test)
 
