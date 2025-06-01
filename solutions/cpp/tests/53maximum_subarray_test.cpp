@@ -10,9 +10,16 @@ struct TestCase {
 class MaximumSubarrayTest : public ::testing::TestWithParam<TestCase> {
 protected:
   Solution s;
+  FirstSolution fs;
 };
 
-TEST_P(MaximumSubarrayTest, HandlesMaxSubarraySum) {
+TEST_P(MaximumSubarrayTest, FirstMaximumSubarrayCase) {
+  auto as = GetParam();
+  auto result = fs.maxSubArray(as.nums);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(MaximumSubarrayTest, MaximumSubarrayCase) {
   auto as = GetParam();
   auto result = s.maxSubArray(as.nums);
   EXPECT_EQ(result, as.result);
