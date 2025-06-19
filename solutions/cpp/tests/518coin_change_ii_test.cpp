@@ -2,13 +2,13 @@
 
 #include "gtest/gtest.h"
 
-struct TestCase {
+struct States {
   int amount;
   std::vector<int> coins;
   int result;
 };
 
-class CoinChangeIITest : public ::testing::TestWithParam<TestCase> {
+class CoinChangeIITest : public ::testing::TestWithParam<States> {
 protected:
   Solution s;
 };
@@ -21,13 +21,13 @@ TEST_P(CoinChangeIITest, HandlesCoinChangeCombinations) {
 
 INSTANTIATE_TEST_SUITE_P(Default, CoinChangeIITest,
   ::testing::Values(
-      TestCase{5, {1, 2, 5}, 4}, // 5=5, 2+2+1, 2+1+1+1, 1+1+1+1+1
-      TestCase{3, {2}, 0},       // Cannot form 3 with just 2s
-      TestCase{10, {10}, 1},     // 10 = 10
-      TestCase{0, {1, 2}, 1},    // Only one way to form 0: choose nothing
-      TestCase{1, {2, 3}, 0},    // Cannot form 1
-      TestCase{100, {1, 5, 10, 25, 50}, 292}, // Classic coin change problem
-      TestCase{
+      States{5, {1, 2, 5}, 4}, // 5=5, 2+2+1, 2+1+1+1, 1+1+1+1+1
+      States{3, {2}, 0},       // Cannot form 3 with just 2s
+      States{10, {10}, 1},     // 10 = 10
+      States{0, {1, 2}, 1},    // Only one way to form 0: choose nothing
+      States{1, {2, 3}, 0},    // Cannot form 1
+      States{100, {1, 5, 10, 25, 50}, 292}, // Classic coin change problem
+      States{
           4681,
           {2,   4,   6,   8,   10,  12,  14,  16,  18,  20,  22,   24,   26,
            28,  30,  32,  34,  36,  38,  40,  42,  44,  46,  48,   50,   52,
