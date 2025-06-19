@@ -252,6 +252,11 @@ add_executable(138copy_list_with_random_pointer_test ./138copy_list_with_random_
 target_link_libraries(138copy_list_with_random_pointer_test gtest_main)
 target_include_directories(138copy_list_with_random_pointer_test PRIVATE ../include)
 
+# 139 word break test
+add_executable(139word_break_test ./139word_break_test.cpp)
+target_link_libraries(139word_break_test gtest_main)
+target_include_directories(139word_break_test PRIVATE ../include)
+
 # ==================================================================
 
 # 141 linked list cycle test
@@ -578,6 +583,7 @@ add_test(NAME 128longest_consecutive_sequence_test COMMAND 128longest_consecutiv
 add_test(NAME 131palindrome_partitioning_test COMMAND 131palindrome_partitioning_test)
 
 add_test(NAME 138copy_list_with_random_pointer_test COMMAND 138copy_list_with_random_pointer_test)
+add_test(NAME 139word_break_test COMMAND 139word_break_test)
 
 add_test(NAME 141linked_list_cycle_test COMMAND 141linked_list_cycle_test)
 add_test(NAME 143reorder_list_test COMMAND 143reorder_list_test)
