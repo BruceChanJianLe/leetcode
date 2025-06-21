@@ -407,6 +407,13 @@ target_include_directories(297serialize_and_deserialize_binary_tree_test PRIVATE
 
 # ==================================================================
 
+# 300 longest increasing subsequence test
+add_executable(300longest_increasing_subsequence_test ./300longest_increasing_subsequence_test.cpp)
+target_link_libraries(300longest_increasing_subsequence_test gtest_main)
+target_include_directories(300longest_increasing_subsequence_test PRIVATE ../include)
+
+# ==================================================================
+
 # 322 coin change test
 add_executable(322coin_change_test ./322coin_change_test.cpp)
 target_link_libraries(322coin_change_test gtest_main)
@@ -619,6 +626,8 @@ add_test(NAME 242valid_anagram_test COMMAND 242valid_anagram_test)
 add_test(NAME 271encode_and_decode_strings_test COMMAND 271encode_and_decode_strings_test)
 add_test(NAME 287find_the_duplicate_number_test COMMAND 287find_the_duplicate_number_test)
 add_test(NAME 297serialize_and_deserialize_binary_tree_test COMMAND 297serialize_and_deserialize_binary_tree_test)
+
+add_test(NAME 300longest_increasing_subsequence_test COMMAND 300longest_increasing_subsequence_test)
 
 add_test(NAME 322coin_change_test COMMAND 322coin_change_test)
 add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements_test)
