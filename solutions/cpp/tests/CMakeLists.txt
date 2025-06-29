@@ -438,6 +438,13 @@ target_include_directories(496next_greater_element_i_test PRIVATE ../include)
 
 # ==================================================================
 
+# 509 fibonacci number test
+add_executable(509fibonacci_number_test ./509fibonacci_number_test.cpp)
+target_link_libraries(509fibonacci_number_test gtest_main)
+target_include_directories(509fibonacci_number_test PRIVATE ../include)
+
+# ==================================================================
+
 # 518 coin change ii test
 add_executable(518coin_change_ii_test ./518coin_change_ii_test.cpp)
 target_link_libraries(518coin_change_ii_test gtest_main)
@@ -634,6 +641,8 @@ add_test(NAME 347top_k_frequent_elements_test COMMAND 347top_k_frequent_elements
 
 add_test(NAME 424longest_repeating_character_replacement_test COMMAND 424longest_repeating_character_replacement_test)
 add_test(NAME 496next_greater_element_i_test COMMAND 496next_greater_element_i_test)
+
+add_test(NAME 509fibonacci_number_test COMMAND 509fibonacci_number_test)
 
 add_test(NAME 518coin_change_ii_test COMMAND 518coin_change_ii_test)
 add_test(NAME 543diameter_of_binary_tree_test COMMAND 543diameter_of_binary_tree_test)
