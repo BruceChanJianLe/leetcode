@@ -14,6 +14,7 @@ protected:
   FirstSolution fs;
   SecondSolution ss;
   NRBSolution nrbs; // This will take a super long time to pass the stress test case
+  DFSSolution dfss; // This will take a super long time to pass the stress test case
 };
 
 TEST_P(CoinChangeTest, FirstDPCoinChangeCase) {
@@ -34,10 +35,17 @@ TEST_P(CoinChangeTest, RBCoinChangeCase) {
   EXPECT_EQ(result, as.result);
 }
 
+// Depth first search (pure recursion)
+TEST_P(CoinChangeTest, DFSCoinChangeCase) {
+  auto as = GetParam();
+  auto result = dfss.coinChange(as.coins, as.amount);
+  EXPECT_EQ(result, as.result);
+}
+
 INSTANTIATE_TEST_SUITE_P(Default, CoinChangeTest,
   ::testing::Values(
     States{{1, 2, 5}, 11, 3},        // 5+5+1
-    States{{2}, 3, -1},              // not possible
+    States{{2}, 5, -1},              // not possible
     States{{1}, 0, 0},               // 0 coins
     States{{1}, 2, 2},               // 1+1
     // States{{186, 419, 83, 408}, 6249, 20}, // stress test case from LeetCode
