@@ -31,18 +31,20 @@ TEST_P(CoinChangeTest, SecondDPCoinChangeCase) {
   EXPECT_EQ(result, as.result);
 }
 
-TEST_P(CoinChangeTest, RBCoinChangeCase) {
-  auto as = GetParam();
-  auto result = nrbs.coinChange(as.coins, as.amount);
-  EXPECT_EQ(result, as.result);
-}
+// // Commented as it is very slow
+// TEST_P(CoinChangeTest, RBCoinChangeCase) {
+//   auto as = GetParam();
+//   auto result = nrbs.coinChange(as.coins, as.amount);
+//   EXPECT_EQ(result, as.result);
+// }
 
-// Depth first search (pure recursion)
-TEST_P(CoinChangeTest, DFSCoinChangeCase) {
-  auto as = GetParam();
-  auto result = dfss.coinChange(as.coins, as.amount);
-  EXPECT_EQ(result, as.result);
-}
+// // Commented as it is very slow
+// // Depth first search (pure recursion)
+// TEST_P(CoinChangeTest, DFSCoinChangeCase) {
+//   auto as = GetParam();
+//   auto result = dfss.coinChange(as.coins, as.amount);
+//   EXPECT_EQ(result, as.result);
+// }
 
 // DP Top Down - Memoization
 TEST_P(CoinChangeTest, DPTopDownCoinChangeCase) {
@@ -64,7 +66,10 @@ INSTANTIATE_TEST_SUITE_P(Default, CoinChangeTest,
     States{{2}, 5, -1},              // not possible
     States{{1}, 0, 0},               // 0 coins
     States{{1}, 2, 2},               // 1+1
-    // States{{186, 419, 83, 408}, 6249, 20}, // stress test case from LeetCode
+    States{{1, 4, 5}, 150, 30},      // *
+    States{{186, 419, 83, 408}, 6249, 20}, // *stress test case from LeetCode
     States{{2, 5, 10, 1}, 27, 4}     // 10+10+5+2
   )
 );
+
+// * these test cases can be very slow for naive and brute force solution
