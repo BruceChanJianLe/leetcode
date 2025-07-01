@@ -15,6 +15,8 @@ protected:
   SecondSolution ss;
   NRBSolution nrbs; // This will take a super long time to pass the stress test case
   DFSSolution dfss; // This will take a super long time to pass the stress test case
+  DPTopDownSolution dp_td_s;
+  DPBottomUpSolution dp_bu_s;
 };
 
 TEST_P(CoinChangeTest, FirstDPCoinChangeCase) {
@@ -39,6 +41,20 @@ TEST_P(CoinChangeTest, RBCoinChangeCase) {
 TEST_P(CoinChangeTest, DFSCoinChangeCase) {
   auto as = GetParam();
   auto result = dfss.coinChange(as.coins, as.amount);
+  EXPECT_EQ(result, as.result);
+}
+
+// DP Top Down - Memoization
+TEST_P(CoinChangeTest, DPTopDownCoinChangeCase) {
+  auto as = GetParam();
+  auto result = dp_td_s.coinChange(as.coins, as.amount);
+  EXPECT_EQ(result, as.result);
+}
+
+// DP Bottom Up - Tabulation
+TEST_P(CoinChangeTest, DPBottomUpCoinChangeCase) {
+  auto as = GetParam();
+  auto result = dp_bu_s.coinChange(as.coins, as.amount);
   EXPECT_EQ(result, as.result);
 }
 

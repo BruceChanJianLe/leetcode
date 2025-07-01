@@ -3,8 +3,88 @@
 #include <algorithm>
 #include <limits>
 #include <vector>
-#include <iostream>
 
+// Pure recursion, without memoization - for education purpose
+class DFSSolution {
+public:
+  int coinChange(const std::vector<int>& coins, const int amount) {
+    return dfsWalk(coins, amount);
+  }
+
+private:
+  int dfsWalk(const std::vector<int>& coins, const int amount) {
+    if (amount == 0) return 0;
+
+    auto min_coin{std::numeric_limits<int>::max()};
+
+    // Try each coin
+    for (const auto coin : coins) {
+      if (auto sub_amount = amount - coin; sub_amount >= 0) {
+        if (auto result = dfsWalk(coins, sub_amount); result != -1) {
+          min_coin = std::min(min_coin, result + 1);
+        }
+      }
+    }
+
+    return (min_coin == std::numeric_limits<int>::max()) ? -1 : min_coin;
+  }
+};
+
+// DP Top Down - Memoization
+class DPTopDownSolution {
+public:
+  int coinChange(const std::vector<int>& coins, const int amount) {
+    memo.assign(amount + 1, -2);
+    return coinChangeHelper(coins, amount);
+  }
+
+private:
+  int coinChangeHelper(const std::vector<int>& coins, const int amount) {
+    if (amount == 0) return 0;
+    if (memo[amount] != -2) return memo[amount];
+
+    auto min_coin{std::numeric_limits<int>::max()};
+
+    // Try each coin
+    for (const auto coin : coins) {
+      if (auto sub_amount = amount - coin; sub_amount >= 0) {
+        if (auto result = coinChangeHelper(coins, sub_amount); result != -1) {
+          min_coin = std::min(min_coin, result + 1);
+        }
+      }
+    }
+
+    memo[amount] =
+      (min_coin == std::numeric_limits<int>::max()) ? -1 : min_coin;
+
+    return memo[amount];
+  }
+
+  std::vector<int> memo;
+};
+
+// DP Bottom Up - Tabulation
+class DPBottomUpSolution {
+public:
+  int coinChange(const std::vector<int>& coins, const int amount) {
+    std::vector<int> lookup(amount + 1, amount + 1); // amount + 1 is impossible
+    // Always true to make zero amount with 0 coin
+    lookup.front() = 0;
+
+    for (auto curr_amount = 1; curr_amount < amount + 1; ++curr_amount) {
+      for (const auto coin : coins) {
+        if (coin <= curr_amount) {
+          lookup[curr_amount] =
+            std::min(lookup[curr_amount], lookup[curr_amount - coin] + 1);
+        }
+      }
+    }
+
+    return (lookup.back() == amount + 1) ? -1 : lookup.back();
+  }
+};
+
+// Old solutions
 // DP First Solution
 class FirstSolution {
 public:
@@ -68,81 +148,5 @@ private:
         coinChangeHelper(coins, amount, curr_coins + 1, result);
       }
     }
-  }
-};
-
-// Pure recursion, without memoization - for education purpose
-class DFSSolution {
-public:
-  int coinChange(const std::vector<int>& coins, const int amount) {
-    return dfsWalk(coins, amount);
-  }
-
-private:
-  int dfsWalk(const std::vector<int>& coins, const int amount) {
-    if (amount == 0) return 0;
-
-    auto min_coin{std::numeric_limits<int>::max()};
-
-    // Try each coin
-    for (const auto coin : coins) {
-      if (auto sub_amount = amount - coin; sub_amount >= 0) {
-        if (auto result = dfsWalk(coins, sub_amount); result != -1) {
-          min_coin = std::min(min_coin, result + 1);
-        }
-      }
-    }
-
-    return (min_coin == std::numeric_limits<int>::max()) ? -1 : min_coin;
-  }
-};
-
-class Solution {
-public:
-  int coinChange(const std::vector<int>& coins, int amount) {
-    // std::vector<int> memo(amount + 1, amount + 1);
-    // return coinChangeHelper(coins, amount, memo);
-    memo.assign(amount + 1, -2); // -2 mean uncomputed
-    return memoWalk(coins, amount);
-  }
-
-private:
-  std::vector<int> memo;
-
-  int coinChangeHelper(const std::vector<int>& coins, const int amount, std::vector<int>& memo) {
-    if (memo[amount] != amount + 1) return memo[amount];
-    if (amount == 0) return 0;
-
-    for (const auto coin : coins) {
-      // Create subproblem
-      if (auto sub_amount = amount - coin; sub_amount >= 0) {
-        memo[amount] = std::min(memo[amount],
-            coinChangeHelper(coins, sub_amount, memo) + 1);
-      }
-    }
-
-    return (memo[amount] == amount + 1) ? -1 : memo[amount];
-  }
-
-  int memoWalk(const std::vector<int>& coins, const int amount) {
-    if (amount == 0) return 0;
-    if (amount < 0) return -1;
-
-    if (memo[amount] != -2) return memo[amount];
-
-    auto min_coin{std::numeric_limits<int>::max()};
-
-    // Try each coin
-    for (const auto coin : coins) {
-      auto result = memoWalk(coins, amount - coin);
-      if (result != -1) {
-        min_coin = std::min(min_coin, result + 1);
-      }
-    }
-
-    // Store result in memo
-    memo[amount] = (min_coin == std::numeric_limits<int>::max()) ? -1 : min_coin;
-
-    return memo[amount];
   }
 };
