@@ -2,7 +2,7 @@
 
 #include <vector>
 
-// A more modern approach
+// A more modern approach - without memoization
 class backtrackSolution {
 public:
   int change(const int amount, const std::vector<int>& coins) {
@@ -40,6 +40,39 @@ private:
     total_ways += backtrack(amount, index + 1uz, coins);
 
     return total_ways;
+  }
+};
+
+// DP Top Down - Memoization
+class DPTopDownSolution {
+public:
+  int change(const int amount, const std::vector<int>& coins) {
+    memo.assign(coins.size(), std::vector<int>(amount + 1, -1));
+    return changeHelper(amount, 0uz, coins);
+  }
+
+private:
+  std::vector<std::vector<int>> memo;
+  int changeHelper(const int amount, const std::size_t index, const std::vector<int>& coins) {
+    // Base cases
+    if (amount == 0) return 1;
+    if (amount < 0 || index >= coins.size()) return 0;
+
+    if (memo[index][amount] != -1) return memo[index][amount];
+
+    auto total_ways{0};
+
+    // Decision 1: Stay with current coin
+    if (auto sub_amount = amount - coins[index]; sub_amount >= 0) {
+      total_ways += changeHelper(sub_amount, index, coins);
+    }
+
+    // Decision 2: Move to next coin
+    total_ways += changeHelper(amount, index + 1uz, coins);
+
+    memo[index][amount] = total_ways;
+
+    return memo[index][amount];
   }
 };
 

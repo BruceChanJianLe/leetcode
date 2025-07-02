@@ -11,11 +11,27 @@ struct States {
 class CoinChangeIITest : public ::testing::TestWithParam<States> {
 protected:
   Solution s;
+  backtrackSolution bt_s;
+  DPTopDownSolution dp_td_s;
 };
 
-TEST_P(CoinChangeIITest, HandlesCoinChangeCombinations) {
+TEST_P(CoinChangeIITest, CoinChangeIITestCase) {
   const auto &param = GetParam();
   auto result = s.change(param.amount, param.coins);
+  EXPECT_EQ(result, param.result);
+}
+
+// // Commented as it is very slow
+// // Backtracking decision tree
+// TEST_P(CoinChangeIITest, backtrackCoinChangeIITestCase) {
+//   const auto &param = GetParam();
+//   auto result = bt_s.change(param.amount, param.coins);
+//   EXPECT_EQ(result, param.result);
+// }
+
+TEST_P(CoinChangeIITest, DPTopDownCoinChangeIITestCase) {
+  const auto &param = GetParam();
+  auto result = dp_td_s.change(param.amount, param.coins);
   EXPECT_EQ(result, param.result);
 }
 
