@@ -8,19 +8,19 @@ public:
       if (s.size() != t.size()) return false;
 
       std::unordered_map<char, int> store;
-      for (auto itr : s)
+      for (const auto& itr : s)
       {
         ++store[itr];
       }
 
-      for (auto itr : t)
+      for (const auto& itr : t)
       {
         --store[itr];
       }
 
-      for (auto itr : store)
+      for (const auto& [_, v] : store)
       {
-        if (itr.second != 0) return false;
+        if (v != 0) return false;
       }
 
       return true;
