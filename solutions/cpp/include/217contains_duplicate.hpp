@@ -9,9 +9,9 @@ public:
   bool containsDuplicate(std::vector<int> &nums)
   {
     std::unordered_set<int> record;
-    for (auto& e : nums)
+    for (auto& num : nums)
     {
-      if (!record.insert(e).second) return true;
+      if (!record.insert(num).second) return true;
     }
     return false;
   }
