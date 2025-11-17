@@ -14,16 +14,16 @@ public:
     // Sort and store in records
     for (const auto& str : strs)
     {
-      std::string sorted_str = str;
+      std::string sorted_str{str};
       std::sort(sorted_str.begin(), sorted_str.end());
       records[sorted_str].push_back(str);
     }
 
     // Create result
     std::vector<std::vector<std::string>> result;
-    for (const auto& record : records)
+    for (const auto& [_, v] : records)
     {
-      result.push_back(record.second);
+      result.push_back(v);
     }
 
     return result;
