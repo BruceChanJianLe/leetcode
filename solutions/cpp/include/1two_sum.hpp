@@ -2,6 +2,7 @@
 #include <fmt/core.h>
 #include <ranges>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 #include <iostream>
 
@@ -49,6 +50,31 @@ public:
     //         --index_large;
     // }
     return {};
+  }
+
+  // Attempt 4, with xing yu, jia min and elizabeth
+  std::vector<int> twoSumAttempt4(std::vector<int> &nums, int target) {
+    std::vector<std::pair<int, int>> records;
+
+    for (auto index = 0; index < nums.size(); ++index) {
+      records.emplace_back(nums[index], index);
+    }
+
+    std::sort(records.begin(), records.end());
+
+    int left{0}, right{static_cast<int>(nums.size()) - 1};
+
+    while (left < right) {
+      if (auto sum = records[left].first + records[right].first; sum == target) {
+        break;
+      } else if (sum > target) {
+        --right;
+      } else {
+        ++left;
+      }
+    }
+
+    return {records[left].second, records[right].second};
   }
 
 // How to use iota_view to generate index (ascending)

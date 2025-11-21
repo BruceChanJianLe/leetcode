@@ -26,6 +26,14 @@ TEST_P(TwoSumTest, TwoSumCases)
   EXPECT_EQ(result, as.result);
 }
 
+TEST_P(TwoSumTest, TwoSum4Cases)
+{
+  auto as = GetParam();
+  auto result = s.twoSumAttempt4(as.nums, as.target);
+  std::sort(result.begin(), result.end());
+  EXPECT_EQ(result, as.result);
+}
+
 INSTANTIATE_TEST_CASE_P(Default, TwoSumTest,
     testing::Values(
       States{{2, 7, 11, 15}, 9, {0, 1}},
