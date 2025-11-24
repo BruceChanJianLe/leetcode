@@ -5,6 +5,7 @@
 #include <vector>
 #include <ranges>
 #include <algorithm>
+#include <array>
 
 class Solution {
 public:
@@ -74,5 +75,37 @@ public:
       }
     }
     return results;
+  }
+};
+
+// Create a hash key from the string
+class HashKeySolution {
+public:
+  std::vector<std::vector<std::string>>
+  groupAnagrams(std::vector<std::string> &strs) {
+    std::unordered_map<std::string, std::vector<std::string>> records;
+
+    for (const auto& str : strs) {
+      std::array<int, 26> tokens{};
+      for (const auto& c : str) {
+        ++tokens[c - 'a'];
+      }
+
+      // Create key
+      std::string key;
+      for (const auto& token : tokens) {
+        key += '#' + std::to_string(token);
+      }
+
+      records[key].emplace_back(str);
+    }
+
+    std::vector<std::vector<std::string>> result;
+
+    for (const auto& [_, record] : records) {
+      result.emplace_back(record);
+    }
+
+    return result;
   }
 };
