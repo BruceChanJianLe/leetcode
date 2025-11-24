@@ -7,6 +7,7 @@
 #include <vector>
 // Second Solution
 #include <queue>
+#include <ranges>
 
 class Solution {
 public:
@@ -56,8 +57,11 @@ public:
     std::partial_sort(sorted_records.begin(), sorted_records.begin() + k, sorted_records.end(), std::greater<std::pair<int, int>>{});
 
     std::vector<int> result;
-    for (int i = 0; i < k; ++i) {
-      result.emplace_back(sorted_records[i].second);
+    // for (int i = 0; i < k; ++i) {
+    //   result.emplace_back(sorted_records[i].second);
+    // }
+    for (const auto& [_, key] : sorted_records | std::views::take(k)) {
+      result.emplace_back(key);
     }
 
     return result;
