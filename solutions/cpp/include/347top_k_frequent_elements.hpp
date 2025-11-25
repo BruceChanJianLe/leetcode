@@ -60,6 +60,8 @@ public:
     // for (int i = 0; i < k; ++i) {
     //   result.emplace_back(sorted_records[i].second);
     // }
+
+    // A more modern approach
     for (const auto& [_, key] : sorted_records | std::views::take(k)) {
       result.emplace_back(key);
     }
@@ -103,27 +105,35 @@ public:
     };
 
     std::vector<int> topKFrequent(std::vector<int>& nums, int k) {
-      std::vector<std::vector<int>> bucket(nums.size() + 1); // has to be more that the size by one
-                                                             // Note that freq 0 will never be used
       std::unordered_map<int, int> records;
-
       for (const auto &num : nums) {
         ++records[num];
       }
 
+      std::vector<std::vector<int>> buckets(nums.size() + 1); // has to be more that the size by one
+                                                             // Note that freq 0 will never be used
       for (const auto &[num, freq] : records) {
-        bucket[freq].push_back(num);
+        buckets[freq].push_back(num);
       }
 
       std::vector<int> result;
-      for(auto it1 = bucket.rbegin(); it1 != bucket.rend() && k > 0; ++it1)
-      {
-        if (it1->size() > 0)
-        {
-          for (auto it2 = it1->begin(); it2 != it1->end() && k > 0; ++it2)
-          {
-            result.push_back(*it2);
-            --k;
+      // for(auto it1 = bucket.rbegin(); it1 != bucket.rend() && k > 0; ++it1)
+      // {
+      //   if (it1->size() > 0)
+      //   {
+      //     for (auto it2 = it1->begin(); it2 != it1->end() && k > 0; ++it2)
+      //     {
+      //       result.push_back(*it2);
+      //       --k;
+      //     }
+      //   }
+      // }
+
+      // A more modern approach
+      for (const auto& bucket : buckets | std::views::reverse) {
+        if (result.size() != k && !bucket.empty()) {
+          for (const auto& key : bucket) {
+            result.emplace_back(key);
           }
         }
       }
