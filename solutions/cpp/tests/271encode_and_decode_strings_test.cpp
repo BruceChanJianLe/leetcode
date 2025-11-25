@@ -10,12 +10,20 @@ struct States
 struct EncodeAndDecodeStringTest : public testing::Test, testing::WithParamInterface<States>
 {
   Solution s;
+  PracticeSolution ps;
 };
 
 TEST_P(EncodeAndDecodeStringTest, EncodeAndDecodeStringCases)
 {
   auto as = GetParam();
   auto result = s.decode(s.encode(as.strs));
+  EXPECT_EQ(result, as.strs);
+}
+
+TEST_P(EncodeAndDecodeStringTest, PracticeEncodeAndDecodeStringCases)
+{
+  auto as = GetParam();
+  auto result = ps.decode(ps.encode(as.strs));
   EXPECT_EQ(result, as.strs);
 }
 

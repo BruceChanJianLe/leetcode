@@ -40,3 +40,36 @@ public:
     return result;
   }
 };
+
+
+class PracticeSolution {
+public:
+  std::string encode(std::vector<std::string> &strs) {
+    std::string result;
+    for (const auto& str : strs) {
+      result += std::to_string(str.size()) + '^' + str;
+    }
+    return result;
+  }
+
+  std::vector<std::string> decode(std::string str) {
+    std::vector<std::string> result;
+    int i{0};
+
+    while (i < str.size()) {
+      // Find the delimiter position '^'
+      int delim_pose = str.find('^', i);
+
+      // Extract length
+      int length = std::stoi(str.substr(i, delim_pose - i));
+
+      // Extract the string of that length
+      result.emplace_back(str.substr(delim_pose + 1, length));
+
+      // Move to next encoded string position
+      i = delim_pose + 1 + length;
+    }
+
+    return result;
+  }
+};
