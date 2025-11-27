@@ -93,16 +93,17 @@ public:
 class ThirdSolution {
 public:
   std::vector<int> productExceptSelf(const std::vector<int>& num) {
-    std::vector<int> prefix(num.size());
-    std::vector<int> suffix(num.size());
-    std::vector<int> result(num.size());
-
     // Calculate prefix
-    std::exclusive_scan(num.begin(), num.end(), prefix.begin(), 1, std::multiplies<>{});
+    std::vector<int> prefix(num.size());
+    std::exclusive_scan(num.cbegin(), num.cend(), prefix.begin(), 1, std::multiplies<>{});
+
     // Calculate suffix
-    std::exclusive_scan(num.rbegin(), num.rend(), suffix.rbegin(), 1, std::multiplies<>{});
+    std::vector<int> suffix(num.size());
+    std::exclusive_scan(num.crbegin(), num.crend(), suffix.rbegin(), 1, std::multiplies<>{});
+
     // Calculate result
-    std::transform(prefix.begin(), prefix.end(), suffix.begin(), result.begin(), std::multiplies<>{});
+    std::vector<int> result(num.size());
+    std::transform(prefix.cbegin(), prefix.cend(), suffix.cbegin(), result.begin(), std::multiplies<>{});
 
     return result;
   }
@@ -114,9 +115,9 @@ public:
     std::vector<int> result(num.size(), 1);
 
     // Calculate prefix
-    ::exclusive_scan(num.begin(), num.end(), result.begin(), 1, std::multiplies<>{});
+    ::exclusive_scan(num.cbegin(), num.cend(), result.begin(), 1, std::multiplies<>{});
     // Calculate suffix
-    ::exclusive_scan(num.rbegin(), num.rend(), result.rbegin(), 1, std::multiplies<>{});
+    ::exclusive_scan(num.crbegin(), num.crend(), result.rbegin(), 1, std::multiplies<>{});
 
     return result;
   }
