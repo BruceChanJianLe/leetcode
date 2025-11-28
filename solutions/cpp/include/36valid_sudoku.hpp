@@ -1,19 +1,52 @@
 #pragma once
 
+#include <algorithm>
+#include <array>
 #include <iostream>
 #include <ranges>
 #include <unordered_set>
+#include <utility>
 #include <vector>
 
 class Solution {
 public:
   bool isValidSudoku(std::vector<std::vector<char>> &board) {
+    // Generic appoarch, however, we do know that sudoku is always
+    // 9x9, for a faster version please refer to NonLazySolution
     std::vector<std::unordered_set<char>> record_rows(board.size()),
         record_cols(board.size()), record_boxes(board.size());
 
     for (const auto &[row, col] : std::views::cartesian_product(
              std::views::iota(0u, board.size()),
              std::views::iota(0u, board.front().size()))) {
+      // Obtain element
+      if (const auto &e = board[row][col]; '.' != e) {
+        // Verify the element has not appear before
+        if (!record_rows[row].insert(e).second ||
+            !record_cols[col].insert(e).second ||
+            !record_boxes[(row / 3) * 3 + col / 3].insert(e).second)
+          return false;
+      }
+    }
+    return true;
+  }
+};
+
+class NonLazySolution {
+public:
+  bool isValidSudoku(std::vector<std::vector<char>> &board) {
+    // Since we know sudoku is always 9x9, let generate the index first
+    // We do this to avoid lazy evaluation
+    std::array<std::pair<int, int>, 81> indexes;
+    std::ranges::copy(
+        std::views::cartesian_product(
+          std::views::iota(0, 9), std::views::iota(0, 9)),
+        indexes.begin());
+
+    std::vector<std::unordered_set<char>> record_rows(board.size()),
+        record_cols(board.size()), record_boxes(board.size());
+
+    for (const auto &[row, col] : indexes) {
       // Obtain element
       if (const auto &e = board[row][col]; '.' != e) {
         // Verify the element has not appear before

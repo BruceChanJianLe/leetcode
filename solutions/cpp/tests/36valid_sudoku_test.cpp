@@ -9,14 +9,21 @@ struct States {
   bool result;
 };
 
-struct ValidSudokuTest : public ::testing::Test,
-                         ::testing::WithParamInterface<States> {
+struct ValidSudokuTest : public ::testing::Test, ::testing::WithParamInterface<States>
+{
   Solution s;
+  NonLazySolution nls;
 };
 
 TEST_P(ValidSudokuTest, ValidSudokuCases) {
   auto as = GetParam();
   auto result = s.isValidSudoku(as.board);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(ValidSudokuTest, NonLazyValidSudokuCases) {
+  auto as = GetParam();
+  auto result = nls.isValidSudoku(as.board);
   EXPECT_EQ(result, as.result);
 }
 
