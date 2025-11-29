@@ -34,7 +34,9 @@ OutputIt exclusive_scan(InputIt first, InputIt last, OutputIt d_first,
 
   T temp = init;
   for (; first != last; ++first) {
-    *d_first++ = *d_first * temp;
+    // execute binary_op also with the OutputIt
+    // ordinary exclusive_scan does not have this
+    *d_first++ = binary_op(*d_first, temp);
     temp = binary_op(temp, *first);
   }
   return d_first;
