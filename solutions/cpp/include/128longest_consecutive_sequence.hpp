@@ -10,18 +10,21 @@ public:
   int longestConsecutive(std::vector<int> &nums) {
     std::unordered_set<int> records(nums.size());
     records.insert(nums.begin(), nums.end());
+    int max{0};
 
-    int max = 0;
-    auto record_size = records.size();
-    for (const auto &record : records) {
-      if (records.find(record - 1) == records.end()) {
-        auto suffix = record + 1;
-        int curr_max = 1;
-        while (records.find(suffix) != records.end()) {
-          ++curr_max;
-          ++suffix;
+    for (const auto& num : nums) {
+      // For c++17
+      // if (records.find(record - 1) == records.end()) {
+      // For c++20
+      if (!records.contains(num - 1)) {
+        auto length = 1;
+        // For c++17
+        // while (records.find(suffix) != records.end()) {
+        // For c++20
+        while (records.contains(num + length)) {
+          ++length;
         }
-        max = std::max(max, curr_max);
+        max = std::max(max, length);
       }
     }
     return max;
