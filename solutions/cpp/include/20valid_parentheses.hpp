@@ -31,6 +31,9 @@ class FirstSolution {
 public:
   bool isValid(std::string s) {
     std::vector<char> stack;
+    // Does not seem like require the size of whole string
+    stack.reserve(s.size() * 0.5);
+
     for (const auto &brace : s) {
       switch (brace) {
       case ')':
@@ -63,10 +66,6 @@ public:
       }
     }
 
-    if (stack.empty()) {
-      return true;
-    } else {
-      return false;
-    }
+    return stack.empty();
   }
 };
