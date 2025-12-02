@@ -87,3 +87,61 @@ public:
     return stack.top();
   }
 };
+
+// A solution after revisiting this question
+class RevisitSolution {
+public:
+  int evalRPN(std::vector<std::string>& tokens) {
+    std::vector<int> stack; stack.reserve(tokens.size());
+
+    for (const auto& token : tokens) {
+      switch (token.front()) {
+        case '+':
+          {
+            auto right = stack.back();
+            stack.pop_back();
+            auto left = stack.back();
+            stack.pop_back();
+            stack.push_back(left + right);
+          }
+          break;
+
+        case '*':
+          {
+            auto right = stack.back();
+            stack.pop_back();
+            auto left = stack.back();
+            stack.pop_back();
+            stack.push_back(left * right);
+          }
+          break;
+
+        case '/':
+          {
+            auto right = stack.back();
+            stack.pop_back();
+            auto left = stack.back();
+            stack.pop_back();
+            stack.push_back(left / right);
+          }
+          break;
+
+        case '-':
+          if (token.size() == 1)
+          {
+            auto right = stack.back();
+            stack.pop_back();
+            auto left = stack.back();
+            stack.pop_back();
+            stack.push_back(left - right);
+            break;
+          }
+
+        default:
+          stack.push_back(std::stoi(token));
+      }
+    }
+
+    return stack.back();
+  }
+};

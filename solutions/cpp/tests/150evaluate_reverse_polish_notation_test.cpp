@@ -13,6 +13,7 @@ struct EvaluateReversePolishNotationTest
 {
   Solution s;
   FirstSolution fs;
+  RevisitSolution rs;
 };
 
 TEST_P(EvaluateReversePolishNotationTest, EvaluateReversePolishNotationCase)
@@ -26,6 +27,13 @@ TEST_P(EvaluateReversePolishNotationTest, FirstEvaluateReversePolishNotationCase
 {
   auto as = GetParam();
   auto result = fs.evalRPN(as.tokens);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(EvaluateReversePolishNotationTest, NewEvaluateReversePolishNotationCase)
+{
+  auto as = GetParam();
+  auto result = rs.evalRPN(as.tokens);
   EXPECT_EQ(result, as.result);
 }
 
