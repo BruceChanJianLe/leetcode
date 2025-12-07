@@ -511,6 +511,13 @@ add_executable(876middle_of_the_linked_list_test ./876middle_of_the_linked_list_
 target_link_libraries(876middle_of_the_linked_list_test gtest_main)
 target_include_directories(876middle_of_the_linked_list_test PRIVATE ../include)
 
+# ==================================================================
+
+# 912 sort an array test
+add_executable(912sort_an_array_test ./912sort_an_array_test.cpp)
+target_link_libraries(912sort_an_array_test gtest_main)
+target_include_directories(912sort_an_array_test PRIVATE ../include)
+
 # 981 time based key value store test
 add_executable(981time_based_key_value_store_test ./981time_based_key_value_store_test.cpp)
 target_link_libraries(981time_based_key_value_store_test gtest_main)
@@ -664,6 +671,8 @@ add_test(NAME 746min_cost_climbing_stairs_test COMMAND 746min_cost_climbing_stai
 add_test(NAME 853car_fleet_test COMMAND 853car_fleet_test)
 add_test(NAME 875koko_eating_bananas_test COMMAND 875koko_eating_bananas_test)
 add_test(NAME 876middle_of_the_linked_list_test COMMAND 876middle_of_the_linked_list_test)
+
+add_test(NAME 912sort_an_array_test COMMAND 912sort_an_array_test)
 add_test(NAME 981time_based_key_value_store_test COMMAND 981time_based_key_value_store_test)
 
 add_test(NAME 1448count_good_nodes_in_binary_tree_test COMMAND 1448count_good_nodes_in_binary_tree_test)
