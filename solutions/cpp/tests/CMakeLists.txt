@@ -344,6 +344,11 @@ target_include_directories(213house_robber_ii_test PRIVATE ../include)
 
 # ==================================================================
 
+# 215 kth largest element in an array test
+add_executable(215kth_largest_element_in_an_array_test ./215kth_largest_element_in_an_array_test.cpp)
+target_link_libraries(215kth_largest_element_in_an_array_test gtest_main)
+target_include_directories(215kth_largest_element_in_an_array_test PRIVATE ../include)
+
 # 217 contains duplicate test
 add_executable(217contains_duplicate_test ./217contains_duplicate_test.cpp)
 target_link_libraries(217contains_duplicate_test gtest_main)
@@ -619,6 +624,7 @@ add_test(NAME 211design_add_and_search_words_data_structure_test COMMAND 211desi
 add_test(NAME 212word_search_ii_test COMMAND 212word_search_ii_test)
 add_test(NAME 213house_robber_ii_test COMMAND 213house_robber_ii_test)
 
+add_test(NAME 215kth_largest_element_in_an_array_test COMMAND 215kth_largest_element_in_an_array_test)
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
 add_test(NAME 226invert_binary_tree_test COMMAND 226invert_binary_tree_test)
 
