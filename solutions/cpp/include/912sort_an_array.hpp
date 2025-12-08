@@ -126,3 +126,63 @@ private:
     return pivot_index;
   }
 };
+
+
+class RecursiveMergeSortSolution {
+public:
+  std::vector<int> sortArray(std::vector<int>& nums) {
+    if (nums.size() > 1) {
+      mergeSort(nums, 0, nums.size() - 1);
+    }
+    return nums;
+  }
+
+private:
+  void mergeSort(std::vector<int>& nums, int lo, int hi) {
+    // Base case
+    if (lo >= hi) return;
+
+    // Calculate mid point
+    const auto mid = lo + (hi - lo) / 2;
+    // Sort two halves
+    mergeSort(nums, lo, mid);
+    mergeSort(nums, mid + 1, hi);
+
+    // Merge two halves
+    merge(nums, lo, mid, hi);
+  }
+
+  void merge(std::vector<int>& nums, int lo, int mid, int hi) {
+    // const auto left_size = mid - lo + 1;
+    // const auto right_size = hi - mid;
+
+    std::vector<int> left_vec(nums.begin() + lo, nums.begin() + mid + 1);
+    std::vector<int> right_vec(nums.begin() + mid + 1, nums.begin() + hi + 1);
+
+    int left{}, right{}, index{lo};
+    while (left < left_vec.size() && right < right_vec.size()) {
+      if (left_vec[left] <= right_vec[right]) {
+        nums[index] = left_vec[left];
+        ++left;
+      } else {
+        nums[index] = right_vec[right];
+        ++right;
+      }
+      ++index;
+    }
+
+    // Copy remaining elements of left_vec
+    while (left < left_vec.size()) {
+      nums[index] = left_vec[left];
+      ++left;
+      ++index;
+    }
+
+    // Copy remaining elements of right_vec
+    while (right < right_vec.size()) {
+      nums[index] = right_vec[right];
+      ++right;
+      ++index;
+    }
+  }
+};
