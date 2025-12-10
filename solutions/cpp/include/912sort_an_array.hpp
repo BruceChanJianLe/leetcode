@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <utility>
 #include <vector>
 
@@ -185,4 +186,41 @@ private:
       ++index;
     }
   }
+};
+
+// Use iterators with bubble sort
+class ItrBubbleSortSolution {
+public:
+  std::vector<int> sortArray(std::vector<int>& nums) {
+    bubbleSort(nums.begin(), nums.end());
+    return nums;
+  }
+
+private:
+  template<typename Iterator>
+    void bubbleSort(Iterator begin, Iterator end) {
+      // Sanity check
+      if (begin == end) return;
+
+      bool swapped{false};
+      auto last = end;
+
+      do {
+        swapped = false;
+        // Two pointers
+        auto curr = begin;
+        auto next = begin;
+        ++next;
+
+        while (next !=  last) {
+          if (*curr > *next) {
+            std::iter_swap(curr, next);
+            swapped = true;
+          }
+          ++curr;
+          ++next;
+        }
+        --last;
+      } while (swapped && last != end);
+    }
 };
