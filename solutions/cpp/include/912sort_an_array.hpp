@@ -224,3 +224,38 @@ private:
       } while (swapped && last != end);
     }
 };
+
+// Use iterators with bubble sort
+class ItrInsertionSortSolution {
+public:
+  std::vector<int> sortArray(std::vector<int>& nums) {
+    InsertionSort(nums.begin(), nums.end());
+    return nums;
+  }
+
+private:
+  template<typename Iterator>
+    void InsertionSort(Iterator begin, Iterator end) {
+      // Sanity check
+      if (begin == end) return;
+
+      for (auto curr = begin; curr != end; ++curr) {
+        auto curr_val = *curr;
+        auto insert_pose = curr;
+        while (insert_pose != begin) {
+          auto prev = insert_pose;
+          --prev;
+
+          if (*prev <= curr_val) {
+            break;
+          }
+
+          // Shift to the right
+          *insert_pose = *prev;
+          insert_pose = prev;
+        }
+
+        *insert_pose = curr_val;
+      }
+    }
+};

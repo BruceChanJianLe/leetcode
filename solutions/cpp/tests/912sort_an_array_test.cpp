@@ -13,6 +13,7 @@ struct SortArrayTest : public ::testing::TestWithParam<States>{
   RecursiveQuickSortMidSolution rqsms;
   RecursiveMergeSortSolution rmss;
   ItrBubbleSortSolution ibss;
+  ItrInsertionSortSolution isss;
 };
 
 TEST_P(SortArrayTest, RecursiveQuickSortLastSolutionTests) {
@@ -43,6 +44,12 @@ TEST_P(SortArrayTest, ItrBubbleSortSolutionTests) {
     auto as = GetParam();
     std::vector<int> temp = as.nums;
     EXPECT_EQ(ibss.sortArray(temp), as.result);
+}
+
+TEST_P(SortArrayTest, ItrInsertionSortSolutionTests) {
+    auto as = GetParam();
+    std::vector<int> temp = as.nums;
+    EXPECT_EQ(isss.sortArray(temp), as.result);
 }
 
 INSTANTIATE_TEST_SUITE_P(Default, SortArrayTest,
