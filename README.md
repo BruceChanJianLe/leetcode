@@ -41,6 +41,7 @@ To login to leetcode.nvim, you will need to:
 | 155 | Min Stack | ✅ | [Solution](./solutions/cpp/include/155min_stack.hpp) | [Test](./solutions/cpp/tests/155min_stack_test.cpp) | Stack | [Link](https://leetcode.com/problems/min-stack/) | 🟠
 | 167 | Two Sum II - Input Array Is Sorted | ✅ | [Solution](./solutions/cpp/include/167two_sum_ii.hpp) | [Test](./solutions/cpp/tests/167two_sum_ii_test.cpp) | Two Pointers | [Link](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | 🟠
 | 206 | Reverse Linked List | ✅ | [Solution](./solutions/cpp/include/206reverse_linked_list.hpp) | [Test](./solutions/cpp/tests/206reverse_linked_list_test.cpp) | Linked List | [Link](https://leetcode.com/problems/reverse-linked-list/) | 🟢
+| 215 | Kth Largest Element In An Array | ✅ | [Solution](./solutions/cpp/include/215kth_largest_element_in_an_array.hpp) | [Test](./solutions/cpp/tests/215kth_largest_element_in_an_array_test.cpp) | Others | [Link](https://leetcode.com/problems/kth-largest-element-in-an-array/) | 🟠
 | 217 | Contains Duplicate | ✅ | [Solution](./solutions/cpp/include/217contains_duplicate.hpp) | [Test](./solutions/cpp/tests/217contains_duplicate_test.cpp) | Arrays & Hashing | [Link](https://leetcode.com/problems/contains-duplicate/) | 🟢
 | 238 | Product Of Array Except Self | ✅ | [Solution](./solutions/cpp/include/238product_of_array_except_self.hpp) | [Test](./solutions/cpp/tests/238product_of_array_except_self_test.cpp) | Arrays & Hashing | [Link](https://leetcode.com/problems/product-of-array-except-self/) | 🟠
 | 239 | Sliding Window Maximum | ✅ | [Solution](./solutions/cpp/include/239sliding_window_maximum.hpp) | [Test](./solutions/cpp/tests/239sliding_window_maximum_test.cpp) | Sliding Window | [Link](https://leetcode.com/problems/sliding-window-maximum/) | 🔴
@@ -56,6 +57,7 @@ To login to leetcode.nvim, you will need to:
 | 853 | Car Fleet | ✅ | [Solution](./solutions/cpp/include/853car_fleet.hpp) | [Test](./solutions/cpp/tests/853car_fleet_test.cpp) | Stack | [Link](https://leetcode.com/problems/car-fleet/) | 🟠
 | 875 | Koko Eating Bananas | ✅ | [Solution](./solutions/cpp/include/875koko_eating_bananas.hpp) | [Test](./solutions/cpp/tests/875koko_eating_bananas_test.cpp) | Binary Search | [Link](https://leetcode.com/problems/koko-eating-bananas/) | 🟠
 | 876 | Middle Of The Linked List | ✅ | [Solution](./solutions/cpp/include/876middle_of_the_linked_list.hpp) | [Test](./solutions/cpp/tests/876middle_of_the_linked_list_test.cpp) | Linked List | [Link](https://leetcode.com/problems/middle-of-the-linked-list/) | 🟢
+| 912 | Sort An Array | ✅ | [Solution](./solutions/cpp/include/912sort_an_array.hpp) | [Test](./solutions/cpp/tests/912sort_an_array_test.cpp) | Others | [Link](https://leetcode.com/problems/sort-an-array/) | 🟠
 | 981 | Time Based Key Value Store | ✅ | [Solution](./solutions/cpp/include/981time_based_key_value_store.hpp) | [Test](./solutions/cpp/tests/981time_based_key_value_store_test.cpp) | Binary Search | [Link](https://leetcode.com/problems/time-based-key-value-store/) | 🟠
 
 
