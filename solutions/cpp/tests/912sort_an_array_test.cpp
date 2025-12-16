@@ -11,9 +11,15 @@ struct SortArrayTest : public ::testing::TestWithParam<States>{
   RecursiveQuickSortLastSolution rqsls;
   RecursiveQuickSortFirstSolution rqsfs;
   RecursiveQuickSortMidSolution rqsms;
+
   RecursiveMergeSortSolution rmss;
+  RecursiveSpanMergeSortSolution rsmss;
+
   ItrBubbleSortSolution ibss;
+
   ItrInsertionSortSolution isss;
+
+  STDHeapSortSolution shss;
 };
 
 TEST_P(SortArrayTest, RecursiveQuickSortLastSolutionTests) {
@@ -40,6 +46,12 @@ TEST_P(SortArrayTest, RecursiveMergeSortSolutionTests) {
     EXPECT_EQ(rmss.sortArray(temp), as.result);
 }
 
+TEST_P(SortArrayTest, RecursiveSpanMergeSortSolutionTests) {
+    auto as = GetParam();
+    std::vector<int> temp = as.nums;
+    EXPECT_EQ(rsmss.sortArray(temp), as.result);
+}
+
 TEST_P(SortArrayTest, ItrBubbleSortSolutionTests) {
     auto as = GetParam();
     std::vector<int> temp = as.nums;
@@ -50,6 +62,12 @@ TEST_P(SortArrayTest, ItrInsertionSortSolutionTests) {
     auto as = GetParam();
     std::vector<int> temp = as.nums;
     EXPECT_EQ(isss.sortArray(temp), as.result);
+}
+
+TEST_P(SortArrayTest, STDHeapSortSolutionTests) {
+    auto as = GetParam();
+    std::vector<int> temp = as.nums;
+    EXPECT_EQ(shss.sortArray(temp), as.result);
 }
 
 INSTANTIATE_TEST_SUITE_P(Default, SortArrayTest,

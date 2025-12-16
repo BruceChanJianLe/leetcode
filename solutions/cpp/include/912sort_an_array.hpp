@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <utility>
 #include <vector>
+#include <span>
 
 // This chose the last element as the pivot point
 class RecursiveQuickSortLastSolution {
@@ -128,6 +129,65 @@ private:
   }
 };
 
+class RecursiveSpanMergeSortSolution {
+public:
+  std::vector<int> sortArray(std::vector<int>& nums) {
+    if (nums.size() > 1) {
+      mergeSort(nums);
+    }
+    return nums;
+  }
+
+private:
+  void mergeSort(std::span<int> nums) {
+    // Base case
+    if (nums.size() <= 1) return;
+
+    // Calculate mid point
+    const auto mid = nums.size() / 2;
+    // A view into the two halves
+    auto left_num = nums.subspan(0, mid);
+    auto right_num = nums.subspan(mid);
+
+    // Sort two halves
+    mergeSort(left_num);
+    mergeSort(right_num);
+
+    // Merge two halves
+    merge(nums, left_num, right_num);
+  }
+
+  void merge(std::span<int> nums, std::span<int> left_num, std::span<int> right_num) {
+    std::vector<int> left_vec(left_num.begin(), left_num.end());
+    std::vector<int> right_vec(right_num.begin(), right_num.end());
+
+    int left{}, right{}, index{};
+    while (left < left_vec.size() && right < right_vec.size()) {
+      if (left_vec[left] <= right_vec[right]) {
+        nums[index] = left_vec[left];
+        ++left;
+      } else {
+        nums[index] = right_vec[right];
+        ++right;
+      }
+      ++index;
+    }
+
+    // Copy remaining elements of left_vec
+    while (left < left_vec.size()) {
+      nums[index] = left_vec[left];
+      ++left;
+      ++index;
+    }
+
+    // Copy remaining elements of right_vec
+    while (right < right_vec.size()) {
+      nums[index] = right_vec[right];
+      ++right;
+      ++index;
+    }
+  }
+};
 
 class RecursiveMergeSortSolution {
 public:
@@ -258,4 +318,15 @@ private:
         *insert_pose = curr_val;
       }
     }
+};
+
+// Using standard library to implement heap sort
+class STDHeapSortSolution {
+public:
+  std::vector<int> sortArray(std::vector<int>& nums) {
+    std::make_heap(nums.begin(), nums.end());
+    std::sort_heap(nums.begin(), nums.end());
+
+    return nums;
+  }
 };
