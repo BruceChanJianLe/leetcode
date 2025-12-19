@@ -4,6 +4,48 @@
 #include <utility>
 #include <vector>
 #include <span>
+#include <random>
+
+// Optimized by Gemini, randomize the pivot selection
+// and skip all elements that are the same as pivot
+class OptimizedRecursiveQuickSortSolution {
+public:
+  std::vector<int> sortArray(std::vector<int>& nums) {
+    if (nums.size() > 1) {
+      quickSort(std::span<int>(nums));
+    }
+    return nums;
+  }
+
+private:
+  void quickSort(std::span<int> nums) {
+    if (nums.size() <= 1) return;
+
+    // 1. Choose a truly random pivot to avoid worst-case test cases
+    static std::mt19937 rng(std::random_device{}());
+    std::uniform_int_distribution<size_t> dist(0, nums.size() - 1);
+    int pivot = nums[dist(rng)];
+
+    // 2. Three-Way Partitioning (Dutch National Flag)
+    size_t lt = 0;           // Elements < pivot
+    size_t i = 0;            // Current element
+    size_t gt = nums.size(); // Elements > pivot (using size for unsigned bounds)
+
+    while (i < gt) {
+      if (nums[i] < pivot) {
+        std::swap(nums[i++], nums[lt++]);
+      } else if (nums[i] > pivot) {
+        std::swap(nums[i], nums[--gt]);
+      } else {
+        i++;
+      }
+    }
+
+    // 3. Recurse ONLY on the < and > parts (skip all == pivot elements)
+    quickSort(nums.subspan(0, lt));
+    quickSort(nums.subspan(gt));
+  }
+};
 
 // This chose the last element as the pivot point
 class RecursiveQuickSortLastSolution {
@@ -129,6 +171,69 @@ private:
   }
 };
 
+// Optimized by Gemini
+// create a buffer to be reused, merge sort's hiccup comes from extra space
+class OptimizedRecursiveMergeSortSolution {
+public:
+  std::vector<int> sortArray(std::vector<int>& nums) {
+    if (nums.size() <= 1) return nums;
+
+    // 1. Allocate a single temporary buffer to reuse across all merges
+    std::vector<int> buffer(nums.size());
+
+    // 2. Start the recursive merge sort
+    // We pass the data (nums) and the workspace (buffer) as spans
+    mergeSort(std::span<int>(nums), std::span<int>(buffer));
+
+    return nums;
+  }
+
+private:
+  void mergeSort(std::span<int> nums, std::span<int> buffer) {
+    if (nums.size() <= 1) return;
+
+    const size_t mid = nums.size() / 2;
+
+    // Use subspan to split the views without copying any data
+    auto left_nums = nums.subspan(0, mid);
+    auto right_nums = nums.subspan(mid);
+    auto left_buf = buffer.subspan(0, mid);
+    auto right_buf = buffer.subspan(mid);
+
+    // Recursive calls
+    mergeSort(left_nums, left_buf);
+    mergeSort(right_nums, right_buf);
+
+    // Merge the results using the pre-allocated buffer
+    merge(nums, left_nums, right_nums, buffer);
+  }
+
+  void merge(std::span<int> target, std::span<int> left, std::span<int> right, std::span<int> buffer) {
+    // Copy the current sorted halves into our temporary buffer workspace
+    // This is the ONLY copy per merge level
+    std::copy(left.begin(), left.end(), buffer.begin());
+    std::copy(right.begin(), right.end(), buffer.begin() + left.size());
+
+    // Re-view the buffer as two distinct sorted parts to merge back into target
+    auto b_left = buffer.subspan(0, left.size());
+    auto b_right = buffer.subspan(left.size());
+
+    size_t lp = 0, rp = 0, idx = 0;
+    while (lp < b_left.size() && rp < b_right.size()) {
+      if (b_left[lp] <= b_right[rp]) {
+        target[idx++] = b_left[lp++];
+      } else {
+        target[idx++] = b_right[rp++];
+      }
+    }
+
+    // Copy remaining elements
+    while (lp < b_left.size()) target[idx++] = b_left[lp++];
+    while (rp < b_right.size()) target[idx++] = b_right[rp++];
+  }
+};
+
+// Merge Sort using std::span
 class RecursiveSpanMergeSortSolution {
 public:
   std::vector<int> sortArray(std::vector<int>& nums) {
