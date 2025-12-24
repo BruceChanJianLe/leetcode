@@ -232,11 +232,9 @@ public:
       push_front(key, value);
       // check if capcity is reached
       if (lookup.size() > capacity) {
-        auto lru = tail;
-        detach(tail);
-        lookup.erase(lru->key);
+        lookup.erase(tail->key);
         // evit if so
-        delete lru;
+        pop_back();
       }
     }
   }
@@ -293,5 +291,13 @@ private:
   void move_to_front(Node* node) {
     detach(node);
     push_front(node);
+  }
+
+  void pop_back() {
+    if (tail) {
+      auto lru = tail;
+      detach(lru);
+      delete lru;
+    }
   }
 };
