@@ -197,3 +197,101 @@ private:
   // Referring to the description, only 3000 insert max
   std::uint_fast16_t capacity;
 };
+
+class LRUCache2 {
+public:
+  LRUCache2(const int _capacity)
+    : capacity{_capacity}
+    , head{nullptr}
+    , tail{nullptr}
+  {}
+
+  int get(int key) {
+    // if key exist
+    if (auto it = lookup.find(key); it != lookup.end()) {
+      auto [_, node] = *it;
+      // move to front
+      move_to_front(node);
+      // return value
+      return node->value;
+    }
+    // Otherwise return -1
+    return -1;
+  }
+
+  void put(int key, int value) {
+    // if key exist
+    if (auto it = lookup.find(key); it != lookup.end()) {
+      auto [_, node] = *it;
+      // update value
+      node->value = value;
+      // move to front
+      move_to_front(node);
+    } else {
+      // Otherwise, create new key
+      push_front(key, value);
+      // check if capcity is reached
+      if (lookup.size() > capacity) {
+        auto lru = tail;
+        detach(tail);
+        lookup.erase(lru->key);
+        // evit if so
+        delete lru;
+      }
+    }
+  }
+
+private:
+  struct Node {
+    int key, value;
+    Node *next, *prev;
+
+    Node(const int _key, const int _value)
+      : key{_key}, value{_value}, next{nullptr}, prev{nullptr} {}
+  };
+
+  int capacity;
+  Node *head, *tail;
+  std::unordered_map<int, Node*> lookup;
+
+  void detach(Node* node) {
+    if (node->next) {
+      node->next->prev = node->prev;
+    }
+
+    if (node->prev) {
+      node->prev->next = node->next;
+    }
+
+    if (head == node) {
+      head = head->next;
+    }
+
+    if (tail == node) {
+      tail = tail->prev;
+    }
+
+    node->next = node->prev = nullptr;
+  }
+
+  void push_front(const int key, const int value) {
+    auto node = new Node(key, value);
+    lookup.emplace(key, node);
+    push_front(node);
+  }
+
+  void push_front(Node* node) {
+    if (!head) {
+      head = tail = node;
+    } else {
+      node->next = head;
+      head->prev = node;
+      head = node;
+    }
+  }
+
+  void move_to_front(Node* node) {
+    detach(node);
+    push_front(node);
+  }
+};
