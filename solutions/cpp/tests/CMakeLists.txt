@@ -354,6 +354,13 @@ add_executable(217contains_duplicate_test ./217contains_duplicate_test.cpp)
 target_link_libraries(217contains_duplicate_test gtest_main)
 target_include_directories(217contains_duplicate_test PRIVATE ../include)
 
+# 219 contains duplicate ii test
+add_executable(219contains_duplicate_ii_test ./219contains_duplicate_ii_test.cpp)
+target_link_libraries(219contains_duplicate_ii_test gtest_main)
+target_include_directories(219contains_duplicate_ii_test PRIVATE ../include)
+
+# ==================================================================
+
 # 226 invert binary tree
 add_executable(226invert_binary_tree_test ./226invert_binary_tree_test.cpp)
 target_link_libraries(226invert_binary_tree_test gtest_main)
@@ -633,6 +640,8 @@ add_test(NAME 213house_robber_ii_test COMMAND 213house_robber_ii_test)
 
 add_test(NAME 215kth_largest_element_in_an_array_test COMMAND 215kth_largest_element_in_an_array_test)
 add_test(NAME 217contains_duplicate_test COMMAND 217contains_duplicate_test)
+add_test(NAME 219contains_duplicate_ii_test COMMAND 219contains_duplicate_ii_test)
+
 add_test(NAME 226invert_binary_tree_test COMMAND 226invert_binary_tree_test)
 
 add_test(NAME 230kth_smallest_element_in_a_bst_test COMMAND 230kth_smallest_element_in_a_bst_test)
