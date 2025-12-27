@@ -27,15 +27,15 @@ private:
       return;
     }
 
-    // Base case 2: not more candidates, or overshoot
-    if (nums.size() == 0 || target < 0) {
+    // Base case 2: not more candidates, and early termination check
+    if (nums.size() == 0 || nums.front() > target) {
       return;
     }
 
-    // Base case 3: Early termination
-    if (nums.front() > target) {
-      return;
-    }
+    // // Base case 3: Early termination
+    // if (nums.front() > target) {
+    //   return;
+    // }
 
     // Choose the curr candidate
     result.emplace_back(nums.front());
