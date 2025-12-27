@@ -4,9 +4,52 @@
 #include <span>
 #include <algorithm>
 
-// Another Backtracking Solution with Iteration
+// Another Backtracking Solution WITHOUT Iteration
 // key diff: this uses minus to target
 //           this uses span which faster since it's only a view
+// Note that input must be sorted
+
+class BTNSolution {
+public:
+  std::vector<std::vector<int>> combinationSum(std::vector<int>& nums, int target) {
+    std::vector<int> result{};
+    std::vector<std::vector<int>> results{};
+    std::sort(nums.begin(), nums.end());
+    backtrack(nums, target, result, results);
+    return results;
+  }
+
+private:
+  void backtrack(std::span<int> nums, int target, std::vector<int>& result, std::vector<std::vector<int>>& results) {
+    // Base case 1: perfect match
+    if (target == 0) {
+      results.push_back(result);
+      return;
+    }
+
+    // Base case 2: not more candidates, or overshoot
+    if (nums.size() == 0 || target < 0) {
+      return;
+    }
+
+    // Base case 3: Early termination
+    if (nums.front() > target) {
+      return;
+    }
+
+    // Choose the curr candidate
+    result.emplace_back(nums.front());
+    backtrack(nums, target - nums.front(), result, results);
+    // Don't choose the curr candidate
+    result.pop_back();
+    backtrack({nums.begin() + 1, nums.end()}, target, result, results);
+  }
+};
+
+// Another Backtracking Solution WITH Iteration
+// key diff: this uses minus to target
+//           this uses span which faster since it's only a view
+// Note that input must be sorted
 class BTSolution {
 public:
   std::vector<std::vector<int>> combinationSum(std::vector<int>& nums, int target) {
