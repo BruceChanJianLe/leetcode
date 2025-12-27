@@ -7,35 +7,33 @@
 class Solution {
 public:
   std::vector<int> twoSum(std::vector<int> &numbers, int target) {
-    int lp = numbers.size() - 1;
-    std::vector<int> index{0, lp};
-    int sum = numbers[index[0]] + numbers[index[1]];
-    while (sum != target)
-    {
-      if (sum > target)
-        --index[1];
-      else if (sum < target)
-        ++index[0];
-      sum = numbers[index[0]] + numbers[index[1]];
+    int lp = 0, rp = numbers.size() - 1;
+    int sum = numbers.front() + numbers.back();
+    while (sum != target) {
+      if (sum > target) {
+        --rp;
+      } else if (sum < target) {
+        ++lp;
+      }
+      sum = numbers[lp] + numbers[rp];
     }
-    return {index[0] + 1, index[1] + 1};
+    return {lp + 1, rp + 1};
   }
 };
 
 class FirstSolution {
 public:
   std::vector<int> twoSum(std::vector<int> &numbers, int target) {
-    int sp{0}, lp;
-    lp = numbers.size() - 1;
-    while (sp != lp)
+    int lp{0}, rp = numbers.size() - 1;
+    while (lp != rp)
     {
-      auto sum = numbers[sp] + numbers[lp];
+      auto sum = numbers[lp] + numbers[rp];
       if (sum > target)
-        --lp;
+        --rp;
       else if (sum < target)
-        ++sp;
+        ++lp;
       else
-        return {sp + 1, lp + 1};
+        return {lp + 1, rp + 1};
     }
     return {};
   }
