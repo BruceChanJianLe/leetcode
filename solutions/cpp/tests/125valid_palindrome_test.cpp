@@ -13,12 +13,20 @@ struct States
 struct ValidPalindromeTest : public testing::Test, testing::WithParamInterface<States>
 {
   Solution s;
+  ItrSolution is;
 };
 
 TEST_P(ValidPalindromeTest, ValidPalindromeCase)
 {
   auto as = GetParam();
   auto result = s.isPalindrome(as.input_string);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(ValidPalindromeTest, ItrValidPalindromeCase)
+{
+  auto as = GetParam();
+  auto result = is.isPalindrome(as.input_string);
   EXPECT_EQ(result, as.result);
 }
 
@@ -30,5 +38,6 @@ INSTANTIATE_TEST_SUITE_P(Default, ValidPalindromeTest,
       States{{"."}, true},
       States{{".,"}, true},
       States{{"0P"}, false},
-      States{{".,"}, true}
+      States{{".,"}, true},
+      States{{"a,"}, true}
     ));
