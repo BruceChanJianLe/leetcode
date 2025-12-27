@@ -1,7 +1,46 @@
 #pragma once
 
 #include <vector>
+#include <span>
 #include <algorithm>
+
+// Another Backtracking Solution with Iteration
+// key diff: this uses minus to target
+//           this uses span which faster since it's only a view
+class BTSolution {
+public:
+  std::vector<std::vector<int>> combinationSum(std::vector<int>& nums, int target) {
+    std::vector<std::vector<int>> results{};
+    std::vector<int> result{};
+    std::sort(nums.begin(), nums.end());
+    backtrack(nums, target, 0, result, results);
+    return results;
+  }
+
+private:
+  void backtrack(std::span<int> nums, int target, int start,
+      std::vector<int>& result, std::vector<std::vector<int>>& results) {
+    // Base case 1: perfect match
+    if (target == 0) {
+      results.push_back(result);
+      return;
+    }
+
+    // Base case 2: Overshoot
+    if (target < 0) {
+      return;
+    }
+
+    for (auto index = start; index < nums.size(); ++index) {
+      // Early termination condition since this is an sorted arrary
+      if (nums[index] > target) break;
+      result.emplace_back(nums[index]);
+      backtrack(nums, target - nums[index], index, result, results);
+      // Remove this choice
+      result.pop_back();
+    }
+  }
+};
 
 // Recursive
 class RSolution {

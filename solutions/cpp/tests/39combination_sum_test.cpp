@@ -13,6 +13,7 @@ class CombinationSumTest : public ::testing::TestWithParam<States> {
 protected:
   IRSolution is;
   RSolution rs;
+  BTSolution bts;
 
   static void normalize(std::vector<std::vector<int>>& v) {
     for (auto& comb : v) std::sort(comb.begin(), comb.end());
@@ -32,6 +33,15 @@ TEST_P(CombinationSumTest, RCombinationSumCase) {
 TEST_P(CombinationSumTest, IRCombinationSumCase) {
   States state = GetParam();
   auto result = is.combinationSum(state.candidates, state.target);
+  normalize(result);
+  auto expected = state.result;
+  normalize(expected);
+  EXPECT_EQ(result, expected);
+}
+
+TEST_P(CombinationSumTest, BTCombinationSumCase) {
+  States state = GetParam();
+  auto result = bts.combinationSum(state.candidates, state.target);
   normalize(result);
   auto expected = state.result;
   normalize(expected);
