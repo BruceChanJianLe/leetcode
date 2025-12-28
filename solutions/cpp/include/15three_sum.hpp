@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <span>
 #include <vector>
 
 // Iterator solution
@@ -62,5 +63,47 @@ public:
       }
     }
     return result;
+  }
+};
+
+// Note that recursive solution is very slow
+// O(n3)
+// Did NOT pass leetcode submission
+class RecursiveSolution {
+public:
+  std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
+    std::vector<int> result{};
+    std::vector<std::vector<int>> results{};
+    // Sort to ensure no duplicates
+    std::sort(nums.begin(), nums.end());
+    backtrack(nums, 0, result, results);
+    return results;
+  }
+
+private:
+  void backtrack(std::span<int> nums, int target,
+      std::vector<int>& result, std::vector<std::vector<int>>& results) {
+    // Base case: reach 3 candidates
+    if (result.size() == 3) {
+      // Candidates combine to 0 :D
+      if (target == 0) {
+        results.push_back(result);
+      }
+      return;
+    }
+
+    for (int i = 0; i < nums.size(); ++i) {
+      // Find next candidate without duplicates
+      if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+      // Early termination (seems like checked in the base case)
+      if (result.size() >= 3) break;
+
+      // Select this number
+      result.push_back(nums[i]);
+      backtrack({nums.begin() + i + 1, nums.end()}, target + nums[i], result, results); 
+      // Unselect this number
+      result.pop_back();
+    }
   }
 };

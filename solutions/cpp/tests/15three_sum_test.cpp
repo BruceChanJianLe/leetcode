@@ -15,6 +15,7 @@ struct ThreeSumTest : public testing::Test, testing::WithParamInterface<States>
 {
   Solution s;
   FirstSolution fs;
+  RecursiveSolution rs;
 };
 
 TEST_P(ThreeSumTest, ThreeSumCase)
@@ -28,6 +29,13 @@ TEST_P(ThreeSumTest, FirstThreeSumCase)
 {
   auto as = GetParam();
   auto result = fs.threeSum(as.nums);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(ThreeSumTest, RecursiveThreeSumCase)
+{
+  auto as = GetParam();
+  auto result = rs.threeSum(as.nums);
   EXPECT_EQ(result, as.result);
 }
 
