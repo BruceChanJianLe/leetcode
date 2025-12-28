@@ -13,10 +13,18 @@ struct States
 
 struct ThreeSumTest : public testing::Test, testing::WithParamInterface<States>
 {
+  ClassicSolution cs;
   Solution s;
   FirstSolution fs;
   RecursiveSolution rs;
 };
+
+TEST_P(ThreeSumTest, ClassiscThreeSumCase)
+{
+  auto as = GetParam();
+  auto result = cs.threeSum(as.nums);
+  EXPECT_EQ(result, as.result);
+}
 
 TEST_P(ThreeSumTest, ThreeSumCase)
 {

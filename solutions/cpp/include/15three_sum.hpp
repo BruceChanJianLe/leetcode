@@ -5,6 +5,36 @@
 #include <span>
 #include <vector>
 
+// Classic Solution
+class ClassicSolution {
+public:
+  std::vector<std::vector<int>> threeSum(std::vector<int> &nums) {
+    std::sort(nums.begin(), nums.end());
+    std::vector<std::vector<int>> results{};
+
+    for (int i = 0; i < static_cast<int>(nums.size()) - 2; ++i) {
+      // Skip duplicates
+      if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+      int lp{i + 1}, rp = static_cast<int>(nums.size()) - 1;
+      while (lp < rp) {
+        if (auto sum = nums[i] + nums[lp] + nums[rp]; sum > 0) {
+          --rp;
+        } else if (sum < 0) {
+          ++lp;
+        } else {
+          results.push_back({nums[i], nums[lp], nums[rp]});
+          // Do we still have matches?
+          do { ++lp; } while (lp < rp && nums[lp] == nums[lp - 1]);
+          do { --rp; } while (lp < rp && nums[rp] == nums[rp + 1]);
+        }
+      }
+    }
+
+    return results;
+  }
+};
+
 // Iterator solution
 class Solution {
 public:
