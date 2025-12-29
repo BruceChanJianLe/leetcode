@@ -3,6 +3,30 @@
 #include <algorithm>
 #include <vector>
 #include <ranges>
+#include <iostream>
+
+// More modern approach
+class ModernSolution {
+public:
+  int carFleet(int target, std::vector<int>& position, std::vector<int>& speed) {
+    auto zips = std::views::zip(position, speed);
+    std::vector<std::pair<int, int>> cars(zips.begin(), zips.end());
+    std::sort(cars.begin(), cars.end());
+    int fleet{}; float eta{};
+
+    for (const auto [pose, vel] : cars | std::views::reverse) {
+      auto curr_eta = static_cast<double>(target - pose) / vel;
+      if (curr_eta > eta) {
+        ++fleet;
+        eta = curr_eta;
+      }
+      std::cout << "[" << pose << "," << vel << "]"<< "eta: "
+        << eta << ", fleet: " << fleet << std::endl;
+    }
+
+    return fleet;
+  }
+};
 
 class Solution {
 public:
