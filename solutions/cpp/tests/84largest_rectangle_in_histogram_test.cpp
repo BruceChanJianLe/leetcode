@@ -12,12 +12,20 @@ struct LargestRectangleInHistogramTest : public testing::Test, testing::WithPara
 {
   Solution s;
   FirstSolution fs;
+  AnotherSolution aas;
 };
 
 TEST_P(LargestRectangleInHistogramTest, LargestRectangleInHistograCase)
 {
   auto as = GetParam();
   auto result = s.largestRectangleArea(as.heights);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(LargestRectangleInHistogramTest, AnotherSolutionLargestRectangleInHistograCase)
+{
+  auto as = GetParam();
+  auto result = aas.largestRectangleArea(as.heights);
   EXPECT_EQ(result, as.result);
 }
 

@@ -63,3 +63,32 @@ public:
     return max_area;
   }
 };
+
+class AnotherSolution {
+public:
+  int largestRectangleArea(std::vector<int> &heights) {
+    std::vector<std::pair<int, int>> stack;
+    int max_seen{};
+
+    for (auto i = 0ul; i < heights.size(); ++i) {
+      auto start = i;
+      while (!stack.empty() && stack.back().first > heights[i]) {
+        auto [height, idx] = stack.back();
+        stack.pop_back();
+        max_seen = std::max<int>(max_seen, height * (i - idx));
+        // Extend backward to calculate the area of the smaller height
+        start = idx;
+      }
+      stack.emplace_back(heights[i], start);
+    }
+
+    // Calculate the left over in stack
+    while (!stack.empty()) {
+      auto [height, idx] = stack.back();
+      stack.pop_back();
+      max_seen = std::max<int>(max_seen, height * (heights.size() - idx));
+    }
+
+    return max_seen;
+  }
+};
