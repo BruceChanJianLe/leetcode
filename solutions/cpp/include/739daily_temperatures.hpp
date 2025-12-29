@@ -13,9 +13,9 @@ public:
 
     for (int i = 0; i < temperatures.size(); ++i) {
       while (!records.empty() && records.back().first < temperatures[i]) {
-        auto record =
+        auto [_, index] =
             records.back(); // Does make things faster if stored locally
-        result[record.second] = i - record.second;
+        result[index] = i - index;
         records.pop_back();
       }
       records.emplace_back(temperatures[i], i);
