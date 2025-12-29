@@ -120,3 +120,45 @@ TEST(MinStackVectorTest, SingleElementStack) {
     minStack.pop();
     EXPECT_THROW(minStack.getMin(), std::exception);  // Accessing minimum of an empty stack should throw
 }
+
+// Test Case: Push and Minimum
+TEST(PairMinStack, PushAndMinimum) {
+    PairMinStack minStack;
+    minStack.push(-2);
+    minStack.push(0);
+    minStack.push(-3);
+    EXPECT_EQ(minStack.getMin(), -3);  // Minimum should be -3
+}
+
+// Test Case: Pop and Minimum
+TEST(PairMinStack, PopAndMinimum) {
+    PairMinStack minStack;
+    minStack.push(-2);
+    minStack.push(0);
+    minStack.push(-3);
+    minStack.pop();
+    EXPECT_EQ(minStack.getMin(), -2);  // After popping, minimum should be -2
+}
+
+// Test Case: Top Element
+TEST(PairMinStack, TopElement) {
+    PairMinStack minStack;
+    minStack.push(-2);
+    minStack.push(0);
+    minStack.push(-3);
+    minStack.pop();
+    EXPECT_EQ(minStack.top(), 0);  // Top should be 0
+}
+
+// Test Case: Push Duplicate Minimums
+TEST(PairMinStack, PushDuplicateMinimums) {
+    PairMinStack minStack;
+    minStack.push(2);
+    minStack.push(2);
+    minStack.push(2);
+    EXPECT_EQ(minStack.getMin(), 2);  // Minimum should be 2
+    minStack.pop();
+    EXPECT_EQ(minStack.getMin(), 2);  // Minimum should still be 2 after popping one element
+    minStack.pop();
+    EXPECT_EQ(minStack.getMin(), 2);  // Minimum should still be 2 after another pop
+}

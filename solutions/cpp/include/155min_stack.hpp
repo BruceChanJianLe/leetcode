@@ -4,6 +4,39 @@
 #include <vector>
 #include <stack>
 
+// Use a single stack with std::pair
+class PairMinStack {
+public:
+  PairMinStack() {}
+
+  void push(int val) {
+    if (stack.empty()) {
+      stack.emplace(val, val);
+    } else {
+      stack.emplace(val, std::min(val, stack.top().min_val));
+    }
+  }
+
+  void pop() {
+    stack.pop();
+  }
+
+  int top() {
+    return stack.top().val;
+  }
+
+  int getMin() {
+    return stack.top().min_val;
+  }
+
+private:
+  struct node {
+    int val, min_val;
+  };
+
+  std::stack<node> stack;
+};
+
 // Stack solution
 class MinStack {
 public:
