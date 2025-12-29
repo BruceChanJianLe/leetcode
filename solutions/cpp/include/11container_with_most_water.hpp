@@ -2,7 +2,25 @@
 
 #include <vector>
 
-class Solution {
+class ClassicSolution {
+public:
+  int maxArea(std::vector<int> &height) {
+    int max_seen{}, lp{}, rp = height.size() - 1;
+
+    while (lp < rp) {
+      max_seen = std::max(std::min(height[lp], height[rp]) * (rp - lp), max_seen);
+      if (height[lp] > height[rp]) {
+        --rp;
+      } else {
+        ++lp;
+      }
+    }
+
+    return max_seen;
+  }
+};
+
+class IteratorSolution {
 public:
   int maxArea(std::vector<int> &height) {
     int max {0};

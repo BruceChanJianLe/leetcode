@@ -12,14 +12,15 @@ struct States
 
 struct ContainerWithMostWaterTest : public testing::Test, testing::WithParamInterface<States>
 {
-  Solution s;
+  ClassicSolution cs;
+  IteratorSolution is;
   FirstSolution fs;
 };
 
-TEST_P(ContainerWithMostWaterTest, ContainerWithMostWaterCase)
+TEST_P(ContainerWithMostWaterTest, IteratorContainerWithMostWaterCase)
 {
   auto as = GetParam();
-  auto result = s.maxArea(as.height);
+  auto result = is.maxArea(as.height);
   EXPECT_EQ(result, as.result);
 }
 
@@ -27,6 +28,13 @@ TEST_P(ContainerWithMostWaterTest, FirstContainerWithMostWaterCase)
 {
   auto as = GetParam();
   auto result = fs.maxArea(as.height);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(ContainerWithMostWaterTest, ClassicContainerWithMostWaterCase)
+{
+  auto as = GetParam();
+  auto result = cs.maxArea(as.height);
   EXPECT_EQ(result, as.result);
 }
 
