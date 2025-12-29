@@ -10,18 +10,26 @@ struct States
 
 struct TrappingRainWaterTest : public testing::Test, testing::WithParamInterface<States>
 {
-  Solution s;
-  SecondSolution ss;
+  ClassicSolution cs;
+  IteratorSolution is;
+  StackSolution ss;
 };
 
-TEST_P(TrappingRainWaterTest, TrappingRainWaterCase)
+TEST_P(TrappingRainWaterTest, ClassicTrappingRainWaterCase)
 {
   auto as = GetParam();
-  auto result = s.trap(as.height);
+  auto result = cs.trap(as.height);
   EXPECT_EQ(result, as.result);
 }
 
-TEST_P(TrappingRainWaterTest, TrappingRainWaterCaseSecond)
+TEST_P(TrappingRainWaterTest, IteratorTrappingRainWaterCase)
+{
+  auto as = GetParam();
+  auto result = is.trap(as.height);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(TrappingRainWaterTest, StackTrappingRainWaterCase)
 {
   auto as = GetParam();
   auto result = ss.trap(as.height);

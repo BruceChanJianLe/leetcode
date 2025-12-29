@@ -4,8 +4,33 @@
 #include <vector>
 #include <iostream>
 
+// Classic solution: two pointers :D
+class ClassicSolution {
+public:
+  int trap(std::vector<int> &height) {
+    int result{}, lp{}, rp = height.size() - 1,
+        lmax{height[lp]}, rmax{height[rp]};
+
+    while (lp < rp) {
+      if (lmax < rmax) {
+        ++lp;
+        auto cmax = height[lp];
+        result += std::max(0, lmax - cmax);
+        lmax = std::max(lmax, cmax);
+      } else {
+        --rp;
+        auto cmax = height[rp];
+        result += std::max(0, rmax - cmax);
+        rmax = std::max(rmax, cmax);
+      }
+    }
+
+    return result;
+  }
+};
+
 // Iterator solution
-class Solution {
+class IteratorSolution {
 public:
   int trap(std::vector<int> &height) {
     int result{0};
@@ -28,7 +53,7 @@ public:
 
 // Monotonic decreasing stack solution
 // More about monotonic stack: https://medium.com/@hanxuyang0826/mastering-monotonic-stacks-optimizing-algorithmic-efficiency-in-array-and-sequence-problems-28d2a16eeccc
-class SecondSolution {
+class StackSolution {
 public:
   int trap(std::vector<int> &height) {
     std::stack<int> stack;
