@@ -13,6 +13,7 @@ struct LongestSubstringWithoutRepeatingCharactersTest : public testing::TestWith
   Solution s;
   SecondSolution ss; // fastest with iterator and while loop
   FirstSolution fs;
+  SetSolution sets;
 };
 
 TEST_P(LongestSubstringWithoutRepeatingCharactersTest, LongestSubstringWithoutRepeatingCharactersCase)
@@ -36,10 +37,20 @@ TEST_P(LongestSubstringWithoutRepeatingCharactersTest, FirstLongestSubstringWith
   EXPECT_EQ(result, as.result);
 }
 
+TEST_P(LongestSubstringWithoutRepeatingCharactersTest, SetLongestSubstringWithoutRepeatingCharactersCase)
+{
+  auto as = GetParam();
+  auto result = sets.lengthOfLongestSubstring(as.s);
+  EXPECT_EQ(result, as.result);
+}
+
 INSTANTIATE_TEST_SUITE_P(Default, LongestSubstringWithoutRepeatingCharactersTest,
     testing::Values(
       States{"abcabcbb", 3},
       States{"bbbbb", 1},
       States{"pwwkew", 3},
-      States{"abba", 2}
+      States{"abba", 2},
+      States{"aab", 2},
+      States{"dvdf", 3},
+      States{" ", 1}
     ));

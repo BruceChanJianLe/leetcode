@@ -1,9 +1,30 @@
 #pragma once
 
+#include <algorithm>
 #include <iterator>
 #include <string>
 #include <unordered_set>
 #include <deque>
+
+// 26ms
+class SetSolution {
+public:
+  int lengthOfLongestSubstring(std::string s) {
+    std::unordered_set<char> lookup;
+    int max_seen{}, ptr{}; 
+
+    for (int i = 0; i < s.size(); ++i) {
+      while (!lookup.insert(s[i]).second) {
+        lookup.erase(s[ptr]);
+        ++ptr;
+      }
+
+      max_seen = std::max<int>(max_seen, lookup.size());
+    }
+
+    return max_seen;
+  }
+};
 
 // int method (18ms)
 class Solution {
