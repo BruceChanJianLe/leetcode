@@ -26,5 +26,6 @@ INSTANTIATE_TEST_SUITE_P(Default, SearchInRotatedSortedArrayTest,
       States{{1}, 0, -1},
       States{{4,5,6,7,0,1,2}, 0, 4},
       States{{5,1,3}, 3, 2},
+      States{{3,1}, 1, 1},
       States{{4,5,6,7,0,1,2}, 3, -1}
     ));
