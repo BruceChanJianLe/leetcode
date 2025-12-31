@@ -9,7 +9,7 @@ public:
     auto left{0uz}, right{nums.size() - 1};
 
     while (left < right) {
-      auto mid = (left + right) / 2;
+      const auto mid = left + (right - left) / 2;
 
       // search the right portion
       if (nums[mid] > nums[right]) {
@@ -31,8 +31,8 @@ public:
     auto min = nums.front();
 
     while (left < right) {
-      auto mid = (left + right) / 2;
-      auto val = nums[mid];
+      const auto mid = left + (right - left) / 2;
+      const auto val = nums[mid];
 
       // search my left portion
       min = std::min({nums[left], min, val});
