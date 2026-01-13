@@ -4,6 +4,7 @@
 #include <iostream>
 #include <span>
 #include <vector>
+#include <iterator>
 
 // Classic Solution
 class ClassicSolution {
@@ -12,11 +13,11 @@ public:
     std::sort(nums.begin(), nums.end());
     std::vector<std::vector<int>> results{};
 
-    for (int i = 0; i < static_cast<int>(nums.size()) - 2; ++i) {
+    for (int i = 0; i < std::ssize(nums) - 2; ++i) {
       // Skip duplicates
       if (i > 0 && nums[i] == nums[i - 1]) continue;
 
-      int lp{i + 1}, rp = static_cast<int>(nums.size()) - 1;
+      int lp{i + 1}, rp = std::ssize(nums) - 1;
       while (lp < rp) {
         if (auto sum = nums[i] + nums[lp] + nums[rp]; sum > 0) {
           --rp;
