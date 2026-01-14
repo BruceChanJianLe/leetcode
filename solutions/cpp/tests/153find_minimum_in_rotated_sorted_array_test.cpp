@@ -12,6 +12,7 @@ struct FindMinimumInRotatedSortedArrayTest : public testing::Test, testing::With
 {
   FirstSolution fs;
   Solution s;
+  EasySolution es;
 };
 
 TEST_P(FindMinimumInRotatedSortedArrayTest, FirstFindMinimumInRotatedSortedArrayCase)
@@ -25,6 +26,13 @@ TEST_P(FindMinimumInRotatedSortedArrayTest, FindMinimumInRotatedSortedArrayCase)
 {
   auto as = GetParam();
   auto result = s.findMin(as.nums);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(FindMinimumInRotatedSortedArrayTest, EasyFindMinimumInRotatedSortedArrayCase)
+{
+  auto as = GetParam();
+  auto result = es.findMin(as.nums);
   EXPECT_EQ(result, as.result);
 }
 

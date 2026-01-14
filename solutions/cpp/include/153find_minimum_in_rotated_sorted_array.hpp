@@ -3,6 +3,34 @@
 #include <vector>
 #include <algorithm>
 
+// Easy to understand
+class EasySolution {
+public:
+  int findMin(const std::vector<int>& nums) {
+    // Sanity check
+    if (nums.size() == 1) return nums.front();
+
+    // Declare the pointers
+    int lo{}, hi = nums.size() - 1;
+
+    while (lo < hi) {
+      const auto mid = lo + (hi - lo) / 2;
+
+      // No way in a sorted array left is greater than curr
+      if (mid > 0 && nums[mid - 1] > nums[mid]) {
+        return nums[mid];
+      } else if (nums[mid] > nums[hi]) {
+        // Search the unsorted side
+        lo = mid + 1;
+      } else {
+        hi = mid;
+      }
+    }
+
+    return nums[lo];
+  }
+};
+
 class Solution {
 public:
   int findMin(const std::vector<int>& nums) {
