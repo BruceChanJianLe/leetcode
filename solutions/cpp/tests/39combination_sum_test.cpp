@@ -15,6 +15,7 @@ protected:
   RSolution rs;
   BTSolution bts;
   BTNSolution btns;
+  BTSpanSolution bt_span_s;
 
   static void normalize(std::vector<std::vector<int>>& v) {
     for (auto& comb : v) std::sort(comb.begin(), comb.end());
@@ -52,6 +53,15 @@ TEST_P(CombinationSumTest, BTCombinationSumCase) {
 TEST_P(CombinationSumTest, BTNCombinationSumCase) {
   States state = GetParam();
   auto result = btns.combinationSum(state.candidates, state.target);
+  normalize(result);
+  auto expected = state.result;
+  normalize(expected);
+  EXPECT_EQ(result, expected);
+}
+
+TEST_P(CombinationSumTest, BTSpanCombinationSumCase) {
+  States state = GetParam();
+  auto result = bt_span_s.combinationSum(state.candidates, state.target);
   normalize(result);
   auto expected = state.result;
   normalize(expected);

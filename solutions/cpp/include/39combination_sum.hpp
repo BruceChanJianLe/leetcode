@@ -4,6 +4,44 @@
 #include <span>
 #include <algorithm>
 
+// Backtracking with SPAN!
+class BTSpanSolution {
+public:
+  std::vector<std::vector<int>> combinationSum(std::vector<int>& nums, int target) {
+    std::vector<std::vector<int>> results;
+    std::vector<int> result;
+
+    backtrack(nums, target, result, results);
+
+    return results;
+  }
+
+private:
+  void backtrack(std::span<int> candies,
+      const int target, 
+      std::vector<int>& result,
+      std::vector<std::vector<int>>& results) {
+    // Base case
+    if (target == 0) {
+      results.push_back(result);
+      return;
+    }
+
+    // Early termination
+    if (candies.empty() || candies.front() > target) {
+      return;
+    }
+
+    for (auto it = candies.begin(); it != candies.end(); ++it) {
+      auto candy = *it;
+      result.push_back(candy);
+      backtrack({it, candies.end()}, target - candy, result, results);
+      result.pop_back();
+    }
+  }
+};
+
+
 // Another Backtracking Solution WITHOUT Iteration
 // key diff: this uses minus to target
 //           this uses span which faster since it's only a view
