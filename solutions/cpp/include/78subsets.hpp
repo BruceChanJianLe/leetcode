@@ -2,6 +2,37 @@
 
 #include <cstddef>
 #include <vector>
+#include <span>
+
+// Recursive span
+class RSpanSolution {
+public:
+  std::vector<std::vector<int>> subsets(std::vector<int> &nums) {
+    std::vector<std::vector<int>> results{};
+    std::vector<int> result{};
+    decisionTree(nums, result, results);
+    return results;
+  }
+
+private:
+  void decisionTree(std::span<int> nums,
+      std::vector<int>& result,
+      std::vector<std::vector<int>>& results) {
+    // Base case (stop when there isn't anymore option)
+    if (nums.empty()) {
+      results.push_back(result);
+      return;
+    }
+
+    // Select current option
+    result.push_back(nums.front());
+    decisionTree({nums.begin() + 1, nums.end()}, result, results);
+    result.pop_back();
+
+    // Do not select current option
+    decisionTree({nums.begin() + 1, nums.end()}, result, results);
+  }
+};
 
 // Iterative Solution (quite smart eh?)
 class ISolution {
