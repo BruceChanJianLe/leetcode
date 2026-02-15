@@ -1,8 +1,47 @@
 #pragma once
 
+#include "518coin_change_ii.hpp"
 #include <algorithm>
 #include <cstddef>
 #include <vector>
+#include <span>
+
+class IRSpanSolution {
+public:
+  std::vector<std::vector<int>> combinationSum2(std::vector<int>& candidates, int target) {
+    std::vector<std::vector<int>> results{};
+    std::vector<int> result{};
+    std::sort(candidates.begin(), candidates.end());
+    backtrack(candidates, target, result, results);
+
+    return results;
+  }
+
+private:
+  void backtrack(std::span<int> candies,
+      const int target,
+      std::vector<int>& result,
+      std::vector<std::vector<int>>& results) {
+    // Base case
+    if (target == 0) {
+      results.push_back(result);
+      return;
+    }
+
+    // No more options or options are too large to make target
+    if (candies.empty() || candies.front() > target) {
+      return;
+    }
+
+    for (auto i = 0uz; i < candies.size(); ++i) {
+      // Skip the same option
+      if (i > 0uz && candies[i] == candies[i - 1]) continue;
+      result.push_back(candies[i]);
+      backtrack({candies.begin() + i + 1, candies.end()}, target - candies[i], result, results);
+      result.pop_back();
+    }
+  }
+};
 
 // Iterative + Recursive
 class IRSolution {

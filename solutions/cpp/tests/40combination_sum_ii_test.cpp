@@ -14,12 +14,22 @@ class CombinationSum2Test : public ::testing::TestWithParam<States>
 protected:
   RSolution rs;
   IRSolution irs;
+  IRSpanSolution ir_span_s;
 
   static void normalize(std::vector<std::vector<int>>& v) {
     for (auto& comb : v) std::sort(comb.begin(), comb.end());
     std::sort(v.begin(), v.end());
   }
 };
+
+TEST_P(CombinationSum2Test, IRSpanCombinationSum2Case) {
+  auto as = GetParam();
+  auto result = ir_span_s.combinationSum2(as.candidates, as.target);
+  normalize(result);
+  auto expected = as.result;
+  normalize(expected);
+  EXPECT_EQ(result, expected);
+}
 
 TEST_P(CombinationSum2Test, IRCombinationSum2Case) {
   auto as = GetParam();
