@@ -14,6 +14,7 @@ protected:
   MUSSolution uss;
   MCSolution mcs;
   RSolution rs;
+  RSpanSolution r_span_s;
 
   static void normalize(std::vector<std::vector<int>>& vec) {
     for (auto& v : vec) std::sort(v.begin(), v.end());
@@ -48,6 +49,14 @@ TEST_P(SubsetsIITest, MaskUnorderedSetSubsetsIICase) {
 TEST_P(SubsetsIITest, MaskSetSubsetsIICase) {
   auto as = GetParam();
   auto result = ss.subsetsWithDup(as.nums);
+  normalize(result);
+  normalize(as.result);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(SubsetsIITest, RecursiveSpanSubsetsIICase) {
+  auto as = GetParam();
+  auto result = r_span_s.subsetsWithDup(as.nums);
   normalize(result);
   normalize(as.result);
   EXPECT_EQ(result, as.result);

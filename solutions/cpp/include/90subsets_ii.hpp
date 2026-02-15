@@ -5,6 +5,40 @@
 #include <vector>
 #include <set>
 #include <unordered_set>
+#include <span>
+
+// Decision Tree (Recursive Span)
+class RSpanSolution {
+public:
+  std::vector<std::vector<int>> subsetsWithDup(std::vector<int>& nums) {
+    std::vector<std::vector<int>> results{};
+    std::vector<int> result{};
+    std::sort(nums.begin(), nums.end());
+    decisionTree(nums, result, results);
+    return results;
+  }
+
+private:
+  void decisionTree(std::span<int> nums,
+      std::vector<int>& result,
+      std::vector<std::vector<int>>& results) {
+    // Base case (not more option to explore)
+    if (nums.empty()) {
+      results.push_back(result);
+      return;
+    }
+
+    // Select current number
+    result.push_back(nums.front());
+    decisionTree({nums.begin() + 1, nums.end()}, result, results);
+    // Unselect current number
+    result.pop_back();
+    // Ensure no repeating the same number
+    int i = 1;
+    while (i < nums.size() && nums[i] == nums[i - 1]) ++i;
+    decisionTree({nums.begin() + i, nums.end()}, result, results);
+  }
+};
 
 // Decision Tree (Recursive)
 class RSolution {
