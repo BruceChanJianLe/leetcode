@@ -1,8 +1,44 @@
 #pragma once
 
+#include <algorithm>
 #include <cstddef>
 #include <utility>
 #include <vector>
+#include <span>
+
+// Recursion Span
+class RSpanSolution {
+public:
+  std::vector<std::vector<int>> permute(std::vector<int>& nums) {
+    std::vector<std::vector<int>> results{};
+    std::vector<int> result{};
+    decisionTree(nums, result, results);
+    return results;
+  }
+
+private:
+  void decisionTree(std::span<int> nums,
+      std::vector<int>& result,
+      std::vector<std::vector<int>>& results) {
+    // Base case
+    if (nums.empty()) {
+      results.push_back(result);
+      return;
+    }
+
+    for (auto it = nums.begin(); it != nums.end(); ++it) {
+      // Swap to front
+      std::iter_swap(it, nums.begin());
+      // Select current number
+      result.push_back(nums.front());
+      decisionTree(nums.subspan(1), result, results);
+      // Unselect current number
+      result.pop_back();
+      // Swap back
+      std::iter_swap(it, nums.begin());
+    }
+  }
+};
 
 // Recursion
 class RSolution {
