@@ -3,8 +3,49 @@
 #include <vector>
 #include <string>
 
+class SpanSolution {
+public:
+  std::vector<std::string> generateParenthesis(int n) {
+    std::vector<std::string> results{};
+    std::string result{};
+    decisionTree(n, n, result, results);
+    return results;
+  }
+
+private:
+  void decisionTree(const int left,
+      const int right,
+      std::string& result,
+      std::vector<std::string>& results) {
+    // Base cases
+    if (left == 0 && right == 0) {
+      results.push_back(result);
+      return;
+    }
+
+    if (left > 0) {
+      result.push_back('(');
+      decisionTree(left - 1, right, result, results);
+      result.pop_back();
+    }
+
+    if (right > left) {
+      result.push_back(')');
+      decisionTree(left, right - 1, result, results);
+      result.pop_back();
+    }
+  }
+};
+
 class Solution {
 public:
+  std::vector<std::string> generateParenthesis(int n) {
+    std::vector<std::string> result;
+    backtrack(0, 0, n, "", result);
+    return result;
+  }
+
+private:
   void backtrack(const size_t open_cout, const size_t close_count,
                  const size_t max_pair, std::string curr_str,
                  std::vector<std::string> &result) {
@@ -23,10 +64,5 @@ public:
       curr_str += ")";
       backtrack(open_cout, close_count + 1, max_pair, curr_str, result);
     }
-  }
-  std::vector<std::string> generateParenthesis(int n) {
-    std::vector<std::string> result;
-    backtrack(0, 0, n, "", result);
-    return result;
   }
 };
