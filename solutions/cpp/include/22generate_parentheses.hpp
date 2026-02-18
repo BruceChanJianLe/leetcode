@@ -3,7 +3,11 @@
 #include <vector>
 #include <string>
 
-class SpanSolution {
+// Another perspective, instead of incrementing
+// we can decrement, ensuring the left is always
+// is always smaller the right, such that there is
+// always an open parathesis before closing (avoid malform)
+class AnotherSolution {
 public:
   std::vector<std::string> generateParenthesis(int n) {
     std::vector<std::string> results{};
@@ -17,18 +21,20 @@ private:
       const int right,
       std::string& result,
       std::vector<std::string>& results) {
-    // Base cases
+    // Base case
     if (left == 0 && right == 0) {
       results.push_back(result);
       return;
     }
 
+    // Choose to add the left parathesis
     if (left > 0) {
       result.push_back('(');
       decisionTree(left - 1, right, result, results);
       result.pop_back();
     }
 
+    // Choose to add the right parathesis
     if (right > left) {
       result.push_back(')');
       decisionTree(left, right - 1, result, results);

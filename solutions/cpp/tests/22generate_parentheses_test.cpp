@@ -9,7 +9,7 @@ struct States {
 
 struct GenerateParenthesesTest : public testing::Test, testing::WithParamInterface<States> {
   Solution s;
-  SpanSolution ss;
+  AnotherSolution ss;
 };
 
 TEST_P(GenerateParenthesesTest, GenerateParenthesesCase) {
