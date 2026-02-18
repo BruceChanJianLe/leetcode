@@ -7,7 +7,36 @@
 #include <unordered_set>
 #include <span>
 
-// Decision Tree (Recursive Span)
+// Decision Tree (Recursive Span + Loop Walk)
+class RLSpanSolution {
+public:
+  std::vector<std::vector<int>> subsetsWithDup(std::vector<int>& nums) {
+    std::vector<std::vector<int>> results{};
+    std::vector<int> result{};
+    std::sort(nums.begin(), nums.end());
+    decisionTree(nums, result, results);
+    return results;
+  }
+
+private:
+  void decisionTree(std::span<const int> nums,
+      std::vector<int>& result,
+      std::vector<std::vector<int>>& results) {
+    // No base case
+    results.push_back(result);
+
+    for (auto i = 0uz; i < nums.size(); ++i) {
+      if (i > 0 && nums[i] == nums[i - 1]) continue;
+      // Select current number
+      result.push_back(nums[i]);
+      decisionTree(nums.subspan(i + 1), result, results);
+      // Unselect current number
+      result.pop_back();
+    }
+  }
+};
+
+// Decision Tree (Recursive Span + Manual Walk)
 class RSpanSolution {
 public:
   std::vector<std::vector<int>> subsetsWithDup(std::vector<int>& nums) {
