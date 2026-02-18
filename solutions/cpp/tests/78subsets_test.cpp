@@ -14,12 +14,21 @@ class SubsetsTest : public ::testing::TestWithParam<States> {
     BMSolution bms;
     ISolution is;
     RSpanSolution rss;
+    RLSpanSolution rlss;
 
     static void sortSubsets(std::vector<std::vector<int>>& subsets) {
       for (auto& v : subsets) sort(v.begin(), v.end());
       sort(subsets.begin(), subsets.end());
     }
 };
+
+TEST_P(SubsetsTest, RLSpanSubsetsCase) {
+  auto as = GetParam();
+  auto result = rlss.subsets(as.input);
+  sortSubsets(result);
+  sortSubsets(as.result);
+  EXPECT_EQ(result, as.result);
+}
 
 TEST_P(SubsetsTest, RSpanSubsetsCase) {
   auto as = GetParam();

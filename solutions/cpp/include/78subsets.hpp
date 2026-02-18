@@ -4,6 +4,31 @@
 #include <vector>
 #include <span>
 
+// Recursive span (use for loop to walk)
+class RLSpanSolution {
+public:
+  std::vector<std::vector<int>> subsets(std::vector<int> &nums) {
+    std::vector<std::vector<int>> results{};
+    std::vector<int> result{};
+    decisionTree(nums, result, results);
+    return results;
+  }
+
+private:
+  void decisionTree(std::span<const int> nums,
+      std::vector<int>& result,
+      std::vector<std::vector<int>>& results) {
+    // No base case
+    results.push_back(result);
+
+    for (auto i = 0uz; i < nums.size(); ++i) {
+      result.push_back(nums[i]);
+      decisionTree(nums.subspan(i + 1), result, results);
+      result.pop_back();
+    }
+  }
+};
+
 // Recursive span
 class RSpanSolution {
 public:
