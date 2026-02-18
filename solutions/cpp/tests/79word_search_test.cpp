@@ -13,11 +13,18 @@ class WordSearchTest : public ::testing::TestWithParam<States>
 {
 protected:
   FirstSolution fs;
+  SecondSolution ss;
 };
 
 TEST_P(WordSearchTest, FindsWordCorrectly) {
   auto as = GetParam();
   auto result = fs.exist(as.board, as.word);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(WordSearchTest, SecondFindsWordCorrectly) {
+  auto as = GetParam();
+  auto result = ss.exist(as.board, as.word);
   EXPECT_EQ(result, as.result);
 }
 

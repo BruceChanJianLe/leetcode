@@ -6,6 +6,50 @@
 #include <vector>
 #include <string>
 
+class SecondSolution {
+public:
+  bool exist(std::vector<std::vector<char>>& board, std::string word) {
+    bool result{};
+      for (auto row = 0; row < board.size(); ++row) {
+        for (auto col = 0; col < board.front().size(); ++col) {
+          decisionTree(board, word, row, col, result);
+          if (result) return true;
+        }
+      }
+    return false;
+  }
+
+private:
+struct Walk { int row, col; };
+  std::array<Walk, 4> walks {{{-1, 0}, {0, -1}, {1, 0}, {0, 1}}};
+  void decisionTree(std::vector<std::vector<char>>& board,
+      std::string& word,
+      const int row,
+      const int col,
+      bool& result
+      ) {
+    if (board[row][col] != word.back()) return;
+    word.pop_back();
+    auto temp = std::exchange(board[row][col], '#');
+
+    if (word.empty()) {
+      result = true;
+    } else {
+      for (const auto walk : walks) {
+        if (auto wrow{row + walk.row}, wcol{col + walk.col};
+            wrow >= 0 && wrow < board.size() &&
+            wcol >= 0 && wcol < board.front().size()) {
+          decisionTree(board, word, wrow, wcol, result);
+          if (result) break;
+        }
+      }
+    }
+
+    word.push_back(temp);
+    std::swap(board[row][col], temp);
+  }
+};
+
 class FirstSolution {
 public:
   bool exist(std::vector<std::vector<char>>& board, std::string word) {
