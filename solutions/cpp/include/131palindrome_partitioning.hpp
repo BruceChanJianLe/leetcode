@@ -3,6 +3,49 @@
 #include <cstddef>
 #include <vector>
 #include <string>
+#include <span>
+
+// Decision Tree Recursive with span
+class DTSpanSolution {
+public:
+  std::vector<std::vector<std::string>> partition(std::string s) {
+    std::vector<std::vector<std::string>> results{};
+    std::vector<std::string> result{};
+    decisionTree(s, result, results);
+    return results;
+  }
+
+private:
+  void decisionTree(std::span<char> word,
+    std::vector<std::string>& result,
+    std::vector<std::vector<std::string>>& results
+      ) {
+    if (word.empty()) {
+      results.push_back(result);
+      return;
+    }
+
+    for (auto i = 0uz; i < word.size(); ++i) {
+      auto w = word.subspan(0, i + 1);
+      if (isPalindrome(w)) {
+        result.push_back({w.begin(), w.end()});
+        decisionTree(word.subspan(i + 1), result, results);
+        result.pop_back();
+      }
+    }
+  }
+
+  bool isPalindrome(std::span<char> word) {
+    int left = 0, right = word.size() - 1;
+
+    while (left < right) {
+      if (word[left] != word[right]) return false;
+      ++left;
+      --right;
+    }
+    return true;
+  }
+};
 
 // Decision Tree Recursive
 class DTSolution {

@@ -13,6 +13,7 @@ class PalindromePartitioningTest : public ::testing::TestWithParam<States>
 protected:
   DTSolution dts;
   DT2Solution dt2s;
+  DTSpanSolution dtss;
 };
 
 bool compareResult(std::vector<std::vector<std::string>> a,
@@ -36,6 +37,12 @@ TEST_P(PalindromePartitioningTest, DTPalindromePartitioningCase) {
 TEST_P(PalindromePartitioningTest, DT2PalindromePartitioningCase) {
   auto as = GetParam();
   auto output = dt2s.partition(as.input);
+  EXPECT_TRUE(compareResult(output, as.result));
+}
+
+TEST_P(PalindromePartitioningTest, DTSpanPalindromePartitioningCase) {
+  auto as = GetParam();
+  auto output = dtss.partition(as.input);
   EXPECT_TRUE(compareResult(output, as.result));
 }
 
