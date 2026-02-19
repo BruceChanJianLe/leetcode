@@ -5,6 +5,54 @@
 #include <utility>
 #include <vector>
 #include <string>
+#include <span>
+
+class SecondSpanSolution {
+public:
+  bool exist(std::vector<std::vector<char>>& board, std::string word) {
+    bool result{};
+    for (auto row = 0; row < std::ssize(board); ++row) {
+      for (auto col = 0; col < std::ssize(board.front()); ++col) {
+        decisionTree(board, word, row, col, result);
+        if (result) return true;
+      }
+    }
+    return false;
+  }
+
+private:
+  struct Walk{ int row, col; };
+  std::array<Walk, 4> walks {{{-1, 0}, {0, -1}, {1, 0}, {0, 1}}};
+  void decisionTree(std::vector<std::vector<char>>& board,
+      std::span<char> word,
+      const int row,
+      const int col,
+      bool& result) {
+    // Base case
+    if (board[row][col] != word.front()) return;
+
+    if (word.subspan(1).empty()) {
+      result = true;
+    } else {
+      // Mark as seen
+      board[row][col] = '#';
+
+      for (const auto& walk : walks) {
+        if (auto cr{row + walk.row}, cc{col + walk.col};
+            cr >= 0 && cr < std::ssize(board) &&
+            cc >= 0 && cc < std::ssize(board.front())
+            ) {
+          decisionTree(board, word.subspan(1), cr, cc, result);
+          // Early break
+          if (result) return;
+        }
+      }
+
+      // Unmark
+      board[row][col] = word.front();
+    }
+  }
+};
 
 class SecondSolution {
 public:
