@@ -1,6 +1,6 @@
-# leetcode
+![](https://leetcard.jacoblin.cool/brucechanjianle?site=us)
 
-This repository store my leetcode solutions.
+> This repository store my leetcode solutions.
 
 I use leetcode.nvim plugin to run my solution.
 To login to leetcode.nvim, you will need to:
