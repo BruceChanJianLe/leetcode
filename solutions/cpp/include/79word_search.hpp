@@ -48,7 +48,7 @@ private:
         }
       }
 
-      // Unmark
+      // Unmark (important)
       board[row][col] = word.front();
     }
   }
