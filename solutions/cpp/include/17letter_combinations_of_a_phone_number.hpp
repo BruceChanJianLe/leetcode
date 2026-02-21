@@ -3,6 +3,42 @@
 #include <cstddef>
 #include <vector>
 #include <string>
+#include <array>
+#include <span>
+
+// Decision tree with span
+class DTSpanSolution {
+public:
+  std::vector<std::string> letterCombinations(std::string digits) {
+    std::vector<std::string> results{};
+    std::string result{};
+    decisionTree(digits, result, results);
+    return results;
+  }
+
+private:
+  const std::array<std::string, 9> buttons {
+    std::string{'a', 'b', 'c'}, {'d', 'e', 'f'},
+      {'g', 'h', 'i'}, {'j', 'k', 'l'}, {'m', 'n', 'o'},
+      {'p', 'q', 'r', 's'}, {'t', 'u', 'v'}, {'w', 'x', 'y', 'z'}
+  };
+
+  void decisionTree(std::span<char> digits,
+      std::string& result,
+      std::vector<std::string>& results) {
+    // Base case
+    if (digits.empty()) {
+      results.push_back(result);
+      return;
+    }
+
+    for (const auto &button : buttons[digits.front() - '2']) {
+      result.push_back(button);
+      decisionTree(digits.subspan(1), result, results);
+      result.pop_back();
+    }
+  }
+};
 
 // DT Recursion 
 // Pass in new string in every call
