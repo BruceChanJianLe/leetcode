@@ -3,6 +3,58 @@
 #include <unordered_set>
 #include <vector>
 #include <string>
+#include <ranges>
+
+// Decision Tree
+// Only generate the board when there is a result
+class DTOnlySolution {
+public:
+  std::vector<std::vector<std::string>> solveNQueens(int n) {
+    std::vector<std::vector<std::string>> results{};
+    std::vector<int> rows{};
+    decisionTree(n, rows, results);
+    return results;
+  }
+
+private:
+  std::unordered_set<int> cols, neg_d, pos_d;
+  void decisionTree(const int n,
+      std::vector<int>& rows,
+      std::vector<std::vector<std::string>>& results) {
+    // Base case (only when we fill all the rows)
+    if (rows.size() == n) {
+      // Generate board
+      std::vector<std::string> boards(n, std::string(n, '.'));
+      for (const auto &[board, row] : std::ranges::zip_view(boards, rows)) {
+        board[row] = 'Q';
+      }
+      results.push_back(boards);
+      return;
+    }
+
+    const auto row = rows.size() + 1;
+    for (auto i = 0; i < n; ++i) {
+      // Check constraints
+      if (cols.count(i) ||
+          neg_d.count(row - i) ||
+          pos_d.count(row + i)) continue;
+
+      // Update constraints
+      cols.insert(i);
+      neg_d.insert(row - i);
+      pos_d.insert(row + i);
+      // Select current position
+      rows.push_back(i);
+      decisionTree(n, rows, results);
+      // Unselect current position
+      rows.pop_back();
+      // Remove constraints
+      pos_d.erase(row + i);
+      neg_d.erase(row - i);
+      cols.erase(i);
+    }
+  }
+};
 
 // Decision Tree recursive
 // Using vectors

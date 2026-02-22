@@ -2,17 +2,16 @@
 
 #include "gtest/gtest.h"
 
-struct States
-{
+struct States {
   int n;
   std::vector<std::vector<std::string>> result;
 };
 
-class NQueensTest : public ::testing::TestWithParam<States>
-{
+class NQueensTest : public ::testing::TestWithParam<States> {
 protected:
   HDTSolution hdts;
   VDTSolution vdts;
+  DTOnlySolution dtos;
 };
 
 bool compareBoardsUnordered(std::vector<std::vector<std::string>> a,
@@ -24,15 +23,19 @@ bool compareBoardsUnordered(std::vector<std::vector<std::string>> a,
   return normalize(a) == normalize(b);
 }
 
-TEST_P(NQueensTest, VectorDecisionTreeNQueensCase)
-{
+TEST_P(NQueensTest, DTOnlySolution) {
+  auto as = GetParam();
+  auto result = dtos.solveNQueens(as.n);
+  EXPECT_TRUE(compareBoardsUnordered(result, as.result));
+}
+
+TEST_P(NQueensTest, VectorDecisionTreeNQueensCase) {
   auto as = GetParam();
   auto result = vdts.solveNQueens(as.n);
   EXPECT_TRUE(compareBoardsUnordered(result, as.result));
 }
 
-TEST_P(NQueensTest, HashDecisionTreeNQueensCase)
-{
+TEST_P(NQueensTest, HashDecisionTreeNQueensCase) {
   auto as = GetParam();
   auto result = hdts.solveNQueens(as.n);
   EXPECT_TRUE(compareBoardsUnordered(result, as.result));
