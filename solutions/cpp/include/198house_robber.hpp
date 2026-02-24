@@ -3,6 +3,29 @@
 #include <algorithm>
 #include <vector>
 
+// Another classic DP solution
+class ADPSolution {
+public:
+  int rob(std::vector<int>& nums) {
+    std::vector<int> memo(nums.size() + 1);
+    // When zero house is robbed
+    memo[0] = 0;
+    // When first house is robbed
+    memo[1] = nums.front();
+
+    // Start from second house
+    for (auto i = 2; i < std::ssize(memo); ++i) {
+      memo[i] = std::max(
+          // Robbed current house and the prev one house away
+          nums[i - 1] + memo[i - 2],
+          // Skip current house and robbed only the prev house
+          memo[i - 1]);
+    }
+
+    return memo.back();
+  }
+};
+
 // Optimal
 class ODPSolution {
 public:

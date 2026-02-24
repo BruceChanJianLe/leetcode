@@ -13,6 +13,7 @@ protected:
   FirstSolution fs;
   DPSolution dps;
   ODPSolution odps;
+  ADPSolution adps;
 };
 
 TEST_P(HouseRobberTest, FirstHourseRobberCase) {
@@ -33,6 +34,12 @@ TEST_P(HouseRobberTest, ODPHourseRobberCase) {
   EXPECT_EQ(result, as.result);
 }
 
+TEST_P(HouseRobberTest, ADPHourseRobberCase) {
+  auto as = GetParam();
+  auto result = adps.rob(as.nums);
+  EXPECT_EQ(result, as.result);
+}
+
 INSTANTIATE_TEST_SUITE_P(Default, HouseRobberTest,
   ::testing::Values(
     States{{1,2,3,1}, 4},
@@ -42,6 +49,7 @@ INSTANTIATE_TEST_SUITE_P(Default, HouseRobberTest,
     States{{5,5,10,100,10,5}, 110},
     States{{0,0,0}, 0},
     States{{10,1,1,10}, 20},
+    States{{4,2,1,100}, 104},
     States{{2,1,1,2}, 4}
   )
 );
