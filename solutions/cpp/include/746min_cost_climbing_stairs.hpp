@@ -21,7 +21,7 @@ public:
   }
 };
 
-// DP recursive
+// Decision Tree, recursive without memoization
 // Too slow...
 class DPRecursiveSolution {
 public:
