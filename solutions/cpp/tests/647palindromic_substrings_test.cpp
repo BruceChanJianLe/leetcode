@@ -10,9 +10,16 @@ struct States {
 class PalindromicSubstringsTest : public ::testing::TestWithParam<States>
 {
 protected:
+  DTSolution dts;
   DPSolution dps;
   TwoPointerSolution tps;
 };
+
+TEST_P(PalindromicSubstringsTest, DTPalindromicSubstringsCase) {
+  const auto& param = GetParam();
+  auto result = dts.countSubstrings(param.s);
+  EXPECT_EQ(result, param.result);
+}
 
 TEST_P(PalindromicSubstringsTest, PDPalindromicSubstringsCase) {
   const auto& param = GetParam();

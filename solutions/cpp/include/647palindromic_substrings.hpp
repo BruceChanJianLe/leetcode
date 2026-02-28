@@ -2,6 +2,46 @@
 
 #include <string>
 #include <vector>
+#include <span>
+
+// Decision tree solution
+// this option is quite slow since it can also
+// return all possible palindromic substrings
+class DTSolution {
+public:
+  int countSubstrings(std::string s) {
+    int count{};
+    counts(s, count);
+    return count;
+  }
+
+private:
+  void counts(std::span<char> words, int& count) {
+    if (words.empty()) {
+      return;
+    }
+
+    for (auto i = 0uz; i < std::ssize(words); ++i) {
+      auto word = words.subspan(0uz, i + 1uz);
+      if (isPalindrome(word)) {
+        ++count;
+      }
+    }
+
+    // Start without head
+    counts(words.subspan(1uz), count);
+  }
+
+  bool isPalindrome(std::span<char> word) {
+    int left{}, right= std::ssize(word) - 1;
+    while (left < right) {
+      if (word[left++] != word[right--]) {
+        return false;
+      }
+    }
+    return true;
+  }
+};
 
 // DP
 class DPSolution {
