@@ -5,6 +5,49 @@
 #include <vector>
 #include <iostream>
 
+// DP (practice)
+class PDPSolution {
+public:
+  std::string longestPalindrome(std::string s) {
+    if (s.size() == 1) return s;
+
+    auto n{s.size()};
+    std::vector memo(n, std::vector(n, false));
+    for (auto i = 0uz; i < n; ++i) {
+      memo[i][i] = true;
+    }
+
+    auto start_index{0};
+    auto max_len{1};
+    // Fill the 2 char
+    for (auto i = 1uz; i < n; ++i) {
+      if (s[i] == s[i - 1]) {
+        memo[i - 1][i] = true;
+        max_len = 2;
+      }
+    }
+
+    // The rest
+    for (auto len = 3uz; len <= n; ++len) {
+      // Inclusive of the 0th index (when n - len = 0)
+      for (auto left = 0uz; left <= n - len; ++left) {
+        auto right = left + len - 1;
+        if (s[left] == s[right] && memo[left + 1][right - 1]) {
+          memo[left][right] = true;
+          if (len > max_len) {
+            max_len = len;
+            start_index = left;
+          }
+        }
+      }
+    }
+
+    std::cout << "start index: " << start_index << ", max_len: "
+      << max_len << std::endl;
+    return s.substr(start_index, max_len);
+  }
+};
+
 // DP
 class DPSolution {
 public:
@@ -87,7 +130,11 @@ private:
       ++right;
     }
 
-    return {left + 1, right - left - 1};
+    // Step one step back before the evaluation
+    ++left;
+    --right;
+
+    return {left, right - left + 1};
   }
 };
 

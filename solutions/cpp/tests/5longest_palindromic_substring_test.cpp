@@ -14,6 +14,7 @@ protected:
   FirstSolution fs;
   SecondSolution ss;
   DPSolution dps;
+  PDPSolution pdps;
 };
 
 TEST_P(LongestPalindromicSubstringTest, FirstLongestPalindromicSubstringCase) {
@@ -34,6 +35,12 @@ TEST_P(LongestPalindromicSubstringTest, DPLongestPalindromicSubstringCase) {
   EXPECT_TRUE(as.result.count(result));
 }
 
+TEST_P(LongestPalindromicSubstringTest, PDPLongestPalindromicSubstringCase) {
+  const auto& as = GetParam();
+  std::string result = pdps.longestPalindrome(as.input);
+  EXPECT_TRUE(as.result.count(result));
+}
+
 INSTANTIATE_TEST_SUITE_P(Default, LongestPalindromicSubstringTest,
   ::testing::Values(
     States{"babad", {"bab", "aba"}},
@@ -44,6 +51,7 @@ INSTANTIATE_TEST_SUITE_P(Default, LongestPalindromicSubstringTest,
     States{"racecar", {"racecar"}},
     States{"abcda", {"a", "b", "c", "d"}},
     States{"aaaaa", {"aaaaa"}},
-    States{"aacabdkacaa", {"aca"}}
+    States{"aacabdkacaa", {"aca"}},
+    States{"ccc", {"ccc"}}
   )
 );
