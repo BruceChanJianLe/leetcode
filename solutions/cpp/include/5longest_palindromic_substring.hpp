@@ -23,6 +23,7 @@ public:
     for (auto i = 1uz; i < n; ++i) {
       if (s[i] == s[i - 1]) {
         memo[i - 1][i] = true;
+        start_index = i - 1;
         max_len = 2;
       }
     }
@@ -42,8 +43,6 @@ public:
       }
     }
 
-    std::cout << "start index: " << start_index << ", max_len: "
-      << max_len << std::endl;
     return s.substr(start_index, max_len);
   }
 };
@@ -104,20 +103,23 @@ public:
 class SecondSolution {
 public:
   std::string longestPalindrome(std::string s) {
-    std::string result;
+    auto start_index{0};
+    auto max_len{1};
 
-    for (auto index = 0uz; index < s.size(); ++index) {
+    for (auto i = 0uz; i < s.size(); ++i) {
       // odd
-      if (auto [l, len] = longestPalindromeHelper(index, index, s); len > result.size()) {
-        result = s.substr(l, len);
+      if (const auto [index, len] = longestPalindromeHelper(i, i, s); len > max_len) {
+        start_index = index;
+        max_len = len;
       }
       // even
-      if (auto [l, len] = longestPalindromeHelper(index, index + 1, s); len > result.size()) {
-        result = s.substr(l, len);
+      if (const auto [index, len] = longestPalindromeHelper(i, i + 1, s); len > max_len) {
+        start_index = index;
+        max_len = len;
       }
     }
 
-    return result;
+    return s.substr(start_index, max_len);
   }
 
 private:
