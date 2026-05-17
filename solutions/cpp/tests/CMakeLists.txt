@@ -296,6 +296,12 @@ add_leetcode_test(746min_cost_climbing_stairs_test)
 
 # 835 car fleet test
 add_leetcode_test(853car_fleet_test)
+
+# 846 hand of straight
+add_leetcode_test(846hand_of_straights_test)
+
+# ==================================================================
+
 # 875 koko eating bananas test
 add_leetcode_test(875koko_eating_bananas_test)
 # 876 middle of the linked list test
