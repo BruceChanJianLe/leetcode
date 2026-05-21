@@ -26,6 +26,7 @@ struct States
 struct ReverseLinkedListIITest : public ::testing::TestWithParam<States>
 {
   Solution s;
+  BruteForceSolution bfs;
 };
 
 TEST_P(ReverseLinkedListIITest, ReverseLinkedListIICase)
@@ -33,6 +34,17 @@ TEST_P(ReverseLinkedListIITest, ReverseLinkedListIICase)
   auto as = GetParam();
   ListNode* head = createLinkedList(as.input);
   ListNode* result = s.reverseBetween(head, as.left, as.right);
+  for (const auto& val : as.result) {
+    EXPECT_EQ(result->val, val);
+    result = result->next;
+  }
+}
+
+TEST_P(ReverseLinkedListIITest, BruteForceReverseLinkedListIICase)
+{
+  auto as = GetParam();
+  ListNode* head = createLinkedList(as.input);
+  ListNode* result = bfs.reverseBetween(head, as.left, as.right);
   for (const auto& val : as.result) {
     EXPECT_EQ(result->val, val);
     result = result->next;

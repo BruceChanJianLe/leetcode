@@ -1,5 +1,7 @@
 #pragma once
 
+#include <utility>
+
 struct ListNode {
   int val;
   ListNode *next;
@@ -32,5 +34,58 @@ public:
     }
 
     return holder.next;
+  }
+};
+
+// A more simple but brute force solution
+// Break the whole thing into pre_list, mid_list, post_list
+class BruteForceSolution {
+public:
+  ListNode* reverseBetween(ListNode* head, int left, int right) {
+    if (!head || left == right) return head;
+
+    ListNode sentinel{0, head};
+
+    // Find pre_list
+    auto* pre_list{&sentinel};
+    for (auto i = 1; i < left; ++i) {
+      pre_list = pre_list->next;
+    }
+
+    // mid_list begins at the next of pre_list
+    auto* mid_list = pre_list->next;
+    auto *post_list = pre_list->next;
+
+    // Continue to look for post list
+    for (auto i = left; i < right; ++i) {
+      post_list = post_list->next;
+    }
+
+    // Detach post_list from reverse region
+    {
+      auto* region_end = post_list;
+      post_list = post_list->next; // this has to happen first
+      region_end->next = nullptr;
+    }
+
+    auto [mid_head, mid_tail] = ReverseListNode(mid_list);
+
+    pre_list->next = mid_head;
+    mid_tail->next = post_list;
+
+    return sentinel.next;
+  }
+
+  std::pair<ListNode*, ListNode*> ReverseListNode(ListNode* head) {
+    ListNode *tail{head}, *prev{nullptr}, *next{nullptr};
+
+    while (head) {
+      next = head->next;
+      head->next = prev;
+      prev = head;
+      head = next;
+    }
+
+    return {prev, tail};
   }
 };
