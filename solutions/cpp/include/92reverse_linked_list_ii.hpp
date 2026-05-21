@@ -39,6 +39,9 @@ public:
 
 // A more simple but brute force solution
 // Break the whole thing into pre_list, mid_list, post_list
+// Hence you will need to introduce a "sentinel" to watch over your head
+// This is so that if you need to reverse the entire list you can still point
+// to the correct "head" once you are done
 class BruteForceSolution {
 public:
   ListNode* reverseBetween(ListNode* head, int left, int right) {
