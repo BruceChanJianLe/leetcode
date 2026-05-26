@@ -185,6 +185,11 @@ add_leetcode_test(167two_sum_ii_test)
 add_leetcode_test(198house_robber_test)
 # 199 binary tree right side view test
 add_leetcode_test(199binary_tree_right_side_view_test)
+# 200 number of island test
+add_leetcode_test(200number_of_islands_test)
+
+# ==================================================================
+
 # 206 reverse linked list test
 add_leetcode_test(206reverse_linked_list_test)
 # 208 implement trie prefix tree test
