@@ -10,6 +10,7 @@ struct States {
 struct NumberOfIslandsTest : public ::testing::TestWithParam<States> {
   FirstSolution fs;
   InplaceSolution is;
+  StackSolution ss;
 };
 
 TEST_P(NumberOfIslandsTest, FirstSolution) {
@@ -21,6 +22,12 @@ TEST_P(NumberOfIslandsTest, FirstSolution) {
 TEST_P(NumberOfIslandsTest, InplaceSolution) {
   auto as = GetParam();
   auto result = is.numIslands(as.grid);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(NumberOfIslandsTest, StackSolution) {
+  auto as = GetParam();
+  auto result = ss.numIslands(as.grid);
   EXPECT_EQ(result, as.result);
 }
 
@@ -78,6 +85,13 @@ INSTANTIATE_TEST_SUITE_P(
     States{
       {
           {'1'}
+      },
+      1
+    }, // single land cell
+
+    States{
+      {
+          {'1'},{'1'}
       },
       1
     }, // single land cell
