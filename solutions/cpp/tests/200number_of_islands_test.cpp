@@ -9,12 +9,18 @@ struct States {
 
 struct NumberOfIslandsTest : public ::testing::TestWithParam<States> {
   FirstSolution fs;
+  InplaceSolution is;
 };
 
-TEST_P(NumberOfIslandsTest, HandlesCases) {
+TEST_P(NumberOfIslandsTest, FirstSolution) {
   auto as = GetParam();
   auto result = fs.numIslands(as.grid);
+  EXPECT_EQ(result, as.result);
+}
 
+TEST_P(NumberOfIslandsTest, InplaceSolution) {
+  auto as = GetParam();
+  auto result = is.numIslands(as.grid);
   EXPECT_EQ(result, as.result);
 }
 
