@@ -156,6 +156,9 @@ add_leetcode_test(139word_break_test)
 
 # ==================================================================
 
+# 133 clone graph test
+add_leetcode_test(133clone_graph_test)
+
 # 141 linked list cycle test
 add_leetcode_test(141linked_list_cycle_test)
 # 143 reorder list test
