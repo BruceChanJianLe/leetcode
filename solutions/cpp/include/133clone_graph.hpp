@@ -1,5 +1,6 @@
 #pragma once
 
+#include <queue>
 #include <vector>
 #include <unordered_map>
 
@@ -18,6 +19,40 @@ public:
   Node(int _val, std::vector<Node *> _neighbors) {
     val = _val;
     neighbors = _neighbors;
+  }
+};
+
+// Use a queue for unseen nodes
+// doesn't require function call
+class QueueSolution {
+
+public:
+  Node* cloneGraph(Node* node) {
+    // Base cases
+    if (!node) return nullptr;
+
+    std::unordered_map<Node*, Node*> clones;
+
+    clones[node] = new Node(node->val);
+
+    std::queue<Node*> queue;
+    queue.push(node);
+
+    while (!queue.empty()) {
+      auto curr = queue.front();
+      queue.pop();
+
+      for (const auto& neighbor : curr->neighbors) {
+        if (auto [it, is_success] = clones.try_emplace(neighbor, nullptr);
+            is_success) {
+          it->second = new Node(neighbor->val);
+          queue.push(neighbor);
+        }
+        clones[curr]->neighbors.push_back(clones[neighbor]);
+      }
+    }
+
+    return clones[node];
   }
 };
 

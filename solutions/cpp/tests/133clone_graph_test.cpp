@@ -57,9 +57,19 @@ struct States {
 
 struct CloneGraphTest : public ::testing::TestWithParam<States> {
   DFSSolution rs;
+  QueueSolution qs;
 };
 
-TEST_P(CloneGraphTest, DFSSolutionClonesCorrectly) {
+TEST_P(CloneGraphTest, DFSSolution) {
+  auto as = GetParam();
+  Node *original = buildGraph(as.adjList);
+  Node *cloned = rs.cloneGraph(original);
+  EXPECT_EQ(graphToAdjList(cloned), as.adjList);
+  if (original && cloned)
+    EXPECT_NE(original, cloned);
+}
+
+TEST_P(CloneGraphTest, QueueSolution) {
   auto as = GetParam();
   Node *original = buildGraph(as.adjList);
   Node *cloned = rs.cloneGraph(original);
