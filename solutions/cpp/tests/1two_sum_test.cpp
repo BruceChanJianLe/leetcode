@@ -16,6 +16,7 @@ struct States
 struct TwoSumTest : public ::testing::Test, ::testing::WithParamInterface<States>
 {
   Solution s;
+  Solution2 s2;
 };
 
 TEST_P(TwoSumTest, TwoSumCases)
@@ -30,6 +31,14 @@ TEST_P(TwoSumTest, TwoSum4Cases)
 {
   auto as = GetParam();
   auto result = s.twoSumAttempt4(as.nums, as.target);
+  std::sort(result.begin(), result.end());
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(TwoSumTest, Solution2)
+{
+  auto as = GetParam();
+  auto result = s2.twoSum(as.nums, as.target);
   std::sort(result.begin(), result.end());
   EXPECT_EQ(result, as.result);
 }

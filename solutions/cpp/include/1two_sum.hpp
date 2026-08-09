@@ -5,6 +5,27 @@
 #include <utility>
 #include <vector>
 #include <iostream>
+#include <ranges>
+
+// 0ms!
+class Solution2 {
+public:
+  std::vector<int> twoSum(std::vector<int> &nums, int target) {
+    std::unordered_map<int, int> records;
+    records.reserve(nums.size());
+
+    for (auto [idx, num] : std::views::enumerate(nums)) {
+      if (auto it = records.find(target - num); it != records.end()) {
+        return {static_cast<int>(idx), it->second};
+      }
+
+      // No additional cost incur for casting long to int
+      records[num] = static_cast<int>(idx);
+    }
+
+    return {};
+  }
+};
 
 class Solution {
 public:
