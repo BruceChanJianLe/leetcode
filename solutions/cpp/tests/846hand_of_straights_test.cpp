@@ -11,11 +11,18 @@ struct States {
 class HandOfStraightsTest : public ::testing::TestWithParam<States> {
 protected:
   FirstSolution fs;
+  SecondSolution ss;
 };
 
 TEST_P(HandOfStraightsTest, FirstSolutionHandlesCases) {
   auto as = GetParam();
   auto result = fs.isNStraightHand(as.hand, as.groupSize);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(HandOfStraightsTest, SecondSolution) {
+  auto as = GetParam();
+  auto result = ss.isNStraightHand(as.hand, as.groupSize);
   EXPECT_EQ(result, as.result);
 }
 

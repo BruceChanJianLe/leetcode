@@ -1,5 +1,6 @@
 #pragma once
 
+#include <filesystem>
 #include <vector>
 #include <map>
 
@@ -26,6 +27,32 @@ public:
         }
       }
     }
+    return true;
+  }
+};
+
+// 29ms
+class SecondSolution {
+public:
+  bool isNStraightHand(std::vector<int>& hand, int groupSize) {
+    // Sanity check
+    if (hand.size() % groupSize != 0) return false;
+
+    // Insert all in a red-black tree (which is std::map)
+    std::map<int, int> records;
+    for (const auto& key : hand) {
+      ++records[key];
+    }
+
+    while (!records.empty()) {
+      auto curr_val = records.begin()->first;
+      for (auto i = 0; i < groupSize; ++i) {
+        auto it = records.find(curr_val + i);
+        if (it == records.end())  return false;
+        if (--it->second == 0) records.erase(it);
+      }
+    }
+
     return true;
   }
 };
