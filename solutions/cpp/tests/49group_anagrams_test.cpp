@@ -18,6 +18,8 @@ TEST_P(GroupAnagramsTest, GroupAnagramsCases)
 {
   auto as = GetParam();
   auto result = s.groupAnagrams(as.strs);
+  std::sort(result.begin(), result.end());
+  std::sort(as.result.begin(), as.result.end());
   EXPECT_EQ(result, as.result);
 }
 
@@ -30,7 +32,7 @@ TEST_P(GroupAnagramsTest, HashKeyGroupAnagramsCases)
   EXPECT_EQ(result, as.result);
 }
 
-INSTANTIATE_TEST_CASE_P(Defaul, GroupAnagramsTest,
+INSTANTIATE_TEST_SUITE_P(Defaul, GroupAnagramsTest,
     testing::Values(
       States{{"eat", "tea", "tan", "ate", "nat", "bat"}, {{"bat"}, {"tan", "nat"}, {"eat", "tea", "ate"}}},
       States{{""}, {{""}}},

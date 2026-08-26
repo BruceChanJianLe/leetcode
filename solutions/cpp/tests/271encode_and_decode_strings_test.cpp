@@ -27,7 +27,7 @@ TEST_P(EncodeAndDecodeStringTest, PracticeEncodeAndDecodeStringCases)
   EXPECT_EQ(result, as.strs);
 }
 
-INSTANTIATE_TEST_CASE_P(Default, EncodeAndDecodeStringTest,
+INSTANTIATE_TEST_SUITE_P(Default, EncodeAndDecodeStringTest,
     testing::Values(
       States{{"leet", "code", "love", "you"}},
       States{{"we", "say", ":", "yes"}}

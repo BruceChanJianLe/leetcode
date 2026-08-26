@@ -1,5 +1,7 @@
 #include "131palindrome_partitioning.hpp"
 
+#include <algorithm>
+
 #include "gtest/gtest.h"
 
 struct States

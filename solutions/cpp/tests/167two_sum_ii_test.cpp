@@ -39,7 +39,7 @@ TEST_P(TwoSumIITest, SecondTwoSumIICase)
   EXPECT_EQ(result, as.result);
 }
 
-INSTANTIATE_TEST_CASE_P(Default, TwoSumIITest,
+INSTANTIATE_TEST_SUITE_P(Default, TwoSumIITest,
     testing::Values(
       States{{2,7,11,15}, 9, {1, 2}},
       States{{2, 3, 4}, 6, {1, 3}},

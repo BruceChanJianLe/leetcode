@@ -1,5 +1,7 @@
 #include "78subsets.hpp"
 
+#include <algorithm>
+
 #include "gtest/gtest.h"
 
 struct States {

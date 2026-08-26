@@ -25,7 +25,7 @@ INSTANTIATE_TEST_SUITE_P(Default, LeftAndRightSumDifferencesTest,
     States{ {1}, {0} },
     States{ {1, 2}, {2, 1} },
     States{ {5, 5, 5, 5}, {15, 5, 5, 15} },
-    States{ {100000, 1, 1, 1}, {3, 99998, 99999, 100002} }
+    States{ {100000, 1, 1, 1}, {3, 99998, 100000, 100002} }
   )
 );
 

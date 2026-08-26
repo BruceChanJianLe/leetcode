@@ -1,5 +1,7 @@
 #include "77combinations.hpp"
 
+#include <algorithm>
+
 #include "gtest/gtest.h"
 
 struct States {

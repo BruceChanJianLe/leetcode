@@ -48,7 +48,7 @@ TEST_P(AddTwoNumbersTest, AddTwoNumbersCases)
   EXPECT_EQ(result, as.result);
 }
 
-INSTANTIATE_TEST_CASE_P(Default, AddTwoNumbersTest,
+INSTANTIATE_TEST_SUITE_P(Default, AddTwoNumbersTest,
     testing::Values(
       States{{2,4,3}, {5,6,4}, {7,0,8}},
       States{{0}, {0}, {0}},

@@ -46,7 +46,7 @@ TEST_P(TopKfrequentElementsTest, TopKfrequentElementsOtherSolutionCases)
   EXPECT_EQ(result, as.result);
 }
 
-INSTANTIATE_TEST_CASE_P(Default, TopKfrequentElementsTest,
+INSTANTIATE_TEST_SUITE_P(Default, TopKfrequentElementsTest,
     testing::Values(
       States{{1, 1, 1, 2, 2, 3}, 2, {1, 2}},
       States{{1}, 1, {1}}

@@ -44,7 +44,7 @@ TEST_P(ProductOfArrayExceptSelfTest, FourthProductOfArrayExceptSelfCases)
   EXPECT_EQ(result, as.result);
 }
 
-INSTANTIATE_TEST_CASE_P(Default, ProductOfArrayExceptSelfTest,
+INSTANTIATE_TEST_SUITE_P(Default, ProductOfArrayExceptSelfTest,
     testing::Values(
       States{{1,2,3,4}, {24,12,8,6}},
       States{{-1,1,0,-3,3}, {0,0,9,0,0}}

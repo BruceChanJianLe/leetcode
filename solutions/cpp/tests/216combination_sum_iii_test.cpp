@@ -1,5 +1,7 @@
 #include "216combination_sum_iii.hpp"
 
+#include <algorithm>
+
 #include "gtest/gtest.h"
 
 struct States

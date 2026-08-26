@@ -21,7 +21,7 @@ TEST_P(ValidAnagramTest, ValidAnagramCases)
   EXPECT_EQ(result, as.result);
 }
 
-INSTANTIATE_TEST_CASE_P(Default, ValidAnagramTest,
+INSTANTIATE_TEST_SUITE_P(Default, ValidAnagramTest,
     testing::Values(
       States{{"anagram"}, {"nagaram"}, true},
       States{{"cat"}, {"car"}, false}

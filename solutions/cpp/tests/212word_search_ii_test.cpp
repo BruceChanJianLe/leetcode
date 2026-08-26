@@ -1,5 +1,7 @@
 #include "212word_search_ii.hpp"
 
+#include <algorithm>
+
 #include "gtest/gtest.h"
 
 struct States

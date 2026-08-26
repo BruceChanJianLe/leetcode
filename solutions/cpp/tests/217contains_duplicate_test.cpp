@@ -22,7 +22,7 @@ TEST_P(ContainsDuplicateTest, ContainDuplicateCases)
   EXPECT_EQ(result, as.result);
 }
 
-INSTANTIATE_TEST_CASE_P(Default, ContainsDuplicateTest,
+INSTANTIATE_TEST_SUITE_P(Default, ContainsDuplicateTest,
     testing::Values(
       States{{1,2,3,1}, true},
       States{{1,2,3,4}, false},
