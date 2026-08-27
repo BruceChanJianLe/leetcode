@@ -5,6 +5,7 @@
 #include <list>
 #include <memory_resource>
 #include <unordered_map>
+#include <vector>
 
 class PMR_LRUCache {
 public:
