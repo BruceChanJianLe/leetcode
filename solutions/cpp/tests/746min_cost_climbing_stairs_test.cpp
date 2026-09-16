@@ -11,12 +11,19 @@ class MinCostClimbingStairsTest : public ::testing::TestWithParam<States>
 {
 protected:
   DPBottomUpSolution s;
+  CleanerDPBottomUpSolution cs;
   DPRecursiveSolution rs;
 };
 
 TEST_P(MinCostClimbingStairsTest, DPBottomUpMinCostClimbingStairsCase) {
   auto as = GetParam();
   auto result = s.minCostClimbingStairs(as.cost);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(MinCostClimbingStairsTest, CleanerDPBottomUpMinCostClimbingStairsCase) {
+  auto as = GetParam();
+  auto result = cs.minCostClimbingStairs(as.cost);
   EXPECT_EQ(result, as.result);
 }
 

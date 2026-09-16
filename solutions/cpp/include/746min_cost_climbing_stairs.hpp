@@ -21,6 +21,18 @@ public:
   }
 };
 
+// A cleaner DP bottom up
+class CleanerDPBottomUpSolution {
+public:
+  int minCostClimbingStairs(std::vector<int>& cost) {
+    std::vector<int> memo(cost.size() + 1, 0);
+    for (auto i = 2; i < memo.size(); ++i) {
+      memo[i] = std::min(memo[i - 2] + cost[i - 2], memo[i - 1] + cost[i - 1]);
+    }
+    return memo.back();
+  }
+};
+
 // Decision Tree, recursive without memoization
 // Too slow...
 class DPRecursiveSolution {
