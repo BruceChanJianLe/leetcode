@@ -313,6 +313,9 @@ add_leetcode_test(746min_cost_climbing_stairs_test)
 # 835 car fleet test
 add_leetcode_test(853car_fleet_test)
 
+# 836 rectangle overlap test
+add_leetcode_test(836rectangle_overlap_test)
+
 # 846 hand of straight
 add_leetcode_test(846hand_of_straights_test)
 
