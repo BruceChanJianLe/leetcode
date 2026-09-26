@@ -251,10 +251,24 @@ add_leetcode_test(239sliding_window_maximum_test)
 
 # 242 valid anagram test
 add_leetcode_test(242valid_anagram_test)
+
+# ==================================================================
+
+# 268 missing number test
+add_leetcode_test(268missing_number_test)
+
+# ==================================================================
+
 # 271 encode and decode strings
 add_leetcode_test(271encode_and_decode_strings_test)
+
+# ==================================================================
+
 # 287 find the duplicate number test
 add_leetcode_test(287find_the_duplicate_number_test)
+
+# ==================================================================
+
 # 297 serialize and deserialize binary tree test
 add_leetcode_test(297serialize_and_deserialize_binary_tree_test)
 
