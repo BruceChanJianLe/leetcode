@@ -190,6 +190,9 @@ add_leetcode_test(155min_stack_test)
 # 167 add two numbers ii test
 add_leetcode_test(167two_sum_ii_test)
 
+# 169 majority element test
+add_leetcode_test(169majority_element_test)
+
 # ==================================================================
 
 # 198 house robber test
