@@ -275,6 +275,14 @@ add_leetcode_test(347top_k_frequent_elements_test)
 
 # 424 longest repeating character replacement test
 add_leetcode_test(424longest_repeating_character_replacement_test)
+
+# ==================================================================
+
+# 448 find all numbers disappeared in an array test
+add_leetcode_test(448find_all_numbers_disappeared_in_an_array_test)
+
+# ==================================================================
+
 # 496 next greater element i test
 add_leetcode_test(496next_greater_element_i_test)
 
