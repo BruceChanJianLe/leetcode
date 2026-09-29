@@ -267,6 +267,9 @@ add_leetcode_test(271encode_and_decode_strings_test)
 
 # ==================================================================
 
+# 283 move zeroes test
+add_leetcode_test(283move_zeroes_test)
+
 # 287 find the duplicate number test
 add_leetcode_test(287find_the_duplicate_number_test)
 

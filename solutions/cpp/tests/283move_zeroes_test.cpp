@@ -22,7 +22,7 @@ TEST_P(MoveZeroesTest, FirstSolution) {
 
 TEST_P(MoveZeroesTest, Solution) {
   auto as = GetParam();
-  fs.moveZeroes(as.nums);
+  s.moveZeroes(as.nums);
   EXPECT_EQ(as.nums, as.result);
 }
 

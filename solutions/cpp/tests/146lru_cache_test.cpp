@@ -17,6 +17,7 @@ struct LRUCacheTest: public ::testing::TestWithParam<LRUParam> {
   std::unique_ptr<STD_LRUCache> ss;
   std::unique_ptr<PMR_LRUCache> p;
   std::unique_ptr<LRUCache2> s2;
+  std::unique_ptr<ThreadSafeLRUCache> ts;
 };
 
 TEST_P(LRUCacheTest, PMR_LRUCacheCase) {
@@ -139,6 +140,38 @@ TEST_P(LRUCacheTest, LRUCache2Case) {
     } else if (cmd == "get") {
       ASSERT_TRUE(s2);
       int val = s2->get(arg[0]);
+      ASSERT_TRUE(exp.has_value()) << "Expected value missing at index " << i;
+      EXPECT_EQ(val, exp.value());
+    } else {
+      FAIL() << "Unknown command: " << cmd;
+    }
+  }
+}
+
+TEST_P(LRUCacheTest, ThreadSafeLRUCache) {
+  const auto& param = GetParam();
+  const auto& cmds = param.commands;
+  const auto& args = param.args;
+  const auto& expected = param.expected;
+
+  ASSERT_EQ(cmds.size(), args.size());
+  ASSERT_EQ(cmds.size(), expected.size());
+
+  for (size_t i = 0; i < cmds.size(); ++i) {
+    const auto& cmd = cmds[i];
+    const auto& arg = args[i];
+    const auto& exp = expected[i];
+
+    if (cmd == "LRUCache") {
+      ts = std::make_unique<ThreadSafeLRUCache>(arg[0]);
+      EXPECT_FALSE(exp.has_value());
+    } else if (cmd == "put") {
+      ASSERT_TRUE(ts);
+      ts->put(arg[0], arg[1]);
+      EXPECT_FALSE(exp.has_value());
+    } else if (cmd == "get") {
+      ASSERT_TRUE(ts);
+      int val = ts->get(arg[0]);
       ASSERT_TRUE(exp.has_value()) << "Expected value missing at index " << i;
       EXPECT_EQ(val, exp.value());
     } else {

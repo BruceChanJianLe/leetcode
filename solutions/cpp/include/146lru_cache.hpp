@@ -302,3 +302,59 @@ private:
     }
   }
 };
+
+// Thread safe LRU
+#include <cstddef>
+#include <iterator>
+#include <list>
+#include <mutex>
+#include <unordered_map>
+#include <utility>
+
+class ThreadSafeLRUCache {
+public:
+  explicit ThreadSafeLRUCache(int capacity) : cap_{static_cast<std::size_t>(capacity)} {
+    lookup_.reserve(cap_);
+  }
+  ThreadSafeLRUCache(const ThreadSafeLRUCache &) = delete;
+  ThreadSafeLRUCache &operator=(const ThreadSafeLRUCache &) = delete;
+
+  int get(int key) {
+    std::scoped_lock<std::mutex> scope{m_};
+    if (auto it = lookup_.find(key); it != lookup_.end()) {
+      touch(it->second);
+      return it->second->value;
+    }
+    return -1;
+  }
+
+  void put(int key, int value) {
+    std::scoped_lock<std::mutex> scope{m_};
+    if (auto it = lookup_.find(key); it != lookup_.end()) {
+      it->second->value = value;
+      touch(it->second);
+    } else if (lookup_.size() == cap_) {
+      auto lru = std::prev(list_.end());
+      lookup_.erase(lru->key);
+      *lru = {key, value};
+      touch(lru);
+      lookup_.insert({key, lru});
+    } else {
+      list_.emplace_front(key, value);
+      lookup_.insert({key, list_.begin()});
+    }
+  }
+
+private:
+  std::size_t cap_;
+  std::mutex m_;
+  struct Node {
+    int key;
+    int value;
+  };
+  using NodeIt = std::list<Node>::iterator;
+  std::list<Node> list_;
+  std::unordered_map<int, NodeIt> lookup_;
+
+  void touch(NodeIt node) { list_.splice(list_.begin(), list_, node); }
+};
