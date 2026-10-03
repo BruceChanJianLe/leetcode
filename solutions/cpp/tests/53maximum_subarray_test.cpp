@@ -11,17 +11,24 @@ class MaximumSubarrayTest : public ::testing::TestWithParam<States> {
 protected:
   Solution s;
   FirstSolution fs;
+  DPSolution dps;
 };
 
-TEST_P(MaximumSubarrayTest, FirstMaximumSubarrayCase) {
+TEST_P(MaximumSubarrayTest, Solution) {
+  auto as = GetParam();
+  auto result = s.maxSubArray(as.nums);
+  EXPECT_EQ(result, as.result);
+}
+
+TEST_P(MaximumSubarrayTest, FirstSolution) {
   auto as = GetParam();
   auto result = fs.maxSubArray(as.nums);
   EXPECT_EQ(result, as.result);
 }
 
-TEST_P(MaximumSubarrayTest, MaximumSubarrayCase) {
+TEST_P(MaximumSubarrayTest, DPSolution) {
   auto as = GetParam();
-  auto result = s.maxSubArray(as.nums);
+  auto result = dps.maxSubArray(as.nums);
   EXPECT_EQ(result, as.result);
 }
 

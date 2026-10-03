@@ -20,6 +20,7 @@ public:
     return global_sum;
   }
 };
+
 // Kadane's algorithm version 1
 class FirstSolution {
 public:
@@ -41,5 +42,23 @@ public:
     }
 
     return global_sum;
+  }
+};
+
+// DP
+class DPSolution {
+public:
+  int maxSubArray(const std::vector<int>& nums) {
+    const int n = nums.size();
+    std::vector<int> memo(n);
+    memo[0] = nums.front();
+    auto max{nums.front()};
+
+    for (auto i = 1; i < n; ++i) {
+      memo[i] = std::max(nums[i], memo[i - 1] + nums[i]);
+      max = std::max(memo[i], max);
+    }
+
+    return max;
   }
 };
